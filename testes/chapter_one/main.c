@@ -194,19 +194,19 @@ void	testeCross()
 
 int main()
 {
-	// testTuple();
-	// testePointer();
-	// testeVector();
-	// testeAddingTuple();
-	// testeSubPoint();
-	// testeSubPointFromVec();
-	// testeSubVector();
-	// negateTupla();
-	// multiplyingTupla();
-	// dividingTupla();
-	// magnitudeVector();
-	// testeNormalize();
-	// testeDot();
+	testTuple();
+	testePointer();
+	testeVector();
+	testeAddingTuple();
+	testeSubPoint();
+	testeSubPointFromVec();
+	testeSubVector();
+	negateTupla();
+	multiplyingTupla();
+	dividingTupla();
+	magnitudeVector();
+	testeNormalize();
+	testeDot();
 	testeCross();
 	return (0);
 }
