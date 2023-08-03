@@ -158,18 +158,35 @@ int magnitudeVector()
 	return (0);
 }
 
+int	testeNormalize()
+{
+	t_tuple value;
+
+	value = normalize(vector(4, 0, 0));
+	printf("Esperado (1, 0, 0, 0)\nresultado (%f, %f, %f, %f)\n", value.x,value.y, value.z, value.w);
+
+	value = normalize(vector(1, 2, 3));
+	printf("Esperado (0.26726, 0.53452, 0.80178)\nresultado (%f, %f, %f, %f)\n", value.x,value.y, value.z, value.w);
+
+	value = normalize(vector(1, 2, 3));
+	printf("Esperado (1) \nresultado: %f\n", magnitude(value));
+
+	return (0);
+}
+
 int main()
 {
-	testTuple();
-	testePointer();
-	testeVector();
-	testeAddingTuple();
-	testeSubPoint();
-	testeSubPointFromVec();
-	testeSubVector();
-	negateTupla();
-	multiplyingTupla();
-	dividingTupla();
-	magnitudeVector();
+	// testTuple();
+	// testePointer();
+	// testeVector();
+	// testeAddingTuple();
+	// testeSubPoint();
+	// testeSubPointFromVec();
+	// testeSubVector();
+	// negateTupla();
+	// multiplyingTupla();
+	// dividingTupla();
+	// magnitudeVector();
+	testeNormalize();
 	return (0);
 }
