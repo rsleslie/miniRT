@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:33:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/02 22:51:35 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/02 23:13:19 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_tuple	negate(t_tuple tuple_1);
 t_tuple	divTuple(t_tuple tuple_1, float n);
 t_tuple	multTuple(t_tuple tuple_1, float n);
 t_tuple normalize(t_tuple tuple);
+float	dot(t_tuple t1, t_tuple t2);
+t_tuple	cross(t_tuple a, t_tuple b);
 
 
 

@@ -174,6 +174,24 @@ int	testeNormalize()
 	return (0);
 }
 
+int testeDot()
+{
+	float product = dot(vector(1, 2, 3), vector(2, 3, 4));
+	printf("esperado (20)\nresultado: %f", product);
+	return(0);
+}
+
+void	testeCross()
+{
+	t_tuple value;
+
+	value = cross(vector(1, 2, 3), vector(2, 3, 4));
+	printf("Esperado (-1, 2, -1)\nresultado (%f, %f, %f)\n", value.x,value.y, value.z);
+
+	value = cross(vector(2, 3, 4), vector(1, 2, 3));
+	printf("Esperado (1, -2, 1)\nresultado (%f, %f, %f)\n", value.x,value.y, value.z);
+}
+
 int main()
 {
 	// testTuple();
@@ -187,6 +205,8 @@ int main()
 	// multiplyingTupla();
 	// dividingTupla();
 	// magnitudeVector();
-	testeNormalize();
+	// testeNormalize();
+	// testeDot();
+	testeCross();
 	return (0);
 }
