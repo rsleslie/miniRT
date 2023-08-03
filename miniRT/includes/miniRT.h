@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:33:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/02 20:16:55 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/02 22:39:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,13 @@ t_tuple	tuples(float x, float y, float z, float w);
 
 // tuple operation
 int		compareTuple(t_tuple *tuple_1, t_tuple *tuple_2);
+float	magnitude(t_tuple tuple);
 t_tuple	addingTuple(t_tuple tuple_1, t_tuple tuple_2);
 t_tuple	subtractingTuple(t_tuple tuple_1, t_tuple tuple_2);
 t_tuple	negate(t_tuple tuple_1);
+t_tuple	divTuple(t_tuple tuple_1, float n);
+t_tuple	multTuple(t_tuple tuple_1, float n);
+
 
 
 #endif

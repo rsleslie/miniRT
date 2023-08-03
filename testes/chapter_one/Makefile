@@ -1,7 +1,11 @@
 NAME = teste
-SRCS = main.c ../../miniRT/sources/tuples/operationTuple.c ../../miniRT/sources/tuples/operationVectorPoint.c ../../miniRT/sources/tuples/tuples.c
+SRCS = main.c \
+	../../miniRT/sources/tuples/operationVectorPoint.c \
+	../../miniRT/sources/tuples/tuples.c \
+	../../miniRT/sources/tuples/tuple_math.c \
+	../../miniRT/sources/tuples/operation_tuple.c \
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -lm
 OBJS = $(patsubst %.c, %.o, $(wildcard $(SRCS)))
 
 all: $(NAME)

@@ -111,15 +111,65 @@ int negateTupla()
 	printf("Esperado (-1, 2, -3, 4)\nresultado (%f, %f, %f, %f)\n", negTuple.x,negTuple.y, negTuple.z, negTuple.w);
 	return (0);
 }
+
+int multiplyingTupla()
+{
+	t_tuple multiplyingTuple;
+	t_tuple multiplyingTuple_1;
+
+	multiplyingTuple = multTuple(tuples(1, -2, 3, -4), 3.5);
+	printf("Esperado ((3.5, -7, 10.5, -14)\nresultado (%f, %f, %f, %f)\n", multiplyingTuple.x,multiplyingTuple.y, multiplyingTuple.z, multiplyingTuple.w);
+	
+	multiplyingTuple_1 = multTuple(tuples(1, -2, 3, -4), 0.5);
+	printf("Esperado (0.5, -1, 1.5, -2)\nresultado (%f, %f, %f, %f)\n", multiplyingTuple_1.x,multiplyingTuple_1.y, multiplyingTuple_1.z, multiplyingTuple_1.w);
+	return (0);
+}
+
+int dividingTupla()
+{
+	t_tuple dTuple;
+
+	dTuple = divTuple(tuples(1, -2, 3, -4), 2);
+	printf("Esperado (0.5, -1, 1.5, -2)\nresultado (%f, %f, %f, %f)\n", dTuple.x,dTuple.y, dTuple.z, dTuple.w);
+	
+	return (0);
+}
+
+int magnitudeVector()
+{
+	float dTuple;
+
+	dTuple = magnitude(vector(1, 0, 0));
+	printf("Esperado 1\nresultado (%f)\n", dTuple);
+
+	dTuple = magnitude(vector(0, 1, 0));
+	printf("Esperado 1\nresultado (%f)\n", dTuple);
+
+	dTuple = magnitude(vector(0, 0, 1));
+	printf("Esperado 1\nresultado (%f)\n", dTuple);
+
+	dTuple = magnitude(vector(1, 2, 3));
+	printf("Esperado raiz de (14)\nresultado (%f)\n", dTuple);
+
+	dTuple = magnitude(vector(-1, -2, -3));
+	printf("Esperado raiz de (14)\nresultado (%f)\n", dTuple);
+	
+	
+	return (0);
+}
+
 int main()
 {
-	// testTuple();
-	// testePointer();
-	// testeVector();
-	// testeAddingTuple();
-	// testeSubPoint();
-	// testeSubPointFromVec();
-	// testeSubVector();
+	testTuple();
+	testePointer();
+	testeVector();
+	testeAddingTuple();
+	testeSubPoint();
+	testeSubPointFromVec();
+	testeSubVector();
 	negateTupla();
+	multiplyingTupla();
+	dividingTupla();
+	magnitudeVector();
 	return (0);
 }
