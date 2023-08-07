@@ -62,7 +62,7 @@ int testeAddingTuple()
 {
 	t_tuple adding;
 
-	adding = addingTuple(tuples(3, -2, 5, 1), tuples(-2, 3, 1, 0));
+	adding = adding_tuple(tuples(3, -2, 5, 1), tuples(-2, 3, 1, 0));
 	printf("resperado tuple(1, 1, 6, 1)\nresultado(%f, %f, %f, %f)\n", adding.x,adding.y, adding.z, adding.w);
 	isVectorOrPoint(adding);
 	return (0);
@@ -72,7 +72,7 @@ int testeSubPoint()
 {
 	t_tuple adding;
 
-	adding = subtractingPoint(point(3, 2, 1), point(5, 6, 7));
+	adding = subtracting_point(point(3, 2, 1), point(5, 6, 7));
 	printf("Esperado (-2, -4, -6)\nresultado (%f, %f, %f, %f)\n", adding.x,adding.y, adding.z, adding.w);
 	isVectorOrPoint(adding);
 	return (0);
@@ -82,7 +82,7 @@ int testeSubPointFromVec()
 {
 	t_tuple adding;
 
-	adding = subtractingVecFromPoint(point(3, 2, 1), vector(5, 6, 7));
+	adding = sub_vec_from_point(point(3, 2, 1), vector(5, 6, 7));
 	printf("Esperado (-2, -4, -6)\nresultado (%f, %f, %f, %f)\n", adding.x,adding.y, adding.z, adding.w);
 	isVectorOrPoint(adding);
 	return (0);
@@ -92,11 +92,11 @@ int testeSubVector()
 {
 	t_tuple sub_1;
 	t_tuple sub;
-	sub_1 = subtractingVector(vector(3, 2, 1), vector(5, 6, 7));
+	sub_1 = subtracting_vector(vector(3, 2, 1), vector(5, 6, 7));
 	printf("Esperado (-2, -4, -6)\nresultado (%f, %f, %f, %f)\n", sub_1.x,sub_1.y, sub_1.z, sub_1.w);
 	isVectorOrPoint(sub_1);
 	
-	sub = subtractingVector(vector(0, 0, 0), vector(1, -2, 3));
+	sub = subtracting_vector(vector(0, 0, 0), vector(1, -2, 3));
 	printf("Esperado (-1, 2, -3)\nresultado (%f, %f, %f, %f)\n", sub.x,sub.y, sub.z, sub.w);
 	isVectorOrPoint(sub);
 	
@@ -117,10 +117,10 @@ int multiplyingTupla()
 	t_tuple multiplyingTuple;
 	t_tuple multiplyingTuple_1;
 
-	multiplyingTuple = multTuple(tuples(1, -2, 3, -4), 3.5);
+	multiplyingTuple = mult_tuple(tuples(1, -2, 3, -4), 3.5);
 	printf("Esperado ((3.5, -7, 10.5, -14)\nresultado (%f, %f, %f, %f)\n", multiplyingTuple.x,multiplyingTuple.y, multiplyingTuple.z, multiplyingTuple.w);
 	
-	multiplyingTuple_1 = multTuple(tuples(1, -2, 3, -4), 0.5);
+	multiplyingTuple_1 = mult_tuple(tuples(1, -2, 3, -4), 0.5);
 	printf("Esperado (0.5, -1, 1.5, -2)\nresultado (%f, %f, %f, %f)\n", multiplyingTuple_1.x,multiplyingTuple_1.y, multiplyingTuple_1.z, multiplyingTuple_1.w);
 	return (0);
 }
@@ -129,7 +129,7 @@ int dividingTupla()
 {
 	t_tuple dTuple;
 
-	dTuple = divTuple(tuples(1, -2, 3, -4), 2);
+	dTuple = div_tuple(tuples(1, -2, 3, -4), 2);
 	printf("Esperado (0.5, -1, 1.5, -2)\nresultado (%f, %f, %f, %f)\n", dTuple.x,dTuple.y, dTuple.z, dTuple.w);
 	
 	return (0);
