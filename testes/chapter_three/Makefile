@@ -16,6 +16,7 @@ run: all
 
 clean:
 	rm -rf $(OBJS)
+	@make fclean -C ../../miniRT/libft
 
 fclean: clean
 	rm -rf $(NAME)

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:33:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/07 19:29:32 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/09 19:02:01 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "../libft/libft.h"
 # include <math.h>
-#include  <stdlib.h>
+// #include  <stdlib.h>
 
 typedef struct s_tuple
 {
@@ -62,9 +62,16 @@ t_tuple	normalize(t_tuple tuple);
 t_tuple	cross(t_tuple a, t_tuple b);
 
 // matrices
-t_matrices	create_matrices(int line, int col);
 int			compare_matrix(t_matrices a, t_matrices b);
+float		determinant(t_matrices a);
+t_tuple		mult_matrix_tuple(t_matrices matrix, t_tuple tuple);
+t_matrices	create_matrices(int line, int col);
 t_matrices	mult_matrices(t_matrices a, t_matrices b);
-t_tuple	mult_matrix_tuple(t_matrices matrix, t_tuple tuple);
+t_matrices	identity_matrix(t_matrices a);
+t_matrices	transpose(t_matrices a);
+t_matrices	submatrix(t_matrices a, int line, int col);
+float		minor(t_matrices a, int line, int col);
+float		cofactor(t_matrices a, int line, int col);
+t_matrices	inverse(t_matrices m);
 
 #endif
