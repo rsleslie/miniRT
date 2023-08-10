@@ -522,6 +522,137 @@ void    testInverse()
     }
 }
 
+void    testeMatrices()
+{
+    t_matrices a;
+    t_matrices b;
+    t_matrices inverseA;
+    t_matrices inverseB;
+
+    a = create_matrices(4, 4);
+    a.matrices[0][0] = 8;
+    a.matrices[0][1] = -5;
+    a.matrices[0][2] = 9;
+    a.matrices[0][3] = 2;
+    a.matrices[1][0] = 7;
+    a.matrices[1][1] = 5;
+    a.matrices[1][2] = 6;
+    a.matrices[1][3] = 1;
+    a.matrices[2][0] = -6;
+    a.matrices[2][1] = 0;
+    a.matrices[2][2] = 9;
+    a.matrices[2][3] = 6;
+    a.matrices[3][0] = -3;
+    a.matrices[3][1] = 0;
+    a.matrices[3][2] = -9;
+    a.matrices[3][3] = -4;
+
+    inverseA = inverse(a);
+
+    b = create_matrices(4, 4);
+    b.matrices[0][0] = 9;
+    b.matrices[0][1] = 3;
+    b.matrices[0][2] = 0;
+    b.matrices[0][3] = 9;
+    b.matrices[1][0] = -5;
+    b.matrices[1][1] = -2;
+    b.matrices[1][2] = -6;
+    b.matrices[1][3] = -3;
+    b.matrices[2][0] = -4;
+    b.matrices[2][1] = 9;
+    b.matrices[2][2] = 6;
+    b.matrices[2][3] = 4;
+    b.matrices[3][0] = -7;
+    b.matrices[3][1] = 6;
+    b.matrices[3][2] = 6;
+    b.matrices[3][3] = 2;
+
+    printf("determinante a: %f\n", determinant(a));
+    inverseB = inverse(b);
+
+    int line = -1;
+    int col = -1;
+
+    while (++line < a.x)
+    {
+        col = -1;
+        while (++col < a.y)
+            printf("|\t%f\t", inverseA.matrices[line][col]);
+        printf("\n");
+    }
+    printf("\n");
+    printf("\n");
+    line = -1;
+
+    while (++line < a.x)
+    {
+        col = -1;
+        while (++col < a.y)
+            printf("|\t%f\t", inverseB.matrices[line][col]);
+        printf("\n");
+    }
+}
+
+void    testeMultiplyingInverse()
+{
+    t_matrices a;
+    t_matrices b;
+    t_matrices c;
+    t_matrices d;
+     t_matrices inverseB;
+
+    a = create_matrices(4, 4);
+    a.matrices[0][0] = 3;
+    a.matrices[0][1] = -9;
+    a.matrices[0][2] = 7;
+    a.matrices[0][3] = 3;
+    a.matrices[1][0] = 3;
+    a.matrices[1][1] = -8;
+    a.matrices[1][2] = 2;
+    a.matrices[1][3] = -9;
+    a.matrices[2][0] = -4;
+    a.matrices[2][1] = 4;
+    a.matrices[2][2] = 4;
+    a.matrices[2][3] = 1;
+    a.matrices[3][0] = -6;
+    a.matrices[3][1] = 5;
+    a.matrices[3][2] = -1;
+    a.matrices[3][3] = 1;
+
+    b = create_matrices(4, 4);
+    b.matrices[0][0] = 8;
+    b.matrices[0][1] = 2;
+    b.matrices[0][2] = 2;
+    b.matrices[0][3] = 2;
+    b.matrices[1][0] = 3;
+    b.matrices[1][1] = -1;
+    b.matrices[1][2] = 7;
+    b.matrices[1][3] = 0;
+    b.matrices[2][0] = 7;
+    b.matrices[2][1] = 0;
+    b.matrices[2][2] = 5;
+    b.matrices[2][3] = 4;
+    b.matrices[3][0] = 6;
+    b.matrices[3][1] = -2;
+    b.matrices[3][2] = 0;
+    b.matrices[3][3] = 5;
+
+    c = mult_matrices(a, b);
+    inverseB = inverse(b);
+    d = mult_matrices(c, inverseB);
+
+    int line = -1;
+    int col = -1;
+
+    while (++line < d.x)
+    {
+        col = -1;
+        while (++col < d.y)
+            printf("|\t%f\t", d.matrices[line][col]);
+        printf("\n");
+    }
+}
+
 int main()
 {
     // testMatrices_two();
@@ -540,6 +671,8 @@ int main()
     // testConfactor();
     // testDeterminantMatrixThree();
     // invertableMatrix();
-    testInverse();
+    // testInverse();
+    // testeMatrices();
+    testeMultiplyingInverse();
     return (0);
 }

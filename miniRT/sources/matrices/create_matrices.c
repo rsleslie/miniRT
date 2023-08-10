@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:14:28 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/09 19:17:03 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/10 16:05:00 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	compare_row_col(t_matrices a, t_matrices b)
 
 t_matrices	mult_matrices(t_matrices a, t_matrices b)
 {
-	int			i;
 	int			col;
 	int			line;
 	int			value;
@@ -42,10 +41,11 @@ t_matrices	mult_matrices(t_matrices a, t_matrices b)
 		col = -1;
 		while (++col < a.y)
 		{
-			i = -1;
 			value = 0;
-			while (++i < a.y)
-				value += (a.matrices[line][i] * b.matrices[i][col]);
+			value = ((a.matrices[line][0]) * (b.matrices[0][col]))
+				+ ((a.matrices[line][1]) * (b.matrices[1][col])
+					+ ((a.matrices[line][2]) * (b.matrices[2][col])))
+				+ ((a.matrices[line][3]) * (b.matrices[3][col]));
 			m_matrix.matrices[line][col] = value;
 		}
 	}
@@ -146,7 +146,7 @@ float	determinant(t_matrices a)
 		if (equal(a.x, 4))
 			result += a.matrices[0][3] * cofactor(a, 0, 3);
 	}
-	return (result); 
+	return (result);
 }
 
 t_matrices	submatrix(t_matrices a, int line, int col)
@@ -208,7 +208,7 @@ t_matrices	inverse(t_matrices m)
 	
 	if (equal(determinant(m), (float)0))
 	{
-		ft_putendl_fd("matrix is not invertible", 2);
+		ft_putendl_fd("matrix is not invertible", 2); 
 		exit (1);
 	}
 	row = -1;
