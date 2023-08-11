@@ -653,6 +653,22 @@ void    testeMultiplyingInverse()
     }
 }
 
+void    testProjectile()
+{
+    t_project   p;
+    t_env       e;
+
+    p = projectile(point(0, 1, 0), normalize(vector(1,1,0)));
+    e = environment(vector(0,-0.1,0), vector(-0.01,0,0));
+    int ticks = 0;
+    while (p.position.y > 0)
+    {
+        printf("Tick %d: Posição = (%f, %f, %f)\n", ticks, p.position.x, p.position.y, p.position.z);
+        p = tick(e, p);
+        ticks++;
+    }
+}
+
 int main()
 {
     // testMatrices_two();
@@ -673,6 +689,7 @@ int main()
     // invertableMatrix();
     // testInverse();
     // testeMatrices();
-    testeMultiplyingInverse();
+    // testeMultiplyingInverse();
+    testProjectile();
     return (0);
 }
