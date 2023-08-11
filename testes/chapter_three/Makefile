@@ -1,5 +1,12 @@
 NAME = teste
-SRCS = main.c ../../miniRT/sources/matrices/create_matrices.c ../../miniRT/sources/operationsTuples/tuples.c
+SRCS = main.c
+SRCS += ../../miniRT/sources/tuple_operation/tuple_operation.c
+SRCS += ../../miniRT/sources/tuple_operation/vector_and_point_operation.c
+SRCS += ../../miniRT/sources/tuple_operation/tuple_math.c
+SRCS += ../../miniRT/sources/tuple_operation/tuples.c
+SRCS += ../../miniRT/sources/matrices/create_matrices.c
+SRCS += ../../miniRT/sources/matrices/determinants.c
+SRCS += ../../miniRT/sources/matrices/matrix_operation.c
 CC = cc
 FLAGS = -Wall -Wextra -Werror -lm -g
 OBJS = $(patsubst %.c, %.o, $(wildcard $(SRCS)))
