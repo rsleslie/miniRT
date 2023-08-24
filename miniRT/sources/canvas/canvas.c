@@ -12,7 +12,7 @@ void	init_canvas(t_data *data)
 	// if (data->img == NULL)
 	// 	return ; //exit
 	data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_len, &data->endian);
-    mlx_loop_hook(data->mlx, &render, &data);
+    mlx_loop_hook(data->mlx, &render_canvas, &data);
     mlx_loop(data->mlx);
 }
 

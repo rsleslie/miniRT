@@ -16,6 +16,7 @@
 # define FALSE 0
 # define TRUE 1
 # define EPSILON 0.00001
+# define PI 3.141593
 
 # include "../libft/libft.h"
 # include <math.h>
@@ -27,5 +28,8 @@
 # include "colors.h"
 # include <fcntl.h>
 # include  <stdio.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include <mlx.h>
 
 #endif
