@@ -23,7 +23,9 @@
 # include "tuple.h"
 # include "rays.h"
 # include "parser.h"
+# include "canvas.h"
+# include "colors.h"
 # include <fcntl.h>
-#include  <stdio.h>
+# include  <stdio.h>
 
 #endif
