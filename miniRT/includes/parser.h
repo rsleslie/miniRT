@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 15:33:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/23 16:23:49 by rleslie-         ###   ########.fr       */
+/*   Created: 2023/08/23 16:03:50 by rleslie-          #+#    #+#             */
+/*   Updated: 2023/08/23 22:15:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef PARSER_H
+# define PARSER_H
 
-# define FALSE 0
-# define TRUE 1
-# define EPSILON 0.00001
+#include "miniRT.h"
 
-# include "../libft/libft.h"
-# include <math.h>
-# include "matrices.h"
-# include "tuple.h"
-# include "rays.h"
-# include "parser.h"
-# include <fcntl.h>
-#include  <stdio.h>
+int	    check_file(char **argv);
+int	    check_arg(int argc);
+char	**read_file(char *file);
 
 #endif

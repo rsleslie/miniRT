@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_tuple.c                                  :+:      :+:    :+:   */
+/*   tuple_operation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:29:30 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/02 23:34:52 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/15 14:54:12 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-int	compare_tuple(t_tuple *t1, t_tuple *t2)
+int	compare_tuple(t_tuple t1, t_tuple t2)
 {
-	if (!equal(t1->x, t2->x))
+	if (!equal(t1.x, t2.x))
 		return (FALSE);
-	if (!equal(t1->y, t2->y))
+	if (!equal(t1.y, t2.y))
 		return (FALSE);
-	if (!equal(t1->z, t2->z))
+	if (!equal(t1.z, t2.z))
 		return (FALSE);
-	if (!equal(t1->w, t2->w))
+	if (!equal(t1.w, t2.w))
 		return (FALSE);
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 03:10:29 by coder             #+#    #+#             */
-/*   Updated: 2023/05/03 14:49:41 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/23 21:57:51 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static	int	ft_split_counter(char const *s, char c)
 		return (0);
 	while (s[i] == c)
 		i++;
-	while (s[i] != '\0')
+	while (s[i])
 	{
 		if (s[i] == c)
 		{
@@ -53,7 +53,7 @@ char	**ft_split(char const *s, char c)
 	counter = 0;
 	if (tab == NULL)
 		return (NULL);
-	while (s[i] != '\0')
+	while (s[i])
 	{
 		if (s[i] != c)
 		{

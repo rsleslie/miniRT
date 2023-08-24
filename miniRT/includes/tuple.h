@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:57:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/11 14:05:15 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/15 14:58:46 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ typedef struct s_env
 	t_tuple wind;
 }	t_env;
 
-int		compare_tuple(t_tuple *t1, t_tuple *t2);
-int		equal(float a, float b);
-float	magnitude(t_tuple tuple);
-float	dot(t_tuple t1, t_tuple t2);
+int			compare_tuple(t_tuple t1, t_tuple t2);
+int			equal(float a, float b);
+float		magnitude(t_tuple tuple);
+float		dot(t_tuple t1, t_tuple t2);
 t_tuple		point(float x, float y, float z);
 t_tuple		vector(float x, float y, float z);
 t_tuple		subtracting_point(t_tuple t1, t_tuple t2);

@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 15:33:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/23 16:23:49 by rleslie-         ###   ########.fr       */
+/*   Created: 2023/08/23 17:04:40 by rleslie-          #+#    #+#             */
+/*   Updated: 2023/08/23 17:16:09 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "../../includes/miniRT.h"
 
-# define FALSE 0
-# define TRUE 1
-# define EPSILON 0.00001
+int	split_arguments(char *arg)
+{
+	char	**s;
 
-# include "../libft/libft.h"
-# include <math.h>
-# include "matrices.h"
-# include "tuple.h"
-# include "rays.h"
-# include "parser.h"
-# include <fcntl.h>
-#include  <stdio.h>
-
-#endif
+	s = ft_split(arg, '\n');	
+	return (0);
+}

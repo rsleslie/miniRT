@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:17:24 by coder             #+#    #+#             */
-/*   Updated: 2023/01/29 12:24:29 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/23 21:58:27 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		return (NULL);
 	else
 	{
-		while (s[start] != '\0' && i < len)
+		while (s[start] && i < len)
 			ptr[i++] = s[start++];
 	}
 	ptr[i] = '\0';
