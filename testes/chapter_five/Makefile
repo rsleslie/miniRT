@@ -9,10 +9,15 @@ SRCS += ../../miniRT/sources/matrices_feature/create_matrices.c
 SRCS += ../../miniRT/sources/matrices_feature/determinants.c
 SRCS += ../../miniRT/sources/matrices_feature/matrix_operation.c
 SRCS += ../../miniRT/sources/rays_feature/create_rays.c
+SRCS += ../../miniRT/sources/rays_feature/intersections_transforming.c
+SRCS += ../../miniRT/sources/matrices_feature/matrix_transformations.c
+SRCS +=	../../miniRT/sources/colors/op_colors.c
+SRCS +=	../../miniRT/sources/canvas/canvas.c
+SRCS +=	../../miniRT/sources/exit/exit.c 
 CC = cc
-FLAGS = -Wall -Wextra -Werror -lm -g
+FLAGS = -Wall -Wextra -Werror -lm -g ../../miniRT/libft/libft.a ../../minilibx-linux/libmlx.a -lmlx -lX11 -lXext 
 OBJS = $(patsubst %.c, %.o, $(wildcard $(SRCS)))
-LIBFT = ../../miniRT/libft/libft.a
+# LIBFT = ../../miniRT/libft/libft.a
 
 all: $(NAME)
 

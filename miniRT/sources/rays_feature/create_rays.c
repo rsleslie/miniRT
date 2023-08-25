@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:25:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/23 16:31:53 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/24 21:11:12 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_xs	intersect(t_sphere s, t_rays r)
 	float	b;
 	float	c;
 
+	r = transform(r, inverse(s.transform));
 	sphere_to_ray = subtracting_tuple(r.origin, point(0, 0, 0));
 	a = dot(r.direction, r.direction);
 	b = 2 * dot(r.direction, sphere_to_ray);
@@ -66,52 +67,7 @@ t_xs	intersect(t_sphere s, t_rays r)
 		result.data[0].t = ((-b - sqrt(discriminant(a, b, c))) / (2 * a));
 		result.data[1].t = ((-b + sqrt(discriminant(a, b, c))) / (2 * a));
 		result.data[0].object = s;
-		result.data[1].object = s;;
+		result.data[1].object = s;
 	}
 	return (result);
 }
-
-t_intersection	intersection(float n, t_sphere s)
-{
-	t_intersection	t;
-
-	t.t = n;
-	t.object = s;
-	return (t);
-}
-
-t_xs	intersections(t_intersection i1, t_intersection i2)
-{
-	t_xs	xs;
-	
-	xs.count = 2;
-	xs.data[0].t = i1.t;
-	xs.data[0].object = i1.object;
-	xs.data[1].t = i2.t;
-	xs.data[1].object = i2.object;
-	return (xs);
-}
-
-// t_intersection	hit()
-// {
-	
-// }
-// t_xs	intersections(t_intersection i, ...)
-// {
-//  	va_list args;
-//     t_xs xs;
-//     int j = 0;
-
-//     va_start(args, i);
-//     t_intersection current_i = i;
-//     while (j != 2)
-//     {
-//         xs.data[j].t = current_i.t;
-//         xs.data[j].object = current_i.object;
-//         j++;
-//         current_i = va_arg(args, t_intersection);
-//     }
-//     va_end(args);
-//     xs.count = j;
-// 	return (xs);
-// }
