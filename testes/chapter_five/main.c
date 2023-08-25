@@ -388,6 +388,15 @@ void    testeTransform()
 
 }
 
+void putting_it_together()
+{
+    t_tuple ray_origin;
+    float wall_z = 10;
+    float wall_size = 7;
+    
+    ray_origin = point(0, 0, -5);
+}
+
 int main()
 {
     // testePOSITION();
@@ -401,8 +410,7 @@ int main()
     // testeSphereIntersection1();
     // testeSphereIntersection2();
     // testeHit();
-    // tra
-    testeTransform();
+    // testeTransform();
 
     return (0);
 }
