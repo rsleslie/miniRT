@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:14:28 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/11 12:12:39 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/30 21:30:35 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,22 @@ t_matrices	create_matrices(int line, int col)
 			matrix.matrices[i][j] = 0;
 	}
 	return (matrix);
+}
+
+t_matrices	id_matrix(t_matrices a)
+{
+	int			line;
+	int			col;
+	t_matrices	id_matrix;
+	t_matrices	result;
+
+	line = -1;
+	col = -1;
+	id_matrix = create_matrices(a.x, a.y);
+	while (++line < id_matrix.x)
+	{
+		if (++col < id_matrix.y)
+			id_matrix.matrices[line][col] = 1;
+	}
+	return (id_matrix);
 }

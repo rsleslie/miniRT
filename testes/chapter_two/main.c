@@ -167,26 +167,70 @@ void	test_canvas_init(void)
 	free(data.mlx);
 }
 
-int	projectile_print(t_data *data)
-{
-    t_project   p, p1;
-    t_env       e, e1;
+// int	projectile_print(t_data *data)
+// {
+//     t_project   p, p1;
+//     t_env       e, e1;
 
-    p = projectile(point(1, 399, 0), normalize(mult_tuple(vector(1, 0.001, 0), 11.25)));
-    e = environment(vector(0,-0.1,0), vector(-0.01,0,0));
-    int ticks = 0;
-	int	i = 0;
-    while ((int)p.position.y > 0)
-    {
-		img_pix_put(data, (int)p.position.x, (int)p.position.y, set_color(data->canvas.color));
-        // printf("Tick %d: Posição = (%f, %f, %f)\n", ticks, p.position.x, p.position.y, p.position.z);
-		if ((int)p.position.x < 1 || (int)p.position.y < 1)
-			break ;
-        p = tick(e, p);
-        ticks++;
+//     p = projectile(point(0, 1, 0), normalize(mult_tuple(vector(1, 1.8, 0), 11.25)));
+//     e = environment(vector(0,-0.1,0), vector(-0.01,0,0));
+//     int ticks = 0;
+// 	int	i = 0;
+//     while ((int)p.position.y > 0)
+//     {
+// 		if (((int)p.position.x) < 400 && ((int)p.position.y + 200)  < 400)
+// 			img_pix_put(data, (int)p.position.x, (int)p.position.y +300, set_color(data->canvas.color));
+//         // printf("Tick %d: Posição = (%f, %f, %f)\n", ticks, p.position.x, p.position.y, p.position.z);
+// 		// if ((int)p.position.x < 1 || (int)p.position.y < 1)
+// 		// 	break ;
+//         p = tick(e, p);
+//         ticks++;
+//     }
+// 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+// 	return (0);
+// }
+
+
+
+void draw_line(void *mlx, void *win, t_tuple start, t_tuple end) 
+{
+    int dx = (int)end.x - (int)start.x;
+    int dy = (int)end.y - (int)start.y;
+    int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+
+    float xIncrement = (float)dx / steps;
+    float yIncrement = (float)dy / steps;
+
+    float x = start.x;
+    float y = start.y;
+
+    for (int i = 0; i <= steps; i++) {
+        mlx_pixel_put(mlx, win, (int)x, (int)y, 0xFFFFFF); // Desenhar pixel na cor branca
+        x += xIncrement;
+        y += yIncrement;
     }
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	return (0);
+}
+
+int projectile_print(t_data *data)
+{
+    t_project p;
+    t_env e;
+
+    p = projectile(point(0, 1, 0), normalize(vector(1, 1.8, 0))); // Posição inicial à esquerda
+    e = environment(vector(0, -0.1, 0), vector(-0.01, 0, 0));
+    
+    while (p.position.x < 400)
+    {
+        int y_pos = (int)(p.position.y + 0.5); // Arredondar para a posição Y mais próxima
+
+        if (y_pos >= 0 && y_pos < 400)
+            draw_line(data->mlx, data->win, point(p.position.x, y_pos, 0), point(p.position.x + 1, y_pos, 0)); // Desenhar a linha do ponto atual para o próximo ponto
+
+        p = tick(e, p);
+    }
+    
+    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+    return (0);
 }
 
 void	test_projectile_print(void)
@@ -195,7 +239,9 @@ void	test_projectile_print(void)
 	t_data		data;
 
 	color = get_color(1, 0.0, 0.0);
-	data.canvas = create_canvas(data.canvas, 600, 400, color);
+	data.canvas = create_canvas(data.canvas, 400, 400, color);
+	data.canvas.height = 400;
+	data.canvas.width = 400;
 	data.mlx = mlx_init();
 	if (data.mlx == NULL)
 		return ; //exit
@@ -214,11 +260,11 @@ void	test_projectile_print(void)
 
 int	main(void)
 {
-	test_color();
-	add_colors_test();
-	sub_colors_test();
-	hadamard_product_test();
-	test_pixel_put();
-	test_canvas_init();
-	// test_projectile_print();
+	// test_color();
+	// add_colors_test();
+	// sub_colors_test();
+	// hadamard_product_test();
+	// test_pixel_put();
+	// test_canvas_init();
+	test_projectile_print();
 }

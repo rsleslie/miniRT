@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:52:10 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/23 17:56:09 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/30 21:43:12 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_arg(int argc)
 
 int	check_file(char **argv)
 {
-	int fd;
+	int	fd;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
@@ -42,4 +42,3 @@ int	check_file(char **argv)
 	ft_putendl_fd("file extension error", 2);
 	return (FALSE);
 }
-

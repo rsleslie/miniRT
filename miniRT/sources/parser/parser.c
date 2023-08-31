@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:04:40 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/23 17:16:09 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/30 21:42:50 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int	split_arguments(char *arg)
 {
 	char	**s;
 
-	s = ft_split(arg, '\n');	
+	s = ft_split(arg, '\n');
 	return (0);
 }

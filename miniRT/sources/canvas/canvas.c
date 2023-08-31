@@ -1,19 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   canvas.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/30 21:39:38 by rleslie-          #+#    #+#             */
+/*   Updated: 2023/08/30 21:40:25 by rleslie-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/miniRT.h"
 
 void	init_canvas(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
-		return ; //exit
+		return ;
 	data->win = mlx_new_window(data->mlx, data->canvas.width, data->canvas.height, "MiniRT");
 	if (data->win == NULL)
-		return ; //exit
+		return ;
 	data->img = mlx_new_image(data->mlx, data->canvas.width, data->canvas.height);
-	// if (data->img == NULL)
-	// 	return ; //exit
 	data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_len, &data->endian);
-    mlx_loop_hook(data->mlx, &render_canvas, &data);
-    mlx_loop(data->mlx);
+	mlx_loop_hook(data->mlx, &render_canvas, &data);
+	mlx_loop(data->mlx);
 }
 
 int	handle_keypress(int keysym, t_data *data)

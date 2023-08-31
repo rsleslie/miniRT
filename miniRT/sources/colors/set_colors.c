@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putting_it_together.c                              :+:      :+:    :+:   */
+/*   set_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 12:45:39 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/30 21:35:18 by rleslie-         ###   ########.fr       */
+/*   Created: 2023/08/30 21:37:34 by rleslie-          #+#    #+#             */
+/*   Updated: 2023/08/30 21:39:18 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-t_project	projectile(t_tuple p, t_tuple v)
+int	set_color(t_color color)
 {
-	t_project proj;
+	int	r;
+	int	g;
+	int	b;
 
-	proj.position = p;
-	proj.velocity = v;
-	return (proj);
-}
-
-t_env	environment(t_tuple v1, t_tuple v2)
-{
-	t_env env;
-	
-	env.gravity = v1;
-	env.wind = v2;
-
-	return (env);
-}
-
-t_project	tick(t_env env, t_project proj)
-{
-	t_project	p;
-
-	p.position =  adding_tuple(proj.velocity, proj.position);
-	p.velocity = adding_tuple(adding_tuple(proj.velocity, env.gravity),env.gravity);
-	return (p);
+	if (color.b < 0.0)
+		color.b = 0.0;
+	if (color.g < 0.0)
+		color.g = 0.0;
+	if (color.r < 0.0)
+		color.r = 0.0;
+	if (color.b > 1.0)
+		color.b = 1.0;
+	if (color.g > 1.0)
+		color.g = 1.0;
+	if (color.r > 1.0)
+		color.r = 1.0;
+	r = (int)(color.r * 255.0);
+	g = (int)(color.g * 255.0);
+	b = (int)(color.b * 255.0);
+	return (0xFF << 24 | r << 16 | g << 8 | b);
 }

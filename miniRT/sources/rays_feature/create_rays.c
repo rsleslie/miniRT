@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:25:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/24 21:11:12 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/30 21:35:50 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ t_tuple	position(t_rays r, float t)
 t_sphere	sphere(void)
 {
 	t_sphere	s;
+	t_matrices	m;
 
 	s.radius = 1;
+	m = create_matrices(4, 4);
+	s.transform = id_matrix(m);
 	return (s);
 }
 

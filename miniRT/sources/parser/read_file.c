@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:16:23 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/23 22:37:38 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/30 21:43:45 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	bytes_file(char *file)
 
 	byte = 0;
 	fd = open(file, O_RDONLY);
-	while(read(fd, buf, 1) != 0)
+	while (read(fd, buf, 1) != 0)
 		byte++;
 	if (byte == 0)
 	{
@@ -33,11 +33,6 @@ int	bytes_file(char *file)
 	
 	// read(fd, buffer, byte);
 }
-
-// int	check_acl(char **file)
-// {
-	
-// }
 
 char	**split_space(char **tab)
 {

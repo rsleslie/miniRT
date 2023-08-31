@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:55:22 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/11 12:18:07 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/08/30 19:33:36 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ t_matrices	rotate_x(float r);
 t_matrices	rotate_y(float r);
 t_matrices	rotate_z(float r);
 t_matrices	shearing(t_shear shear);
+t_matrices	id_matrix(t_matrices a);
 
 #endif

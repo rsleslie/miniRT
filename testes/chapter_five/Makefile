@@ -1,6 +1,7 @@
 NAME = chapter_five
 SRCS = main.c
 SRCS += ../../miniRT/sources/tuple_feature/tuple_operation.c
+SRCS += ../../miniRT/sources/tuple_feature/searing.c
 SRCS += ../../miniRT/sources/tuple_feature/vector_and_point_operation.c
 SRCS += ../../miniRT/sources/tuple_feature/tuple_math.c
 SRCS += ../../miniRT/sources/tuple_feature/tuples.c
@@ -12,6 +13,7 @@ SRCS += ../../miniRT/sources/rays_feature/create_rays.c
 SRCS += ../../miniRT/sources/rays_feature/intersections_transforming.c
 SRCS += ../../miniRT/sources/matrices_feature/matrix_transformations.c
 SRCS +=	../../miniRT/sources/colors/op_colors.c
+SRCS +=	../../miniRT/sources/colors/set_colors.c
 SRCS +=	../../miniRT/sources/canvas/canvas.c
 SRCS +=	../../miniRT/sources/exit/exit.c 
 CC = cc

@@ -228,17 +228,28 @@ void    teste_transpose()
 void    testeDeterminant()
 {
     t_matrices  m;
+    t_sphere    s;
 
-    m = create_matrices(2 ,2);
-    m.matrices[0][0] = 1;
-    m.matrices[0][1] = 5;
-    m.matrices[1][0] = -3;
-    m.matrices[1][1] = 2;
+    // m = create_matrices(2 ,2);
 
-    if (equal(determinant(m), 17))
-        printf("Success!!\n");
+    // m.matrices[0][0] = 1;
+    // m.matrices[0][1] = 5;
+    // m.matrices[1][0] = -3;
+    // m.matrices[1][1] = 2;
+
+    // if (equal(determinant(m), 17))
+    //     printf("Success!!\n");
+    // else
+    //     printf("Failure!\n");
+    m = create_matrices(4 , 4);
+    s = sphere();
+    s.transform = identity_matrix(m);
+    if (equal(determinant(s.transform), 0))
+    {
+        printf("veja bem\n");
+    }
     else
-        printf("Failure!\n");
+        printf("teste  ok %f\n", determinant(s.transform));
 
 }
 
@@ -681,15 +692,15 @@ int main()
     // testeMultMatrixAndTuple();
     // testIdentityMatrix();
     // teste_transpose();
-    // testeDeterminant();
+    testeDeterminant();
     // testeSubmatrix();
     // testeMinor();
     // testConfactor();
-    // testDeterminantMatrixThree();
+    testDeterminantMatrixThree();
     // invertableMatrix();
     // testInverse();
     // testeMatrices();
     // testeMultiplyingInverse();
-    testProjectile();
+    // testProjectile();
     return (0);
 }
