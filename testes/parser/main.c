@@ -68,10 +68,12 @@ void    teste_check_file()
 
 void testeRead_file()
 {
-    if (read_file("existe.rt"))
+    if (!parser("existe.rt"))
     {
         printf("Empty file\n");
     }
+    else
+        printf("estamos testando\n");
 }
 
 int main(int argc, char **argv)

@@ -11,6 +11,7 @@ SRCS += ../../miniRT/sources/matrices_feature/matrix_operation.c
 SRCS += ../../miniRT/sources/rays_feature/create_rays.c
 SRCS += ../../miniRT/sources/parser/check_file.c
 SRCS += ../../miniRT/sources/parser/read_file.c
+SRCS += ../../miniRT/sources/rays_feature/intersections_transforming.c
 CC = cc
 FLAGS = -Wall -Wextra -Werror -lm -g
 OBJS = $(patsubst %.c, %.o, $(wildcard $(SRCS)))
