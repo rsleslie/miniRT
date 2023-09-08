@@ -154,9 +154,83 @@ void teste_camera()
         printf("TEST 6 ERROR\n");
 }
 
+void teste_ligth()
+{
+    if (!parser("arquivo3/arq_error.txt"))
+    {
+        printf("TESTE 1 OK\n");
+    }
+    else
+        printf("TEST 1 ERROR\n");
+    printf("\n-----------------\n");
+
+    if (parser("arquivo3/arq1.rt"))
+    {
+        printf("TESTE 2 OK\n");
+    }
+    else
+        printf("TEST 2 ERROR\n");
+    printf("\n-----------------\n");
+
+    if (!parser("arquivo3/arq2.rt"))
+    {
+        printf("TESTE 3 OK\n");
+    }
+    else
+        printf("TEST 3 ERROR\n");
+    printf("\n-----------------\n");
+
+    if (!parser("arquivo3/arq3.rt"))
+    {
+        printf("TESTE 4 OK\n");
+    }
+    else
+        printf("TEST 4 ERROR\n");
+
+    printf("\n-----------------\n");
+    if (!parser("arquivo3/arq4.rt"))
+    {
+        printf("TESTE 5 OK\n");
+    }
+    else
+        printf("TEST 5 ERROR\n");
+
+      printf("\n-----------------\n");
+    if (!parser("arquivo3/arq5.rt"))
+    {
+        printf("TESTE 6 OK\n");
+    }
+    else
+        printf("TEST 6 ERROR\n");
+}
+
+void teste_sphere()
+{
+
+    if (parser("arquivo3/arq1.rt"))
+    {
+        printf("TESTE 2 OK\n");
+    }
+    else
+        printf("TEST 2 ERROR\n");
+    printf("\n-----------------\n");
+
+    if (!parser("arquivo3/arq2.rt"))
+    {
+        printf("TESTE 3 OK\n");
+    }
+    else
+        printf("TEST 3 ERROR\n");
+    printf("\n-----------------\n");
+
+    
+}
 int main(int argc, char **argv)
 {
     // teste_check_file();
     // teste_parser();
-    teste_camera();
+    // teste_camera();
+    // teste_ligth();
+    teste_sphere();
+
 }

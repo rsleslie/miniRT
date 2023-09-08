@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:16:23 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/08 13:32:26 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/08 16:45:11 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char	**read_file(char *file)
 
 	join = NULL;
 	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (NULL);
 	while (1)
 	{
 		buffer = get_next_line(fd);
