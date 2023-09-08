@@ -66,18 +66,97 @@ void    teste_check_file()
         printf("TESTE  ERROR: abriu arquivo com extensão diferente\n");
 }
 
-void testeRead_file()
+void teste_parser()
 {
-    if (!parser("existe.rt"))
+    if (!parser("arquivos/arq_error.txt"))
     {
-        printf("Empty file\n");
+        printf("TESTE 1 OK\n");
     }
     else
-        printf("estamos testando\n");
+        printf("TEST 1 ERROR\n");
+
+    if (parser("arquivos/arq1.rt"))
+    {
+        printf("TESTE 2 OK\n");
+    }
+    else
+        printf("TEST 2 ERROR\n");
+
+    if (!parser("arquivos/arq2.rt"))
+    {
+        printf("TESTE 3 OK\n");
+    }
+    else
+        printf("TEST 3 ERROR\n");
+
+    if (!parser("arquivos/arq3.rt"))
+    {
+        printf("TESTE 4 OK\n");
+    }
+    else
+        printf("TEST 4 ERROR\n");
+
+    if (!parser("arquivos/arq4.rt"))
+    {
+        printf("TESTE 5 OK\n");
+    }
+    else
+        printf("TEST 5 ERROR\n");
+}
+
+void teste_camera()
+{
+    if (!parser("arquivos2/arq_error.txt"))
+    {
+        printf("TESTE 1 OK\n");
+    }
+    else
+        printf("TEST 1 ERROR\n");
+    printf("\n-----------------\n");
+
+    if (parser("arquivos2/arq1.rt"))
+    {
+        printf("TESTE 2 OK\n");
+    }
+    else
+        printf("TEST 2 ERROR\n");
+    printf("\n-----------------\n");
+
+    if (!parser("arquivos2/arq2.rt"))
+    {
+        printf("TESTE 3 OK\n");
+    }
+    else
+        printf("TEST 3 ERROR\n");
+    printf("\n-----------------\n");
+
+    if (!parser("arquivos2/arq3.rt"))
+    {
+        printf("TESTE 4 OK\n");
+    }
+    else
+        printf("TEST 4 ERROR\n");
+
+    printf("\n-----------------\n");
+    if (!parser("arquivos2/arq4.rt"))
+    {
+        printf("TESTE 5 OK\n");
+    }
+    else
+        printf("TEST 5 ERROR\n");
+
+      printf("\n-----------------\n");
+    if (!parser("arquivos2/arq5.rt"))
+    {
+        printf("TESTE 6 OK\n");
+    }
+    else
+        printf("TEST 6 ERROR\n");
 }
 
 int main(int argc, char **argv)
 {
     // teste_check_file();
-    testeRead_file();
+    // teste_parser();
+    teste_camera();
 }

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:50:49 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/07 21:28:21 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/08 14:22:13 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ int	validation_obj(char **str)
 		aux = ft_split(str[i], 32);
 		if ((ft_strncmp(aux[0], "A", 2) == 0 && ft_tab_len(aux) == 3)
 			|| (ft_strncmp(aux[0], "C", 2) == 0 && ft_tab_len(aux) == 4)
-			|| (ft_strncmp(aux[0], "L", 2) == 0 && ft_tab_len(aux) == 3)
+			|| (ft_strncmp(aux[0], "L", 2) == 0 && ft_tab_len(aux) == 4)
 			|| (ft_strncmp(aux[0], "sp", 3) == 0 && ft_tab_len(aux) == 4)
 			|| (ft_strncmp(aux[0], "pl", 3) == 0 && ft_tab_len(aux) == 4)
-			|| (ft_strncmp(aux[0], "cy", 3) == 0 && ft_tab_len(aux) == 5))
+			|| (ft_strncmp(aux[0], "cy", 3) == 0 && ft_tab_len(aux) == 6))
 			continue ;
 		else
 		{

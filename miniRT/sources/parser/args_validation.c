@@ -6,38 +6,54 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:48:18 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/07 20:28:08 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/08 16:27:22 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-int	validation_ambient(char **str)
+int	validation_coordinates(char *str)
 {
+	char	**aux;
 	int		i;
-	char	**str_aux;
-
+	int		j;
+	
 	i = -1;
-	str_aux = NULL;
-	while (++i < ft_tab_len(str))
-	{
-		ft_free_tab(str_aux);
-		str_aux = ft_split(str[i], 32);
-		if (ft_strncmp(str_aux[0], "A", 2) == 0)
-			break ;
-	}
-	if (!validation_float(str_aux[1])
-		|| !validation_range_float(ft_atof(str_aux[1]), 0, 1))
-	{
-		ft_free_tab(str_aux);
+	aux = ft_split(str, ',');
+	if (ft_tab_len(aux) != 3)
 		return (FALSE);
-	}
-	if (!validation_color(str_aux[2]))
+	while (++i < ft_tab_len(aux))
 	{
-		ft_free_tab(str_aux);
-		return (FALSE);
+		j = -1;
+		while (++j < ft_strlen(aux[i]))
+		{
+			if (aux[i][j] == '-' || aux[i][j] == '+'
+			|| aux[i][j] == '.')
+				j++;
+			if (!ft_isdigit(aux[i][j]))
+				return (FALSE);
+		}
 	}
-	ft_free_tab(str_aux);
+	return (TRUE);
+}
+
+int	validation_normalize_vector(char *str)
+{
+	char **aux;
+
+	aux = ft_split(str, ',');
+	if (!validation_int(aux[0]))
+		return (FALSE);
+	if (!validation_int(aux[1]))
+		return (FALSE);
+	if (!validation_int(aux[2]))
+		return (FALSE);
+	if (!validation_range_int(ft_atoi(aux[0]), -1, 1))
+		return (FALSE);
+	if (!validation_range_int(ft_atoi(aux[1]), -1, 1))
+		return (FALSE);
+	if (!validation_range_int(ft_atoi(aux[2]), -1, 1))
+		return (FALSE);
 	return (TRUE);
 }
 
@@ -46,8 +62,8 @@ int	validation_args(char **str)
 	if (!validation_ambient(str))
 		return (FALSE);
 	//camera
-	// if(!validation_camera(str))
-	// 	return(FALSE);
+	if(!validation_camera(str))
+		return(FALSE);
 	// //ligth
 	// if (!validation_ligth(str))
 	// 	return (FALSE);

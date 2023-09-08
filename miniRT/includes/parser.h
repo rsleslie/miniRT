@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:03:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/07 20:26:44 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/08 16:26:41 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ int		validation_range_int(int num, int start, int end);
 int		validation_float(char *str);
 int		validation_int(char *str);
 int		validation_color(char *str);
+int	    validation_camera(char **str);
+int	    validation_normalize_vector(char *str);
+int	    validation_coordinates(char *str);
 
 #endif

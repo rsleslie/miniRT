@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:16:23 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/07 21:30:07 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:32:26 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ char	**read_file(char *file)
 	if (ft_tab_len(split_line) < 3)
 	{
 		ft_free_tab(split_line);
-		ft_putendl_fd("few arguments", 2);
 		return (NULL);
 	}
 	return (split_line);

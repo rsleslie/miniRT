@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:53:09 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/07 21:31:47 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/08 16:22:21 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	validation_float(char *str)
 		return (FALSE);
 	while (++i < ft_strlen(str))
 	{
+		if (str[i] == '-' || str[i] == '+')
+			i++;
 		if (str[i] == '.')
 			pointer++;
 	}
@@ -64,46 +66,10 @@ int	validation_int(char *str)
 		return (FALSE);
 	while (++i < ft_strlen(str))
 	{
+		if (str[i] == '-' || str[i] == '+')
+			i++;
 		if (!ft_isdigit(str[i]))
 			return (FALSE);
 	}
-	return (TRUE);
-}
-
-int	validation_color(char *str)
-{
-	char	**color;
-	int		pointer;
-	int		i;
-
-	i = -1;
-	pointer = 0;
-	while (++i < ft_strlen(str))
-	{
-		if (str[i] == ',')
-			pointer++;
-	}
-	if (pointer != 2)
-		return (FALSE);
-	color = ft_split(str, ',');
-	if (ft_tab_len(color) != 3)
-	{
-		ft_free_tab(color);
-		return (FALSE);
-	}
-	if (!validation_int(color[0]) || !validation_int(color[1])
-		|| !validation_int(color[2]))
-	{
-		ft_free_tab(color);
-		return (FALSE);
-	}
-	if (!validation_range_int(ft_atoi(color[0]), 0, 255)
-		|| !validation_range_int(ft_atoi(color[1]), 0, 255)
-		|| !validation_range_int(ft_atoi(color[2]), 0, 255))
-	{
-		ft_free_tab(color);
-		return (FALSE);
-	}
-	ft_free_tab(color);
 	return (TRUE);
 }
