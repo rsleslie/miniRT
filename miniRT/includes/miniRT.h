@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:33:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/23 16:23:49 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/09 20:52:57 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include "matrices.h"
 # include "tuple.h"
 # include "rays.h"
-# include "parser.h"
 # include "canvas.h"
 # include "colors.h"
 # include <fcntl.h>
@@ -31,5 +30,8 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <mlx.h>
+# include "object.h"
+# include "parser.h" 
+
 
 #endif
