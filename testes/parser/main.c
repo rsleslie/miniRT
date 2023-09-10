@@ -226,18 +226,49 @@
     
 // }
 
+void    free_t_object(t_objects *rt)
+{
+    if (rt)
+    {
+        if (rt->sp)
+            free(rt->sp);
+        if (rt->pl)
+            free(rt->pl);
+        if (rt->cy)
+            free(rt->cy);
+    }
+    free(rt);
+}
+
 void tes_parser()
 {
     t_objects *rt;
 
     rt = (t_objects *)malloc(sizeof(t_objects));
-    parser(&rt, "arquivo3/arq1.rt");
+    // rt = NULL;
+    rt->sp = NULL;
+    rt->cy = NULL;
+    rt->pl = NULL;
+    if (!parser(&rt, "arquivo3/arq1.rt"))
+    {
+        free_t_object(rt);
+        printf("deu ruim!");
+        return ;
+    }
+    else
+    {
+        printf("\n\n\nDEU MUITO BOM!!!!\n\n\n");
 
-    printf("ambiente: ratio %f,\ncolor %f,%f,%f\n", rt->a.ratio, rt->a.color.r,rt->a.color.g,rt->a.color.b);
-    printf("camera: coordenates %f,%f,%f, vector %f,%f,%f, FOV: %i\n", rt->c.coordinates.x, rt->c.coordinates.y,rt->c.coordinates.z, rt->c.vector.x, rt->c.vector.y,rt->c.vector.z, rt->c.fov);
-    printf("ligth: coordenates %f,%f,%f, ratio %f color %f,%f,%f\n\n",rt->l.coordinates.x, rt->l.coordinates.y,rt->l.coordinates.z, rt->l.brightness, rt->l.color.r,rt->l.color.g,rt->l.color.b);
-    printf("csp: coordenates %f,%f,%f, diame %f color %f,%f,%f\n\n",rt->sp[0].coordinates.x, rt->sp[0].coordinates.y,rt->sp[0].coordinates.z, rt->sp[0].diameter, rt->sp[0].color.r,rt->sp[0].color.g,rt->sp[0].color.b);
-
+        printf("ambiente: ratio %f,\ncolor %f,%f,%f\n", rt->a.ratio, rt->a.color.r,rt->a.color.g,rt->a.color.b);
+        printf("camera: coordenates %f,%f,%f, vector %f,%f,%f, FOV: %i\n", rt->c.coordinates.x, rt->c.coordinates.y,rt->c.coordinates.z, rt->c.vector.x, rt->c.vector.y,rt->c.vector.z, rt->c.fov);
+        printf("ligth: coordenates %f,%f,%f, ratio %f color %f,%f,%f\n\n",rt->l.coordinates.x, rt->l.coordinates.y,rt->l.coordinates.z, rt->l.brightness, rt->l.color.r,rt->l.color.g,rt->l.color.b);
+        printf("sp: coordenates %f,%f,%f, diame %f color %f,%f,%f\n\n",rt->sp[0].coordinates.x, rt->sp[0].coordinates.y,rt->sp[0].coordinates.z, rt->sp[0].diameter, rt->sp[0].color.r,rt->sp[0].color.g,rt->sp[0].color.b);
+        printf("sp1: coordenates %f,%f,%f, diame %f color %f,%f,%f\n\n",rt->sp[1].coordinates.x, rt->sp[1].coordinates.y,rt->sp[1].coordinates.z, rt->sp[1].diameter, rt->sp[1].color.r,rt->sp[1].color.g,rt->sp[1].color.b);
+        
+        printf("pl: coordenates %f,%f,%f, vec: %f,%f,%f  color %f,%f,%f\n\n",rt->pl[0].coordinates.x, rt->pl[0].coordinates.y,rt->pl[0].coordinates.z, rt->pl[0].vector.x, rt->pl[0].vector.y,rt->pl[0].vector.z, rt->pl[0].color.r,rt->pl[0].color.g,rt->pl[0].color.b);
+        printf("cy: coordenates %f,%f,%f, vec: %f,%f,%f diame: %f heigth: %f color %f,%f,%f\n\n",rt->cy[0].coordinates.x, rt->cy[0].coordinates.y,rt->cy[0].coordinates.z, rt->cy[0].vector.x, rt->cy[0].vector.y,rt->cy[0].vector.z, rt->cy->diameter, rt->cy->heigth, rt->cy[0].color.r,rt->cy[0].color.g,rt->cy[0].color.b);
+    }
+    free_t_object(rt);
 }
 
 int main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 17:49:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/08 18:22:28 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/10 17:47:18 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_number(char *str)
 {
-	int	    pointer;
+	int		pointer;
 	size_t	i;
 
 	pointer = 0;

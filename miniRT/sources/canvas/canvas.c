@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 21:39:38 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/30 21:40:25 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/10 17:49:37 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ void	init_canvas(t_data *data)
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		return ;
-	data->win = mlx_new_window(data->mlx, data->canvas.width, data->canvas.height, "MiniRT");
+	data->win = mlx_new_window(data->mlx,
+			data->canvas.width, data->canvas.height, "MiniRT");
 	if (data->win == NULL)
 		return ;
-	data->img = mlx_new_image(data->mlx, data->canvas.width, data->canvas.height);
-	data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_len, &data->endian);
+	data->img = mlx_new_image(data->mlx,
+			data->canvas.width, data->canvas.height);
+	data->addr = mlx_get_data_addr(data->img,
+			&data->bpp, &data->line_len, &data->endian);
 	mlx_loop_hook(data->mlx, &render_canvas, &data);
 	mlx_loop(data->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:48:18 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/08 18:23:13 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/10 17:56:40 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ int	validation_coordinates(char *str)
 	char	**aux;
 	int		i;
 	int		j;
-	
+
 	i = -1;
 	aux = ft_split(str, ',');
 	if (ft_tab_len(aux) != 3)
+	{
+		ft_free_tab(aux);
 		return (FALSE);
+	}
 	while (++i < ft_tab_len(aux))
 	{
 		j = -1;
@@ -31,15 +34,19 @@ int	validation_coordinates(char *str)
 			|| aux[i][j] == '.')
 				j++;
 			if (!ft_isdigit(aux[i][j]))
+			{
+				ft_free_tab(aux);
 				return (FALSE);
+			}
 		}
 	}
+	ft_free_tab(aux);
 	return (TRUE);
 }
 
 int	validation_normalize_vector(char *str)
 {
-	char **aux;
+	char	**aux;
 	int		i;
 
 	i = -1;
@@ -58,7 +65,7 @@ int	validation_normalize_vector(char *str)
 		{
 			if (!validation_range_int(ft_atoi(aux[0]), -1, 1))
 			{
-				ft_free_tab(aux);	
+				ft_free_tab(aux);
 				return (FALSE);
 			}
 		}
@@ -81,14 +88,17 @@ int	validation_ligth(char **str)
 		if (ft_strncmp(str_aux[0], "L", 2) == 0)
 			break ;
 	}
-	if (!validation_coordinates(str_aux[1]))
+	if (!validation_coordinates(str_aux[1]) || !validation_color(str_aux[3]))
+	{
+		ft_free_tab(str_aux);
 		return (FALSE);
-	if (!validation_float(str_aux[2]))
+	}
+	if (!validation_float(str_aux[2])
+		|| !validation_range_float(ft_atof(str_aux[2]), 0, 1))
+	{
+		ft_free_tab(str_aux);
 		return (FALSE);
-	if(!validation_color(str_aux[3]))
-		return (FALSE);
-	if(!validation_range_float(ft_atof(str_aux[2]), 0, 1))
-		return (FALSE);
+	}
 	ft_free_tab(str_aux);
 	return (TRUE);
 }
@@ -97,8 +107,8 @@ int	validation_args(char **str)
 {
 	if (!validation_ambient(str))
 		return (FALSE);
-	if(!validation_camera(str))
-		return(FALSE);
+	if (!validation_camera(str))
+		return (FALSE);
 	if (!validation_ligth(str))
 		return (FALSE);
 	if (!validation_multiples_sphere(str))

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation_sphere.c                                :+:      :+:    :+:   */
+/*   sphere_validation.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 17:57:54 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/08 17:58:26 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/10 17:59:57 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	validation_sphere(char **str)
 		return (FALSE);
 	if (!is_number(str[2]))
 		return (FALSE);
-	if(!validation_color(str[3]))
+	if (!validation_color(str[3]))
 		return (FALSE);
 	return (TRUE);
 }
@@ -36,7 +36,7 @@ int	validation_multiples_sphere(char **str)
 		str_aux = ft_split(str[i], 32);
 		if (ft_strncmp(str_aux[0], "sp", 3) == 0)
 		{
-			if(!validation_sphere(str_aux))
+			if (!validation_sphere(str_aux))
 			{
 				ft_free_tab(str_aux);
 				return (FALSE);

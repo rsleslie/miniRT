@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:24:55 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/08 18:06:37 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/10 17:57:08 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	validation_camera(char **str)
 		return (FALSE);
 	if (!validation_coordinates(str_aux[2]))
 		return (FALSE);
-	if(!validation_int(str_aux[3]))
+	if (!validation_int(str_aux[3]))
 		return (FALSE);
 	if (!validation_range_int(ft_atoi(str_aux[3]), 0, 180))
 		return (FALSE);

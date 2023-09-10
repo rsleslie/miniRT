@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:53:09 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/08 16:22:21 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/10 18:53:03 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,8 @@ int	validation_float(char *str)
 			i++;
 		if (str[i] == '.')
 			pointer++;
-	}
-	if (pointer != 1)
-		return (FALSE);
-	i = -1;
-	while (++i < ft_strlen(str))
-	{
+		if (pointer > 1)
+			return (FALSE);
 		if (!ft_isdigit(str[i]))
 		{
 			if (str[i] == '.')
