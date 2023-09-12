@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:28:00 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/09 19:38:46 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:52:41 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define OBJECT_H
 
 # include "miniRT.h"
+# include "canvas.h"
 
 typedef struct s_cy
 {
@@ -33,9 +34,11 @@ typedef struct s_pl
 
 typedef struct s_sp
 {
-	t_tuple	coordinates;
-	float	diameter;
-	t_color	color;
+	t_tuple		coordinates;
+	float		diameter;
+	t_color		color;
+	t_matrices	inverse;
+	t_matrices	m;
 }	t_sp;
 
 typedef struct s_l
