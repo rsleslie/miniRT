@@ -38,13 +38,13 @@ t_sphere	sphere(void)
 	s.radius = 1;
 	m = create_matrices(4, 4);
 	s.transform = id_matrix(m);
-	s.transform.matrices[0][0] = 0.5;
-	s.transform.matrices[1][1] = 0.5;
-	s.transform.matrices[2][2] = 0.5;
-	s.transform.matrices[0][3] = 1;
-	s.transform.matrices[1][3] = 1;
-	s.transform.matrices[2][3] = 1;
-	s.transform = inverse(s.transform);
+	// s.transform.matrices[0][0] = 0.5;
+	// s.transform.matrices[1][1] = 0.5;
+	// s.transform.matrices[2][2] = 0.5;
+	// s.transform.matrices[0][3] = 1;
+	// s.transform.matrices[1][3] = 1;
+	// s.transform.matrices[2][3] = 1;
+	// s.transform = inverse(s.transform);
 	return (s);
 }
 

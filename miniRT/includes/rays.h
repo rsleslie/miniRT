@@ -52,5 +52,6 @@ t_intersection	hit(t_xs xs);
 t_intersection	intersection(float n, t_sp s);
 t_rays			transform(t_rays r, t_matrices m);
 t_sphere		set_transform(t_sphere s, t_matrices t);
+t_tuple			normal_at(t_sphere s, t_tuple p);
 
 #endif

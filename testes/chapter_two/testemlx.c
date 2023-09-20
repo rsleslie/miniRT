@@ -53,10 +53,8 @@ void	img_pix_put(t_data *data, int x, int y, int color)
     pixel = data->addr + (y * data->line_len + x * (data->bpp / 8));
 	while (i >= 0)
 	{
-		/* big endian, MSB is the leftmost bit */
 		if (data->endian != 0)
 			*pixel++ = (color >> i) & 0xFF;
-		/* little endian, LSB is the leftmost bit */
 		else
 			*pixel++ = (color >> (data->bpp - 8 - i)) & 0xFF;
 		i -= 8;
