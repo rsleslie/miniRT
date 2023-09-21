@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 15:43:34 by coder             #+#    #+#             */
-/*   Updated: 2023/09/10 17:48:11 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	ft_putchar_ptr(char *div, int x);
 int		ft_key_parser(char *key);
 int		ft_strcs(const char *s, int c);
 int		ft_strcmp(char c, char key);
-float	ft_atof(const char *str);
+double	ft_atof(const char *str);
 void	ft_free_tab(char **str);
 int		is_number(char *str);
-int		ft_is_float(char *str);
+int		ft_is_double(char *str);
 
 #endif

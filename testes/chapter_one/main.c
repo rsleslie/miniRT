@@ -137,7 +137,7 @@ int dividingTupla()
 
 int magnitudeVector()
 {
-	float dTuple;
+	double dTuple;
 
 	dTuple = magnitude(vector(1, 0, 0));
 	printf("Esperado 1\nresultado (%f)\n", dTuple);
@@ -176,7 +176,7 @@ int	testeNormalize()
 
 int testeDot()
 {
-	float product = dot(vector(1, 2, 3), vector(2, 3, 4));
+	double product = dot(vector(1, 2, 3), vector(2, 3, 4));
 	printf("esperado (20)\nresultado: %f", product);
 	return(0);
 }

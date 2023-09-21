@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:03:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/10 18:49:45 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int		    validation_args(char **str);
 int		    validation_acl(char **str);
 int		    validation_obj(char **str);
 int		    validation_of_file_arguments(char **str);
-int		    validation_range_float(float n, float st, float end);
-int		    validation_range_float(float num, float start, float end);
+int		    validation_range_double(double n, double st, double end);
+int		    validation_range_double(double num, double start, double end);
 int		    validation_range_int(int num, int start, int end);
-int		    validation_float(char *str);
+int		    validation_double(char *str);
 int		    validation_int(char *str);
 int		    validation_color(char *str);
 int		    validation_camera(char **str);

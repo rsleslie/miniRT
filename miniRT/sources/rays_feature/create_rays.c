@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:25:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/12 20:45:28 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:56:44 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_rays	ray(t_tuple origin, t_tuple direction)
 	return (r);
 }
 
-t_tuple	position(t_rays r, float t)
+t_tuple	position(t_rays r, double t)
 {
 	t_tuple	result;
 
@@ -44,13 +44,13 @@ t_sphere	sphere(void)
 	// s.transform.matrices[0][3] = 1;
 	// s.transform.matrices[1][3] = 1;
 	// s.transform.matrices[2][3] = 1;
-	// s.transform = inverse(s.transform);
+	s.transform = inverse(s.transform);
 	return (s);
 }
 
-float	discriminant(float a, float b, float c)
+double	discriminant(double a, double b, double c)
 {
-	float	d;
+	double	d;
 
 	d = ((b * b) - 4 * a * c);
 	return (d);
@@ -65,8 +65,8 @@ float	discriminant(float a, float b, float c)
 // {
 // 	t_tuple	sphere_to_ray;
 // 	t_xs	result;
-// 	float	a;
-// 	float	b;
+// 	double	a;
+// 	double	b;
 // 	float	c;
 
 // 	r = transform(r, s.transform);

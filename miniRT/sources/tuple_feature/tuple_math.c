@@ -6,17 +6,17 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:42:44 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/03 17:26:04 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 #include <math.h>
 
-float	magnitude(t_tuple tuple)
+double	magnitude(t_tuple tuple)
 {
 	t_tuple	mag_tuple;
-	float	num_magnitude;
+	double	num_magnitude;
 
 	mag_tuple.x = pow(tuple.x, 2);
 	mag_tuple.y = pow(tuple.y, 2);
@@ -30,7 +30,7 @@ float	magnitude(t_tuple tuple)
 t_tuple	normalize(t_tuple tuple)
 {
 	t_tuple	new_tuple;
-	float	num_magnitude;
+	double	num_magnitude;
 
 	num_magnitude = magnitude(tuple);
 	new_tuple.x = tuple.x / num_magnitude;
@@ -40,9 +40,9 @@ t_tuple	normalize(t_tuple tuple)
 	return (new_tuple);
 }
 
-float	dot(t_tuple t1, t_tuple t2)
+double	dot(t_tuple t1, t_tuple t2)
 {
-	float	product;
+	double	product;
 
 	product = ((t1.x * t2.x) + (t1.y * t2.y) + (t1.z * t2.z) + (t1.w * t2.w));
 	return (product);

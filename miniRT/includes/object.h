@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:28:00 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/12 15:52:41 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ typedef struct s_cy
 {
 	t_tuple	coordinates;
 	t_tuple	vector;
-	float	diameter;
-	float	heigth;
+	double	diameter;
+	double	heigth;
 	t_color	color;
 }	t_cy;
 
@@ -35,7 +35,7 @@ typedef struct s_pl
 typedef struct s_sp
 {
 	t_tuple		coordinates;
-	float		diameter;
+	double		diameter;
 	t_color		color;
 	t_matrices	inverse;
 	t_matrices	m;
@@ -44,7 +44,7 @@ typedef struct s_sp
 typedef struct s_l
 {
 	t_tuple	coordinates;
-	float	brightness;
+	double	brightness;
 	t_color	color;
 }	t_l;
 
@@ -58,7 +58,7 @@ typedef struct s_c
 typedef struct s_a
 {
 	t_color	color;
-	float	ratio;
+	double	ratio;
 }	t_a;
 
 typedef struct s_objects

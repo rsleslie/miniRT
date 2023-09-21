@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:14:28 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/30 21:30:35 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:51:45 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_matrices	transpose(t_matrices a)
 	t_matrices	m_transposing;
 
 	line = -1;
-	m_transposing = create_matrices(a.x, a.y);
+	m_transposing = create_matrices(4, 4);
 	while (++line < a.x)
 	{
 		col = -1;
@@ -42,7 +42,7 @@ t_matrices	create_matrices(int line, int col)
 	{
 		j = -1;
 		while (++j < col)
-			matrix.matrices[i][j] = 0;
+			matrix.matrices[i][j] = (double)0;
 	}
 	return (matrix);
 }
@@ -60,7 +60,7 @@ t_matrices	id_matrix(t_matrices a)
 	while (++line < id_matrix.x)
 	{
 		if (++col < id_matrix.y)
-			id_matrix.matrices[line][col] = 1;
+			id_matrix.matrices[line][col] = (double)1;
 	}
 	return (id_matrix);
 }

@@ -388,13 +388,13 @@
 
 // int putting_it_together(t_data *data)
 // {
-//     float           wall_z;
-//     float           wall_size;
-//     float           pixel_size;
-//     float           half;
+//     double           wall_z;
+//     double           wall_size;
+//     double           pixel_size;
+//     double           half;
 //     t_xs            xs;
-//     float           world_x = 0;
-//     float           world_y = 0;
+//     double           world_x = 0;
+//     double           world_y = 0;
 //     t_sphere        shape;
 //     t_tuple         ray_origin;
 //     t_tuple         posit;
@@ -410,10 +410,10 @@
 //     pixel_size =  wall_size / data->canvas.width;
 //     half = wall_size / 2;
 //     shape = sphere();
-//     for (float y = 0; y < data->canvas.width - 1; y++)
+//     for (double y = 0; y < data->canvas.width - 1; y++)
 //     {
 //         world_y = half - pixel_size * y;
-//         for(float x = 0; x < data->canvas.width - 1; x++)
+//         for(double x = 0; x < data->canvas.width - 1; x++)
 //         {
 //             world_x = -half + pixel_size * x;
 //             posit = point(world_x, world_y, wall_z);
@@ -464,13 +464,13 @@
 
 int putting_it(t_data *data)
 {
-    float           wall_z;
-    float           wall_size;
-    float           pixel_size;
-    float           half;
+    double           wall_z;
+    double           wall_size;
+    double           pixel_size;
+    double           half;
     t_xs            xs;
-    float           world_x = 0;
-    float           world_y = 0;
+    double           world_x = 0;
+    double           world_y = 0;
     t_sphere        shape;
     t_tuple         ray_origin;
     t_tuple         posit;
@@ -493,10 +493,10 @@ int putting_it(t_data *data)
     wall_size = 7;
     pixel_size =  wall_size / data->canvas.width;
     half = wall_size / 2;
-    for (float y = 0; y < data->canvas.width - 1; y++)
+    for (double y = 0; y < data->canvas.width - 1; y++)
     {
         world_y = half - pixel_size * y;
-        for(float x = 0; x < data->canvas.width - 1; x++)
+        for(double x = 0; x < data->canvas.width - 1; x++)
         {
             world_x = -half + pixel_size * x;
             posit = point(world_x, world_y, wall_z);

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:27:04 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/08 16:27:27 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	validation_ambient(char **str)
 		if (ft_strncmp(str_aux[0], "A", 2) == 0)
 			break ;
 	}
-	if (!validation_float(str_aux[1])
-		|| !validation_range_float(ft_atof(str_aux[1]), 0, 1))
+	if (!validation_double(str_aux[1])
+		|| !validation_range_double(ft_atof(str_aux[1]), 0, 1))
 	{
 		ft_free_tab(str_aux);
 		return (FALSE);

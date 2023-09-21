@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operationVectorPoint.c                             :+:      :+:    :+:   */
+/*   vector_and_point_operation.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:31:35 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/02 23:31:45 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-t_tuple	point(float x, float y, float z)
+t_tuple	point(double x, double y, double z)
 {
 	return (tuples(x, y, z, 1));
 }
 
-t_tuple	vector(float x, float y, float z)
+t_tuple	vector(double x, double y, double z)
 {
 	return (tuples(x, y, z, 0));
 }

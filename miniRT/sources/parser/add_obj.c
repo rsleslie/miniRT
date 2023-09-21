@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:47:57 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/12 20:32:31 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_sp	add_sp(char **str)
 	sp.diameter = ft_atof(str[2]);
 	sp.color = color_obj(str[3]);
 	sp.m = translation(sp.coordinates.x, sp.coordinates.y, sp.coordinates.y);
-	scal = scaling((float)(sp.diameter/2.0), (float)(sp.diameter/2.0), (float)(sp.diameter/2.0));
+	scal = scaling((double)(sp.diameter/2.0), (double)(sp.diameter/2.0), (double)(sp.diameter/2.0));
 	sp.m = mult_matrices(sp.m, scal);
 	sp.inverse = inverse(sp.m);
 	return (sp);

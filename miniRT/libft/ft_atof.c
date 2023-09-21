@@ -6,17 +6,17 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:45:07 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/07 19:39:04 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-float	transform_number(const char *str, size_t i)
+double	transform_number(const char *str, size_t i)
 {
-	float	j;
-	float	result;
-	float	aux;
+	double	j;
+	double	result;
+	double	aux;
 
 	j = 0.1;
 	aux = 0;
@@ -36,11 +36,11 @@ float	transform_number(const char *str, size_t i)
 	return (result);
 }
 
-float	ft_atof(const char *str)
+double	ft_atof(const char *str)
 {
 	size_t	i;
 	int		signal;
-	float	result;
+	double	result;
 
 	i = 0;
 	signal = 1;

@@ -6,13 +6,13 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:59:53 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/09 19:08:01 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-t_tuple	tuples(float x, float y, float z, float w)
+t_tuple	tuples(double x, double y, double z, double w)
 {
 	t_tuple	data;
 
@@ -34,7 +34,7 @@ t_tuple	negate(t_tuple tuple_1)
 	return (negate_tuple);
 }
 
-int	equal(float a, float b)
+int	equal(double a, double b)
 {
 	if (fabsf(a - b) < EPSILON)
 	{

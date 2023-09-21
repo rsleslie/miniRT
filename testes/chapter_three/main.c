@@ -318,7 +318,7 @@ void    testeMinor()
 {
     t_matrices a;
     t_matrices b;
-    float   d_etermiant;
+    double   d_etermiant;
 
     a = create_matrices(3, 3);
     a.matrices[0][0] = 3;
@@ -508,7 +508,7 @@ void    testInverse()
     else
         printf("different cofractor -160\n");
 
-    if (equal(b.matrices[3][2], (float)-160/(float)532))
+    if (equal(b.matrices[3][2], (double)-160/(double)532))
         printf("Successful, equal b[3,2] = -160/532\n");
     else
         printf("Different, equal b[3,2] = -160/532\n");
@@ -518,7 +518,7 @@ void    testInverse()
     else
         printf("different cofractor 105\n");
    
-    if (equal(b.matrices[2][3], (float)105/(float)532))
+    if (equal(b.matrices[2][3], (double)105/(double)532))
         printf("Successful, equal b[2,3] = 105/532\n");
     else
         printf("Different, equal b[2,3] = 105/532 b.matrices %f\n", b.matrices[2][3]);

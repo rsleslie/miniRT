@@ -6,15 +6,15 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 12:10:36 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/29 21:39:59 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-float	determinant(t_matrices a)
+double	determinant(t_matrices a)
 {
-	float	result;
+	double	result;
 
 	if (equal(a.x, 2))
 	{
@@ -60,20 +60,20 @@ t_matrices	submatrix(t_matrices a, int line, int col)
 	return (result);
 }
 
-float	minor(t_matrices a, int line, int col)
+double	minor(t_matrices a, int line, int col)
 {
 	t_matrices	b;
-	float		result;
+	double		result;
 
 	b = submatrix(a, line, col);
 	result = determinant(b);
 	return (result);
 }
 
-float	cofactor(t_matrices a, int row, int col)
+double	cofactor(t_matrices a, int row, int col)
 {
 	t_matrices	cof;
-	float		m;
+	double		m;
 
 	m = minor(a, row, col);
 	if (((row + col) % 2))
@@ -86,9 +86,9 @@ t_matrices	inverse(t_matrices m)
 	t_matrices	m2;
 	int			row;
 	int			col;
-	float		c;
+	double		c;
 
-	if (equal(determinant(m), (float)0))
+	if (equal(determinant(m), (double)0))
 	{
 		ft_putendl_fd("matrix is not invertible", 2);
 		exit (1);

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 12:12:41 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/11 12:15:21 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:15:21 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,12 @@ t_matrices	mult_matrices(t_matrices a, t_matrices b)
 {
 	int			col;
 	int			line;
-	int			value;
+	double		value;
 	t_matrices	m_matrix;
 
 	if (!compare_row_col(a, b))
 		exit(1);
 	line = -1;
-	m_matrix.x = a.x;
-	m_matrix.y = a.y;
 	m_matrix = create_matrices(a.x, a.y);
 	while (++line < a.x)
 	{
@@ -42,7 +40,7 @@ t_matrices	mult_matrices(t_matrices a, t_matrices b)
 		while (++col < a.y)
 		{
 			value = 0;
-			value = ((a.matrices[line][0]) * (b.matrices[0][col]))
+			value = a.matrices[line][0] * b.matrices[0][col]
 				+ ((a.matrices[line][1]) * (b.matrices[1][col])
 					+ ((a.matrices[line][2]) * (b.matrices[2][col])))
 				+ ((a.matrices[line][3]) * (b.matrices[3][col]));
@@ -54,22 +52,16 @@ t_matrices	mult_matrices(t_matrices a, t_matrices b)
 
 t_tuple	mult_matrix_tuple(t_matrices m, t_tuple t)
 {
-	int		line;
-	int		col;
 	t_tuple	new_t;
 
-	line = 0;
-	new_t.x = ((m.matrices[line][0] * t.x) + (m.matrices[line][1] * t.y)
-			+ (m.matrices[line][2] * t.z) + (m.matrices[line][3] * t.w));
-	line++;
-	new_t.y = ((m.matrices[line][0] * t.x) + (m.matrices[line][1] * t.y)
-			+ (m.matrices[line][2] * t.z) + (m.matrices[line][3] * t.w));
-	line++;
-	new_t.z = ((m.matrices[line][0] * t.x) + (m.matrices[line][1] * t.y)
-			+ (m.matrices[line][2] * t.z) + (m.matrices[line][3] * t.w));
-	line++;
-	new_t.w = ((m.matrices[line][0] * t.x) + (m.matrices[line][1] * t.y)
-			+ (m.matrices[line][2] * t.z) + (m.matrices[line][3] * t.w));
+	new_t.x = ((m.matrices[0][0] * t.x) + (m.matrices[0][1] * t.y)
+			+ (m.matrices[0][2] * t.z) + (m.matrices[0][3] * t.w));
+	new_t.y = ((m.matrices[1][0] * t.x) + (m.matrices[1][1] * t.y)
+			+ (m.matrices[1][2] * t.z) + (m.matrices[1][3] * t.w));
+	new_t.z = ((m.matrices[2][0] * t.x) + (m.matrices[2][1] * t.y)
+			+ (m.matrices[2][2] * t.z) + (m.matrices[2][3] * t.w));
+	new_t.w = ((m.matrices[3][0] * t.x) + (m.matrices[3][1] * t.y)
+			+ (m.matrices[3][2] * t.z) + (m.matrices[3][3] * t.w));
 	return (new_t);
 }
 

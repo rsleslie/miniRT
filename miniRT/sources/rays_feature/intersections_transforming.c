@@ -6,13 +6,13 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 21:09:52 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/12 16:20:17 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:24:08 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-t_intersection	intersection(float n, t_sp s)
+t_intersection	intersection(double n, t_sp s)
 {
 	t_intersection	t;
 
@@ -69,6 +69,6 @@ t_rays	transform(t_rays r, t_matrices m)
 
 t_sphere	set_transform(t_sphere s, t_matrices t)
 {
-	s.transform = t;
+	s.transform = mult_matrices(s.transform, t);
 	return (s);
 }

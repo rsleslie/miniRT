@@ -6,13 +6,13 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:53:09 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/10 18:53:03 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-int	validation_range_float(float n, float st, float end)
+int	validation_range_double(double n, double st, double end)
 {
 	if (n >= st && n <= end)
 		return (TRUE);
@@ -26,7 +26,7 @@ int	validation_range_int(int num, int start, int end)
 	return (FALSE);
 }
 
-int	validation_float(char *str)
+int	validation_double(char *str)
 {
 	int	pointer;
 	int	i;

@@ -198,11 +198,11 @@ void draw_line(void *mlx, void *win, t_tuple start, t_tuple end)
     int dy = (int)end.y - (int)start.y;
     int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
 
-    float xIncrement = (float)dx / steps;
-    float yIncrement = (float)dy / steps;
+    double xIncrement = (double)dx / steps;
+    double yIncrement = (double)dy / steps;
 
-    float x = start.x;
-    float y = start.y;
+    double x = start.x;
+    double y = start.y;
 
     for (int i = 0; i <= steps; i++) {
         mlx_pixel_put(mlx, win, (int)x, (int)y, 0xFFFFFF); // Desenhar pixel na cor branca

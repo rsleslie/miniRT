@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:29:30 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/15 14:54:12 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_tuple	subtracting_tuple(t_tuple t1, t_tuple t2)
 	return (result);
 }
 
-t_tuple	mult_tuple(t_tuple t1, float n)
+t_tuple	mult_tuple(t_tuple t1, double n)
 {
 	t_tuple	result;
 
@@ -58,7 +58,7 @@ t_tuple	mult_tuple(t_tuple t1, float n)
 	return (result);
 }
 
-t_tuple	div_tuple(t_tuple t1, float n)
+t_tuple	div_tuple(t_tuple t1, double n)
 {
 	t_tuple	result;
 
