@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:26:40 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 14:47:01 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:47:05 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_xs			intersect(t_sp sp, t_rays r, t_xs xs);
 t_xs			intersections(t_intersection i1, t_xs xs);
 t_rays			ray(t_tuple origin, t_tuple direction);
 t_tuple			position(t_rays r, double t);
-t_sphere		sphere();
+t_sphere		sphere(void);
 t_intersection	hit(t_xs xs);
 // t_intersection	intersection(double n, t_sphere s);
 t_intersection	intersection(double n, t_sp s);

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 21:09:52 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 14:24:08 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:42:35 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_intersection	hit(t_xs xs)
 	}
 	if (result.t <= 0)
 	{
-		x.t = -1;
+		x.t = -1; 
 		return (x);
 	}
 	return (result);

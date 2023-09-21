@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:47:57 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:50:10 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_sp	add_sp(char **str)
 	scal = scaling((double)(sp.diameter/2.0), (double)(sp.diameter/2.0), (double)(sp.diameter/2.0));
 	sp.m = mult_matrices(sp.m, scal);
 	sp.inverse = inverse(sp.m);
+	sp.transpose = transpose(sp.inverse);
 	return (sp);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:28:00 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:49:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_sp
 	double		diameter;
 	t_color		color;
 	t_matrices	inverse;
+	t_matrices	transpose;
 	t_matrices	m;
 }	t_sp;
 
