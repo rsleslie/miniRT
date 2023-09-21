@@ -15,7 +15,7 @@
 
 # define FALSE 0
 # define TRUE 1
-# define EPSILON 0.00001
+# define EPSILON 0.0000001
 # define PI 3.141593
 
 # include "../libft/libft.h"

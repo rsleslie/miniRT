@@ -45,6 +45,8 @@ t_sp	add_sp(char **str)
 	sp.m = mult_matrices(sp.m, scal);
 	sp.inverse = inverse(sp.m);
 	sp.transpose = transpose(sp.inverse);
+	sp.material = material();
+	sp.material.color = rgb_to_double(sp.color);
 	return (sp);
 }
 

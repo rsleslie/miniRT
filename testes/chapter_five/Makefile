@@ -11,6 +11,7 @@ SRCS += ../../miniRT/sources/matrices_feature/determinants.c
 SRCS += ../../miniRT/sources/matrices_feature/matrix_operation.c
 SRCS += ../../miniRT/sources/rays_feature/create_rays.c
 SRCS += ../../miniRT/sources/rays_feature/intersections_transforming.c
+SRCS += ../../miniRT/sources/rays_feature/light_and_shading.c
 SRCS += ../../miniRT/sources/matrices_feature/matrix_transformations.c
 SRCS +=	../../miniRT/sources/colors/op_colors.c
 SRCS +=	../../miniRT/sources/colors/set_colors.c

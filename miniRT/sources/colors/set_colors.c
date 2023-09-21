@@ -35,3 +35,15 @@ int	set_color(t_color color)
 	b = (int)(color.b * 255.0);
 	return (0xFF << 24 | r << 16 | g << 8 | b);
 }
+
+t_color rgb_to_double(t_color color) 
+{
+	t_color color_d;
+
+    color_d.r = color.r / 255.0;
+    color_d.g = color.g / 255.0;
+    color_d.b = color.b / 255.0;
+
+    // Retorna os valores de ponto flutuante
+    return (color_d);
+}

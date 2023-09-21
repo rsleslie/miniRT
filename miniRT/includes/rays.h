@@ -28,6 +28,7 @@ typedef struct s_sphere
 	t_matrices	id;
 	t_matrices	transpose;
 	t_matrices	transform;
+	t_m			material;
 }	t_sphere;
 
 typedef struct s_intersection
@@ -54,6 +55,10 @@ t_intersection	hit(t_xs xs);
 t_intersection	intersection(double n, t_sp s);
 t_rays			transform(t_rays r, t_matrices m);
 t_sphere		set_transform(t_sphere s, t_matrices t);
-t_tuple			normal_at(t_sphere s, t_tuple p);
+t_tuple			normal_at(t_sp s, t_tuple p);
+t_tuple			reflect(t_tuple in, t_tuple normal);
+t_l				point_light(t_tuple	position, t_color intensity);
+t_m				material(void);
+t_color			lighting(t_m m, t_l light, t_tuple position, t_tuple eyev, t_tuple normalv);
 
 #endif

@@ -38,6 +38,7 @@ t_sphere	sphere(void)
 	s.radius = 1;
 	m = create_matrices(4, 4);
 	s.transform = id_matrix(m);
+	s.material = material();
 	// s.transform.matrices[0][0] = 0.5;
 	// s.transform.matrices[1][1] = 0.5;
 	// s.transform.matrices[2][2] = 0.5;

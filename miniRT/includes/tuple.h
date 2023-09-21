@@ -53,5 +53,6 @@ t_tuple		cross(t_tuple a, t_tuple b);
 t_env		environment(t_tuple v1, t_tuple v2);
 t_project	projectile(t_tuple p, t_tuple v);
 t_project	tick(t_env env, t_project proj);
+int 		equal_tuple(t_tuple t1, t_tuple t2);
 
 #endif

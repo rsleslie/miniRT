@@ -16,6 +16,15 @@
 # include "miniRT.h"
 # include "canvas.h"
 
+typedef struct s_m
+{
+	t_color	color;
+	double	ambient;
+	double	diffuse;
+	double	specular;
+	double	shininess;
+}	t_m;
+
 typedef struct s_cy
 {
 	t_tuple	coordinates;
@@ -40,11 +49,14 @@ typedef struct s_sp
 	t_matrices	inverse;
 	t_matrices	transpose;
 	t_matrices	m;
+	t_m			material;
 }	t_sp;
 
 typedef struct s_l
 {
 	t_tuple	coordinates;
+	t_tuple	position;
+	t_color	intensity;
 	double	brightness;
 	t_color	color;
 }	t_l;
@@ -61,6 +73,7 @@ typedef struct s_a
 	t_color	color;
 	double	ratio;
 }	t_a;
+
 
 typedef struct s_objects
 {

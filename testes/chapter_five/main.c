@@ -477,16 +477,25 @@ int putting_it(t_data *data)
     t_rays          r;
     t_intersection  i;
     t_matrices      m;
-
+    t_tuple     light_position;
+    t_color     light_color;
+    t_l         light;
     t_objects *rt;
+    t_tuple     point_;
+    t_tuple     normal_;
+    t_tuple     eye_;
+    t_color     color;
 
+    light_position = point(-10, 10, -10);
+    light_color = get_color (1, 1, 1);
+    light = point_light(light_position, light_color);
     rt = (t_objects *)malloc(sizeof(t_objects));
     rt->sp = NULL;
     rt->cy = NULL;
     rt->pl = NULL;
     if (!parser(&rt, "arquivo3/arq1.rt"))
         printf("deu ruim!");
-
+    // rt->sp[0].material.color = get_color(1, 0.2, 1);
     xs.count = 0;
     ray_origin = point(0, 0, -5);
     wall_z = 10;
@@ -505,8 +514,12 @@ int putting_it(t_data *data)
             i = hit(xs);
             if (i.t > 0)
             {
+                point_ = position(r, i.t);
+                normal_ = normal_at(i.object, point_);
+                eye_ = negate(r.direction);
+                color = lighting(i.object.material, light, point_, eye_, normal_);
                 if (x >= 0 && x < data->canvas.width && y >= 0 && y < data->canvas.width)
-                    img_pix_put(data, (int)x, (int)y, set_color(i.object.color));
+                    img_pix_put(data, (int)x, (int)y, set_color(color));
             }
         }
     }
