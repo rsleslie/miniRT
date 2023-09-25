@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:47:57 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 15:50:10 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:58:16 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_sp	add_sp(char **str)
 	sp.transpose = transpose(sp.inverse);
 	sp.material = material();
 	sp.material.color = rgb_to_double(sp.color);
+	sp.
 	return (sp);
 }
 

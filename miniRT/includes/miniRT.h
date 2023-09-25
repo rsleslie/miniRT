@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:33:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/12 18:48:38 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:40:44 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define FALSE 0
 # define TRUE 1
-# define EPSILON 0.0000001
+# define EPSILON 0.00001
 # define PI 3.141593
 
 # include "../libft/libft.h"
@@ -31,7 +31,8 @@
 # include <X11/keysym.h>
 # include <mlx.h>
 # include "object.h"
-# include "parser.h" 
+# include "parser.h"
+# include "world.h"
 
 
 #endif

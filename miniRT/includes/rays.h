@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:26:40 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 15:47:05 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/22 18:07:10 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_rays
 
 typedef struct s_sphere
 {
-	int			radius;
+	double		radius;
 	t_matrices	id;
 	t_matrices	transpose;
 	t_matrices	transform;
@@ -34,7 +34,8 @@ typedef struct s_sphere
 typedef struct s_intersection
 {
 	double		t;
-	t_sp	object;
+	t_sp		object;
+	t_sphere	s_world;
 }	t_intersection;
 
 typedef struct s_xs
@@ -44,13 +45,15 @@ typedef struct s_xs
 }	t_xs;
 
 // t_xs			intersect(t_sphere s, t_rays r);
-t_xs 			teste_intesections(t_objects *rt, t_rays r);
+t_xs 			intersections(t_objects *rt, t_rays r);
 t_xs			intersect(t_sp sp, t_rays r, t_xs xs);
-t_xs			intersections(t_intersection i1, t_xs xs);
+t_xs			intersections_i(t_intersection i1, t_xs xs);
 t_rays			ray(t_tuple origin, t_tuple direction);
 t_tuple			position(t_rays r, double t);
-t_sphere		sphere(void);
+// t_sphere		sphere(void);
+t_sphere		sphere(double ray);
 t_intersection	hit(t_xs xs);
+double			discriminant(double a, double b, double c);
 // t_intersection	intersection(double n, t_sphere s);
 t_intersection	intersection(double n, t_sp s);
 t_rays			transform(t_rays r, t_matrices m);

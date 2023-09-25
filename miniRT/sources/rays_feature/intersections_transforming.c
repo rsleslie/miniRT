@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 21:09:52 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 15:42:35 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/22 18:07:24 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_intersection	intersection(double n, t_sp s)
 	return (t);
 }
 
-t_xs	intersections(t_intersection i1, t_xs xs)
+t_xs	intersections_i(t_intersection i1, t_xs xs)
 {	
 	xs.data[xs.count].t = i1.t;
 	xs.data[xs.count].object = i1.object;

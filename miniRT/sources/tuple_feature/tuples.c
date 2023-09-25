@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:59:53 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 15:46:13 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:17:59 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_tuple	negate(t_tuple tuple_1)
 
 int	equal(double a, double b)
 {
-	if (fabsf(a - b) < EPSILON)
+	if (fabs(a - b) < EPSILON)
 	{
 		return (TRUE);
 	}

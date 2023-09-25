@@ -510,7 +510,7 @@ int putting_it(t_data *data)
             world_x = -half + pixel_size * x;
             posit = point(world_x, world_y, wall_z);
             r = ray(ray_origin, normalize(subtracting_tuple(posit, ray_origin)));
-            xs = teste_intesections(rt, r);
+            xs = intersections(rt, r);
             i = hit(xs);
             if (i.t > 0)
             {
