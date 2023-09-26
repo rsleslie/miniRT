@@ -674,8 +674,7 @@ int putting_it(t_data *data)
     w.data = data;
     w.ligth = point_light(w.rt->l.coordinates, color_scale(w.rt->l.brightness, w.rt->l.color));
     c = camera(w.data->canvas.height, w.data->canvas.width, w.rt->c.fov);
-    // c.transform = view_transform(tuples(0, 1.5, -5, 1), tuples(0, 1, 0, 1), tuples(0, 1, 0, 0));
-    c.transform = view_transform_two(w.rt->c.coordinates, w.rt->c.vector, vector(0, 1, 0));
+    c.transform = view_transform(w.rt->c.coordinates, w.rt->c.vector, vector(0, 1, 0));
     render_img(c, w);
     
    
@@ -689,8 +688,8 @@ void	test_print_sphere(void)
 	t_color		color;
 	t_data		data = (t_data){0};
     
-    data.canvas.height = 300;
-    data.canvas.width = 300;
+    data.canvas.height = 800;
+    data.canvas.width = 800;
 
 	color = get_color(1, 0.0, 0.0);
 	data.canvas = create_canvas(data.canvas, data.canvas.height, data.canvas.width, color);

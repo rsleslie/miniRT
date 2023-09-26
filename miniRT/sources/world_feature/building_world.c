@@ -6,11 +6,13 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:01:47 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/25 23:36:20 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/26 12:24:50 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
+
+t_xs intersections(t_objects *rt, t_rays r);
 
 t_world	default_world(void)
 {
@@ -178,23 +180,12 @@ t_color	shade_hit(t_world w, t_comps comps)
 	return (color);	
 }
 
-// t_color	shade_hit(t_world w, t_comps comps)
-// {
-// 	t_color color;
-	
-// 	color = lighting(comps.object.material, w.ligth,
-// 			comps.point, comps.eyev, comps.normalv);
-// 	return (color);	
-// }
-
-
 t_color	color_at(t_world w, t_rays r)
 {
 	t_xs			xs;
 	t_intersection	i;
 	t_comps			comps;
 	t_color			result_color;
-	static int j;
 	
 	xs = intersections(w.rt, r);
 	if (equal(xs.count, 0))
@@ -204,7 +195,6 @@ t_color	color_at(t_world w, t_rays r)
 	i = hit(xs);
 	if (equal(i.t, -1))
 		return (get_color(0, 0, 0));
-		printf("estamos aqui de novo: %i\n", j++);
 	comps = prepare_computations(i, r);
 	result_color = shade_hit(w, comps);
 	printf("%lf, %lf, %lf\n", result_color.r, result_color.g, result_color.b);

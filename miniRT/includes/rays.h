@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:26:40 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/25 21:10:02 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/26 12:10:12 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 
 // t_xs			intersect(t_sphere s, t_rays r);
-t_xs 			intersections(t_objects *rt, t_rays r);
+t_xs 			tions(t_objects *rt, t_rays r);
 // t_xs 			intersections(t_objects *rt, t_rays r);
 t_xs			intersect(t_sp sp, t_rays r, t_xs xs);
 // t_xs			intersections_i(t_intersection i1, t_xs xs);
