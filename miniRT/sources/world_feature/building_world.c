@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:01:47 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/25 14:58:23 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/25 23:36:20 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,29 +103,62 @@ t_intersection	intersection_world(double n, t_sphere s)
 	return (t);
 }
 
-t_tuple	normal_at_world(t_sphere s, t_tuple p)
+t_tuple	normal_at_world(t_sp sp, t_tuple p)
 {
 	t_tuple	v;
 	t_tuple	object_point;
 	t_tuple	object_normal;
 	t_tuple	world_normal;
 
-	object_point = mult_matrix_tuple(s.transform, p);
+	object_point = mult_matrix_tuple(sp.inverse, p);
 	object_normal = subtracting_point(object_point, point(0, 0, 0));
-	world_normal = mult_matrix_tuple(s.transpose, object_normal);
+	world_normal = mult_matrix_tuple(sp.transpose, object_normal);
 	world_normal.w = 0;
 	return (normalize(world_normal));
 }
+
+// t_tuple	normal_at_world(t_sphere s, t_tuple p)
+// {
+// 	t_tuple	v;
+// 	t_tuple	object_point;
+// 	t_tuple	object_normal;
+// 	t_tuple	world_normal;
+
+// 	object_point = mult_matrix_tuple(s.transform, p);
+// 	object_normal = subtracting_point(object_point, point(0, 0, 0));
+// 	world_normal = mult_matrix_tuple(s.transpose, object_normal);
+// 	world_normal.w = 0;
+// 	return (normalize(world_normal));
+// }
+
+// t_comps	prepare_computations(t_intersection i, t_rays r)
+// {
+// 	t_comps	comps;
+	
+// 	comps.t.t = i.t;
+// 	comps.object = i.object;
+// 	comps.point = position(r, comps.t.t);
+// 	comps.eyev = negate(r.direction);
+// 	comps.normalv = normal_at_world(comps.object, comps.point);
+// 	if (dot(comps.normalv, comps.eyev) < 0)
+// 	{
+// 		comps.inside = TRUE;
+// 		comps.normalv = negate(comps.normalv);
+// 	}
+// 	else
+// 		comps.inside = FALSE;
+// 	return (comps);
+// }
 
 t_comps	prepare_computations(t_intersection i, t_rays r)
 {
 	t_comps	comps;
 	
 	comps.t.t = i.t;
-	comps.object = i.s_world;
+	comps.sp = i.object;
 	comps.point = position(r, comps.t.t);
 	comps.eyev = negate(r.direction);
-	comps.normalv = normal_at_world(comps.object, comps.point);
+	comps.normalv = normal_at_world(comps.sp, comps.point);
 	if (dot(comps.normalv, comps.eyev) < 0)
 	{
 		comps.inside = TRUE;
@@ -139,11 +172,21 @@ t_comps	prepare_computations(t_intersection i, t_rays r)
 t_color	shade_hit(t_world w, t_comps comps)
 {
 	t_color color;
-
-	color = lighting(comps.object.material, w.ligth,
+	
+	color = lighting(comps.sp.material, w.ligth,
 			comps.point, comps.eyev, comps.normalv);
 	return (color);	
 }
+
+// t_color	shade_hit(t_world w, t_comps comps)
+// {
+// 	t_color color;
+	
+// 	color = lighting(comps.object.material, w.ligth,
+// 			comps.point, comps.eyev, comps.normalv);
+// 	return (color);	
+// }
+
 
 t_color	color_at(t_world w, t_rays r)
 {
@@ -151,15 +194,20 @@ t_color	color_at(t_world w, t_rays r)
 	t_intersection	i;
 	t_comps			comps;
 	t_color			result_color;
+	static int j;
 	
-	xs = intersections_world(w, r);
+	xs = intersections(w.rt, r);
 	if (equal(xs.count, 0))
+	{
 		return (get_color(0, 0, 0));
+	}
 	i = hit(xs);
 	if (equal(i.t, -1))
 		return (get_color(0, 0, 0));
+		printf("estamos aqui de novo: %i\n", j++);
 	comps = prepare_computations(i, r);
 	result_color = shade_hit(w, comps);
+	printf("%lf, %lf, %lf\n", result_color.r, result_color.g, result_color.b);
 	return (result_color);
 }
 

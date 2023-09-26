@@ -6,32 +6,14 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:57:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/25 21:03:57 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TUPLE_H
 # define TUPLE_H
 
-typedef struct s_tuple
-{
-	double	x;
-	double	y;
-	double	z;
-	double	w;
-}	t_tuple;
 
-typedef struct t_project
-{
-	t_tuple position;
-	t_tuple velocity;
-}	t_project;
-
-typedef struct s_env
-{
-	t_tuple gravity;
-	t_tuple wind;
-}	t_env;
 
 int			compare_tuple(t_tuple t1, t_tuple t2);
 int			equal(double a, double b);

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:55:22 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/25 17:39:29 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/25 21:03:18 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,6 @@
 # define MATRICES_H
 
 # include "tuple.h"
-
-typedef struct s_matrices
-{
-	int		x;
-	int		y;
-	double	matrices[4][4];
-}	t_matrices;
-
-typedef struct	s_shear
-{
-	double	xy;
-	double	xz;
-	double	yx;
-	double	yz;
-	double	zx;
-	double	zy;
-}	t_shear;
 
 int			compare_matrix(t_matrices a, t_matrices b);
 double		determinant(t_matrices a);

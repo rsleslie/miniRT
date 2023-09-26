@@ -460,83 +460,240 @@
 
 
 
+// int putting_it(t_data *data)
+// {
+//     double           wall_z;
+//     double           wall_size;
+//     double           pixel_size;
+//     double           half;
+//     t_xs            xs;
+//     double           world_x = 0;
+//     double           world_y = 0;
+//     t_sphere        shape;
+//     t_tuple         ray_origin;
+//     t_tuple         posit;
+//     t_rays          r;
+//     t_intersection  i;
+//     t_matrices      m;
+//     t_tuple     light_position;
+//     t_color     light_color;
+//     t_l         light;
+//     t_objects *rt;int putting_it(t_data *data)
+// {
+//     double           wall_z;
+//     double           wall_size;
+//     double           pixel_size;
+//     double           half;
+//     t_xs            xs;
+//     double           world_x = 0;
+//     double           world_y = 0;
+//     t_sphere        shape;
+//     t_tuple         ray_origin;
+//     t_tuple         posit;
+//     t_rays          r;
+//     t_intersection  i;
+//     t_matrices      m;
+//     t_tuple     light_position;
+//     t_color     light_color;
+//     t_l         light;
+//     t_objects *rt;
+//     t_tuple     point_;
+//     t_tuple     normal_;
+//     t_tuple     eye_;
+//     t_color     color;
 
+//     light_position = point(-10, 10, -10);
+//     light_color = get_color (1, 1, 1);
+//     light = point_light(light_position, light_color);
+//     rt = (t_objects *)malloc(sizeof(t_objects));
+//     rt->sp = NULL;
+//     rt->cy = NULL;
+//     rt->pl = NULL;
+//     if (!parser(&rt, "arquivo3/arq1.rt"))
+//         printf("deu ruim!");
+//     // rt->sp[0].material.color = get_color(1, 0.2, 1);
+    
+//     xs.count = 0;
+//     ray_origin = point(0, 0, -5);
+//     wall_z = 10;
+//     wall_size = 7;
+//     pixel_size =  wall_size / data->canvas.width;
+//     half = wall_size / 2;
+//     for (double y = 0; y < data->canvas.width - 1; y++)
+//     {
+//         world_y = half - pixel_size * y;
+//         for(double x = 0; x < data->canvas.width - 1; x++)
+//         {
+//             world_x = -half + pixel_size * x;
+//             posit = point(world_x, world_y, wall_z);
+//             r = ray(ray_origin, normalize(subtracting_tuple(posit, ray_origin)));
+//             xs = intersections(rt, r);
+//             i = hit(xs);
+//             if (i.t > 0)
+//             {
+//                 point_ = position(r, i.t);
+//                 normal_ = normal_at(i.object, point_);
+//                 eye_ = negate(r.direction);
+//                 color = lighting(i.object.material, light, point_, eye_, normal_);
+//                 if (x >= 0 && x < data->canvas.width && y >= 0 && y < data->canvas.width)
+//                     img_pix_put(data, (int)x, (int)y, set_color(color));
+//             }
+//         }
+//     }
+//     mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+//     return (0);
+// }
+
+//     t_tuple     point_;
+//     t_tuple     normal_;
+//     t_tuple     eye_;
+//     t_color     color;
+
+//     light_position = point(-10, 10, -10);
+//     light_color = get_color (1, 1, 1);
+//     light = point_light(light_position, light_color);
+//     rt = (t_objects *)malloc(sizeof(t_objects));
+//     rt->sp = NULL;
+//     rt->cy = NULL;
+//     rt->pl = NULL;
+//     if (!parser(&rt, "arquivo3/arq1.rt"))
+//         printf("deu ruim!");
+//     // rt->sp[0].material.color = get_color(1, 0.2, 1);
+    
+//     xs.count = 0;
+//     ray_origin = point(0, 0, -5);
+//     wall_z = 10;
+//     wall_size = 7;
+//     pixel_size =  wall_size / data->canvas.width;
+//     half = wall_size / 2;
+//     for (double y = 0; y < data->canvas.width - 1; y++)
+//     {
+//         world_y = half - pixel_size * y;
+//         for(double x = 0; x < data->canvas.width - 1; x++)
+//         {
+//             world_x = -half + pixel_size * x;
+//             posit = point(world_x, world_y, wall_z);
+//             r = ray(ray_origin, normalize(subtracting_tuple(posit, ray_origin)));
+//             xs = intersections(rt, r);
+//             i = hit(xs);
+//             if (i.t > 0)
+//             {
+//                 point_ = position(r, i.t);
+//                 normal_ = normal_at(i.object, point_);
+//                 eye_ = negate(r.direction);
+//                 color = lighting(i.object.material, light, point_, eye_, normal_);
+//                 if (x >= 0 && x < data->canvas.width && y >= 0 && y < data->canvas.width)
+//                     img_pix_put(data, (int)x, (int)y, set_color(color));
+//             }
+//         }
+//     }
+//     mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+//     return (0);
+// }
+
+
+// int putting_it(t_data *data)
+// {
+//     double           wall_z;
+//     double           wall_size;
+//     double           pixel_size;
+//     double           half;
+//     t_xs            xs;
+//     double           world_x = 0;
+//     double           world_y = 0;
+//     t_sphere        shape;
+//     t_tuple         ray_origin;
+//     t_tuple         posit;
+//     t_rays          r;
+//     t_intersection  i;
+//     t_matrices      m;
+//     t_tuple     light_position;
+//     t_color     light_color;
+//     t_l         light;
+//     t_objects *rt;
+//     t_tuple     point_;
+//     t_tuple     normal_;
+//     t_tuple     eye_;
+//     t_color     color;
+
+//     light_position = point(-10, 10, -10);
+//     light_color = get_color (1, 1, 1);
+//     light = point_light(light_position, light_color);
+//     rt = (t_objects *)malloc(sizeof(t_objects));
+//     rt->sp = NULL;
+//     rt->cy = NULL;
+//     rt->pl = NULL;
+//     if (!parser(&rt, "arquivo3/arq1.rt"))
+//         printf("deu ruim!");
+//     // rt->sp[0].material.color = get_color(1, 0.2, 1);
+//     xs.count = 0;
+//     ray_origin = point(0, 0, -5);
+//     wall_z = 10;
+//     wall_size = 7;
+//     pixel_size =  wall_size / data->canvas.width;
+//     half = wall_size / 2;
+//     for (double y = 0; y < data->canvas.width - 1; y++)
+//     {
+//         world_y = half - pixel_size * y;
+//         for(double x = 0; x < data->canvas.width - 1; x++)
+//         {
+//             world_x = -half + pixel_size * x;
+//             posit = point(world_x, world_y, wall_z);
+//             r = ray(ray_origin, normalize(subtracting_tuple(posit, ray_origin)));
+//             xs = intersections(rt, r);
+//             i = hit(xs);
+//             if (i.t > 0)
+//             {
+//                 point_ = position(r, i.t);
+//                 normal_ = normal_at(i.object, point_);
+//                 eye_ = negate(r.direction);
+//                 color = lighting(i.object.material, light, point_, eye_, normal_);
+//                 if (x >= 0 && x < data->canvas.width && y >= 0 && y < data->canvas.width)
+//                 {
+//                     img_pix_put(data, (int)x, (int)y, set_color(color));
+//                 }
+//             }
+//         }
+//     }
+//     mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+//     return (0);
+// }
 
 int putting_it(t_data *data)
-{
-    double           wall_z;
-    double           wall_size;
-    double           pixel_size;
-    double           half;
-    t_xs            xs;
-    double           world_x = 0;
-    double           world_y = 0;
-    t_sphere        shape;
-    t_tuple         ray_origin;
-    t_tuple         posit;
-    t_rays          r;
-    t_intersection  i;
-    t_matrices      m;
-    t_tuple     light_position;
-    t_color     light_color;
-    t_l         light;
-    t_objects *rt;
-    t_tuple     point_;
-    t_tuple     normal_;
-    t_tuple     eye_;
-    t_color     color;
+{ 
+    t_world     w;
+    t_c_world   c;
 
-    light_position = point(-10, 10, -10);
-    light_color = get_color (1, 1, 1);
-    light = point_light(light_position, light_color);
-    rt = (t_objects *)malloc(sizeof(t_objects));
-    rt->sp = NULL;
-    rt->cy = NULL;
-    rt->pl = NULL;
-    if (!parser(&rt, "arquivo3/arq1.rt"))
+    w = (t_world){0};
+    w.rt = (t_objects *)malloc(sizeof(t_objects));
+    w.rt->sp = NULL;
+    w.rt->cy = NULL;
+    w.rt->pl = NULL;
+    if (!parser(&w.rt, "arquivo3/arq1.rt"))
         printf("deu ruim!");
-    // rt->sp[0].material.color = get_color(1, 0.2, 1);
-    xs.count = 0;
-    ray_origin = point(0, 0, -5);
-    wall_z = 10;
-    wall_size = 7;
-    pixel_size =  wall_size / data->canvas.width;
-    half = wall_size / 2;
-    for (double y = 0; y < data->canvas.width - 1; y++)
-    {
-        world_y = half - pixel_size * y;
-        for(double x = 0; x < data->canvas.width - 1; x++)
-        {
-            world_x = -half + pixel_size * x;
-            posit = point(world_x, world_y, wall_z);
-            r = ray(ray_origin, normalize(subtracting_tuple(posit, ray_origin)));
-            xs = intersections(rt, r);
-            i = hit(xs);
-            if (i.t > 0)
-            {
-                point_ = position(r, i.t);
-                normal_ = normal_at(i.object, point_);
-                eye_ = negate(r.direction);
-                color = lighting(i.object.material, light, point_, eye_, normal_);
-                if (x >= 0 && x < data->canvas.width && y >= 0 && y < data->canvas.width)
-                    img_pix_put(data, (int)x, (int)y, set_color(color));
-            }
-        }
-    }
-    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+    w.data = data;
+    w.ligth = point_light(w.rt->l.coordinates, color_scale(w.rt->l.brightness, w.rt->l.color));
+    c = camera(w.data->canvas.height, w.data->canvas.width, w.rt->c.fov);
+    // c.transform = view_transform(tuples(0, 1.5, -5, 1), tuples(0, 1, 0, 1), tuples(0, 1, 0, 0));
+    c.transform = view_transform_two(w.rt->c.coordinates, w.rt->c.vector, vector(0, 1, 0));
+    render_img(c, w);
+    
+   
+    
+    mlx_put_image_to_window(w.data->mlx, w.data->win, w.data->img, 0, 0);
     return (0);
 }
 
 void	test_print_sphere(void)
 {
 	t_color		color;
-	t_data		data;
+	t_data		data = (t_data){0};
     
-    data.canvas.height = 800;
-    data.canvas.width = 800;
+    data.canvas.height = 300;
+    data.canvas.width = 300;
 
 	color = get_color(1, 0.0, 0.0);
-	data.canvas = create_canvas(data.canvas, 800, 800, color);
+	data.canvas = create_canvas(data.canvas, data.canvas.height, data.canvas.width, color);
 	data.mlx = mlx_init();
 	if (data.mlx == NULL)
 		return ;

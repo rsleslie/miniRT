@@ -6,48 +6,24 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:26:40 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/22 18:07:10 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/25 21:10:02 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYS_H
 # define RAYS_H
 
-# include "tuple.h"
+# include "world.h"
 # include "object.h"
+# include "tuple.h"
 
-typedef struct s_rays
-{
-	t_tuple	origin;
-	t_tuple	direction;
-}	t_rays;
 
-typedef struct s_sphere
-{
-	double		radius;
-	t_matrices	id;
-	t_matrices	transpose;
-	t_matrices	transform;
-	t_m			material;
-}	t_sphere;
-
-typedef struct s_intersection
-{
-	double		t;
-	t_sp		object;
-	t_sphere	s_world;
-}	t_intersection;
-
-typedef struct s_xs
-{
-	int				count;
-	t_intersection	data[1024];
-}	t_xs;
 
 // t_xs			intersect(t_sphere s, t_rays r);
 t_xs 			intersections(t_objects *rt, t_rays r);
+// t_xs 			intersections(t_objects *rt, t_rays r);
 t_xs			intersect(t_sp sp, t_rays r, t_xs xs);
-t_xs			intersections_i(t_intersection i1, t_xs xs);
+// t_xs			intersections_i(t_intersection i1, t_xs xs);
 t_rays			ray(t_tuple origin, t_tuple direction);
 t_tuple			position(t_rays r, double t);
 // t_sphere		sphere(void);

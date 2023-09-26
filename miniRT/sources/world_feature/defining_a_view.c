@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:58:46 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/25 19:35:31 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/25 23:22:37 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ t_matrices	orientation_matrices(t_tuple left, t_tuple forward, t_tuple true_up)
 	m.matrices[2][2] = -forward.z;
 	m.matrices[3][3] = 1;
 	return (m);
+}
+
+t_matrices	view_transform_two(t_tuple from, t_tuple to, t_tuple up)
+{
+	t_tuple 	forward;
+	t_tuple		left;
+	t_tuple		true_up;
+	t_matrices	orientation;
+	t_tuple		upn;
+
+	forward = to;
+	upn = normalize(up);
+	left = cross(forward, upn);
+	true_up = cross(left, forward);
+	orientation = orientation_matrices(left, forward, true_up);
+	orientation = mult_matrices(orientation, translation(-from.x, -from.y, -from.z));
+	return (orientation);
 }
 
 t_matrices	view_transform(t_tuple from, t_tuple to, t_tuple up)
@@ -94,22 +111,19 @@ t_rays	ray_for_pixel(t_c_world camera, double px, double py)
 			point(world_x, world_y, -1));
 
 	r.origin = mult_matrix_tuple(inverse(camera.transform), point(0, 0, 0));
-	
+
 	r.direction = normalize(subtracting_point(pixel, r.origin));
 	return (r);
 }
 
-t_canvas	render_img(t_c_world c, t_world w)
+void	render_img(t_c_world c, t_world w)
 {
-	t_canvas	image;
 	t_color		color;
+	t_color		c_d;
 	t_rays		r;
 	int			x;
 	int			y;
 
-	image.width = c.hsize;
-	image.height = c.vsize;
-	// image = canvas(c.hsize, camera.vsize);
 	y = -1;
 	while (++y < c.vsize - 1)
 	{
@@ -118,10 +132,9 @@ t_canvas	render_img(t_c_world c, t_world w)
 		{
 			r = ray_for_pixel(c, x, y);
 			color = color_at(w, r);
-			if (x == 5 && y == 5)
-				printf("%lf, %lf, %lf\n", color.r, color.g, color.b);
-			// image = create_canvas(image, x, y, color);
+			// c_d = rgb_to_double(color);
+			// printf("%lf, %lf, %lf\n", color.r, color.g, color.b);
+			img_pix_put(w.data, (int)x, (int)y, set_color(color));
 		}
 	}
-	return (image);
 }

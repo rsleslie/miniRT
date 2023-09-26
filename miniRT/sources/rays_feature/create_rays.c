@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:25:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/22 17:24:34 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/25 21:10:06 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ double	discriminant(double a, double b, double c)
 	return (d);
 }
 
-t_xs intesections(t_objects *rt, t_rays r)
+t_xs intersections(t_objects *rt, t_rays r)
 {
 	t_xs	order;
 	t_xs	xs;

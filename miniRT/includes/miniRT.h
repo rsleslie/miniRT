@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:33:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/25 13:40:44 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/25 21:02:52 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define PI 3.141593
 
 # include "../libft/libft.h"
+# include "struct.h"
 # include <math.h>
 # include "tuple.h"
 # include "matrices.h"

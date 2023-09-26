@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:05:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/10 18:42:53 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/25 22:19:53 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_c	create_camera(char **args)
 	}
 	camera.coordinates = get_coordenates(aux[1]);
 	camera.vector = get_vector(aux[2]);
-	camera.fov = ft_atoi(aux[3]);
+	camera.fov = ft_atoi(aux[3]) * (PI / 180.0);
 	ft_free_tab(aux);
 	return (camera);
 }
