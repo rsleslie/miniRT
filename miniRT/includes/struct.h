@@ -96,6 +96,10 @@ typedef struct s_pl
 	t_tuple	coordinates;
 	t_tuple	vector;
 	t_color	color;
+	t_matrices	inverse;
+	t_matrices	transpose;
+	t_matrices	m;
+	t_m			material;
 }	t_pl;
 
 typedef struct s_sp
@@ -164,8 +168,9 @@ typedef struct s_rays
 typedef struct s_intersection
 {
 	double		t;
-	t_sp		object;
-	t_sphere	s_world;
+	int			type;
+	t_sp		sp;
+	t_pl		pl;
 }	t_intersection;
 
 typedef struct s_xs
@@ -179,7 +184,9 @@ typedef struct s_xs
 typedef struct  s_comps
 {
     t_intersection  t;
+	int				type;
 	t_sp			sp;
+	t_pl			pl;
     t_sphere        object;
     t_tuple         point;
     t_tuple         eyev;

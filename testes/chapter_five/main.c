@@ -676,9 +676,6 @@ int putting_it(t_data *data)
     c = camera(w.data->canvas.height, w.data->canvas.width, w.rt->c.fov);
     c.transform = view_transform(w.rt->c.coordinates, w.rt->c.vector, vector(0, 1, 0));
     render_img(c, w);
-    
-   
-    
     mlx_put_image_to_window(w.data->mlx, w.data->win, w.data->img, 0, 0);
     return (0);
 }

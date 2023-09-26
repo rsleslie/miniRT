@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:08:28 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/25 22:42:15 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:57:34 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 t_world	        world(void);
 t_world	        default_world(void);
-t_xs	        intersect_world(t_sphere sp, t_rays r, t_xs xs);
-t_xs	        intersections_world(t_world w, t_rays r);
+// t_xs	        intersect_world(t_sphere sp, t_rays r, t_xs xs);
+// t_xs	        intersections_world(t_world w, t_rays r);
 t_xs	        order_xs(t_xs xs);
 t_intersection	intersection_world(double n, t_sphere s);
 t_comps	        prepare_computations(t_intersection i, t_rays r);
@@ -29,5 +29,7 @@ t_c_world	    camera(double hsize, double vsize, double field_of_view);
 t_rays	        ray_for_pixel(t_c_world camera, double px, double py);
 void            render_img(t_c_world c, t_world w);
 t_matrices	    view_transform_two(t_tuple from, t_tuple to, t_tuple up);
+//plane
+t_xs	        local_intersect(t_pl pl, t_rays r, t_xs xs);
 
 #endif

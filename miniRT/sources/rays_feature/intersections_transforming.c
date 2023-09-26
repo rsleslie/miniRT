@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 21:09:52 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/25 20:47:21 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:23:19 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_intersection	intersection(double n, t_sp s)
 	t_intersection	t;
 
 	t.t = n;
-	t.object = s;
+	t.sp = s;
 	return (t);
 }
 
@@ -31,30 +31,31 @@ t_intersection	intersection(double n, t_sp s)
 
 t_intersection	hit(t_xs xs)
 {
-	int				i;
-	t_intersection	x;
+	// int				i;
+	// t_intersection	x;
 	t_intersection	result;
 
-	i = 0;
-	result.t = -1;
-	while (i < xs.count)
-	{
-		if (xs.data[i].t > 0)
-		{
-			if (equal(result.t, -1))
-			{
-				result = xs.data[i];
-			}
-			else if (xs.data[i].t < result.t)
-				result = xs.data[i];
-		}
-		i++;
-	}
-	if (result.t <= 0)
-	{
-		x.t = -1; 
-		return (x);
-	}
+	// i = 0;
+	// result.t = -1;
+	// while (i < xs.count)
+	// {
+	// 	if (xs.data[i].t > 0)
+	// 	{
+	// 		if (equal(result.t, -1))
+	// 		{
+	// 			result = xs.data[i];
+	// 		}
+	// 		else if (xs.data[i].t < result.t)
+	// 			result = xs.data[i];
+	// 	}
+	// 	i++;
+	// }
+	// if (result.t <= 0)
+	// {
+	// 	result.t = -1; 
+	// 	return (result);
+	// }
+	result = xs.data[0];
 	return (result);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:47:57 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/25 20:02:55 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:23:36 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ t_pl	add_pl(char **str)
 	pl.coordinates = get_coordenates(str[1]);
 	pl.vector = get_vector(str[2]);
 	pl.color = color_obj(str[3]);
+
+	pl.m = id_matrix(create_matrices(4, 4), 1);
+	pl.inverse = inverse(pl.m);
+	pl.transpose = transpose(pl.inverse);
+	pl.material = material();
+	pl.material.color = rgb_to_double(pl.color);
 	return (pl);
 }
 
