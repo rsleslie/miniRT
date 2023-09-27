@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:47:57 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 12:59:30 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:36:49 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,15 @@ int	counter_obj(char *obj, char **args)
 
 t_sp	add_sp(char **str)
 {
-	t_sp	sp;
-	t_matrices scal;
-	
+	t_sp		sp;
+	t_matrices	scal;
+
 	sp.coordinates = get_coordenates(str[1]);
 	sp.diameter = ft_atof(str[2]);
 	sp.color = color_obj(str[3]);
 	sp.m = translation(sp.coordinates.x, sp.coordinates.y, sp.coordinates.y);
-	scal = scaling((double)(sp.diameter/2.0), (double)(sp.diameter/2.0), (double)(sp.diameter/2.0));
+	scal = scaling((double)(sp.diameter / 2.0),
+			(double)(sp.diameter / 2.0), (double)(sp.diameter / 2.0));
 	sp.m = mult_matrices(sp.m, scal);
 	sp.inverse = inverse(sp.m);
 	sp.transpose = transpose(sp.inverse);

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:03:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:46:41 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ t_tuple		get_vector(char *args);
 t_sp		add_sp(char **str);
 t_pl		add_pl(char **str);
 t_cy		add_cy(char **str);
+int	        loop_validation_coordinates(char **aux, int i);
+int	        aux_normalize_vector(char **aux);
 
 #endif

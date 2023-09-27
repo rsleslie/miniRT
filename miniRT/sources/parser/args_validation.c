@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:48:18 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:46:04 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,8 @@ int	validation_coordinates(char *str)
 	}
 	while (++i < ft_tab_len(aux))
 	{
-		j = -1;
-		while (++j < ft_strlen(aux[i]))
-		{
-			if (aux[i][j] == '-' || aux[i][j] == '+'
-			|| aux[i][j] == '.')
-				j++;
-			if (!ft_isdigit(aux[i][j]))
-			{
-				ft_free_tab(aux);
-				return (FALSE);
-			}
-		}
+		if (!loop_validation_coordinates(aux, i))
+			return (FALSE);
 	}
 	ft_free_tab(aux);
 	return (TRUE);
@@ -63,11 +53,8 @@ int	validation_normalize_vector(char *str)
 		}
 		else
 		{
-			if (!validation_range_int(ft_atoi(aux[0]), -1, 1))
-			{
-				ft_free_tab(aux);
+			if (!aux_normalize_vector(aux))
 				return (FALSE);
-			}
 		}
 	}
 	ft_free_tab(aux);

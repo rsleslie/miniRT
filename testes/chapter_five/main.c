@@ -659,6 +659,18 @@
 //     return (0);
 // }
 
+void    world_free(t_world *w)
+{
+    if (w->rt->sp != NULL)
+        free(w->rt->sp);
+    if (w->rt->cy != NULL)
+        free(w->rt->cy);
+    if (w->rt->pl != NULL)
+        free(w->rt->pl);
+    free(w->rt);
+    free(w);
+}
+
 int putting_it(t_data *data)
 { 
     t_world     *w;
@@ -676,7 +688,8 @@ int putting_it(t_data *data)
     c = camera(w->data->canvas.height, w->data->canvas.width, w->rt->c.fov);
     c.transform = view_transform(w->rt->c.coordinates, w->rt->c.vector, vector(0, 1, 0));
     render_img(c, w);
-    mlx_put_image_to_window(w->data->mlx, w->data->win, w->data->img, 0, 0);
+    world_free(w);
+    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
     return (0);
 }
 
@@ -685,8 +698,8 @@ void	test_print_sphere(void)
 	t_color		color;
 	t_data		data = (t_data){0};
     
-    data.canvas.height = 400;
-    data.canvas.width = 400;
+    data.canvas.height = 100;
+    data.canvas.width = 100;
 
 	color = get_color(1, 0.0, 0.0);
 	data.canvas = create_canvas(data.canvas, data.canvas.height, data.canvas.width, color);

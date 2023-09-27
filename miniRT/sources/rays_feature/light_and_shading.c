@@ -6,25 +6,11 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:54:30 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 13:12:51 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:29:08 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
-
-t_tuple	normal_at(t_sp s, t_tuple p)
-{
-	t_tuple	v;
-	t_tuple	object_point;
-	t_tuple	object_normal;
-	t_tuple	world_normal;
-
-	object_point = mult_matrix_tuple(s.inverse, p);
-	object_normal = subtracting_point(object_point, point(0, 0, 0));
-	world_normal = mult_matrix_tuple(s.transpose, object_normal);
-	world_normal.w = 0;
-	return (normalize(world_normal));
-}
 
 t_tuple	reflect(t_tuple in, t_tuple normal)
 {
@@ -57,41 +43,47 @@ t_m	material(void)
 	return (m);
 }
 
-t_color	lighting(t_m m, t_l light, t_tuple position, t_tuple eyev, t_tuple normalv, int in_shadow)
+typedef struct s_var_lighting
 {
 	t_color	effective_color;
 	t_tuple	lightv;
-	t_tuple	reflectv;
 	t_color	ambient;
 	t_color	diffuse;
 	t_color specular;
+	t_tuple	reflectv;
 	double	light_dot_normal;
 	double	reflect_dot_eye;
 	double	factor;
+	
+} t_var_lighting;
 
-	effective_color = hadamard_product(m.color, light.intensity);
-	lightv = normalize(subtracting_point(light.position, position));
-	ambient = color_scale(m.ambient, effective_color);
-	light_dot_normal = dot(lightv, normalv);
-	if (light_dot_normal < 0)
+t_color	lighting(t_m m, t_l light, t_comps comps, int in_shadow)
+{
+	t_var_lighting	l;
+
+	l.effective_color = hadamard_product(m.color, light.intensity);
+	l.lightv = normalize(subtracting_point(light.position, comps.point));
+	l.ambient = color_scale(m.ambient, l.effective_color);
+	l.light_dot_normal = dot(l.lightv, comps.normalv);
+	if (l.light_dot_normal < 0)
 	{
-		diffuse = get_color(0, 0, 0);
-		specular = get_color(0, 0, 0);
+		l.diffuse = get_color(0, 0, 0);
+		l.specular = get_color(0, 0, 0);
 	}
 	else
 	{
-		diffuse = color_scale((m.diffuse * light_dot_normal), effective_color);
-		reflectv = reflect(negate(lightv), normalv);
-		reflect_dot_eye = dot(reflectv, eyev);
-		if (reflect_dot_eye <= 0)
-			specular = get_color(0, 0, 0);
+		l.diffuse = color_scale((m.diffuse * l.light_dot_normal), l.effective_color);
+		l.reflectv = reflect(negate(l.lightv), comps.normalv);
+		l.reflect_dot_eye = dot(l.reflectv, comps.eyev);
+		if (l.reflect_dot_eye <= 0)
+			l.specular = get_color(0, 0, 0);
 		else
 		{
-			factor = pow(reflect_dot_eye, m.shininess);
-			specular = color_scale((m.specular * factor), light.intensity);
+			l.factor = pow(l.reflect_dot_eye, m.shininess);
+			l.specular = color_scale((m.specular * l.factor), light.intensity);
 		}
 	}
 	if (in_shadow)
-		return (ambient);
-	return (add_colors(add_colors(ambient, diffuse), specular));
+		return (l.ambient);
+	return (add_colors(add_colors(l.ambient, l.diffuse), l.specular));
 }

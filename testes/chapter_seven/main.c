@@ -14,7 +14,7 @@ void    creating_a_world(void)
     // }
 }
 
-void    the_default_world(void)
+void    the_word(void)
 {
     t_l         ligth;
     t_world     w;
@@ -29,7 +29,7 @@ void    the_default_world(void)
     s1.material.specular = 0.2;
     s2.transform = scaling(0.5, 0.5, 0.5);
 
-    w = default_world();
+    w = word();
     if(equal_tuple(w.ligth.position, ligth.position)
         && equal(w.ligth.color.r, ligth.color.r)
         && equal(w.ligth.color.g, ligth.color.g)
@@ -47,7 +47,7 @@ void     Intersect_a_world_with_a_ray()
     t_rays  r;
     t_xs    xs;
 
-    w = default_world();
+    w = word();
     r = ray(point(0, 0, -5), vector(0, 0, 1));
     xs = intersections_world(w, r);
     if (equal(xs.count, 4) && equal(xs.data[0].t, 4)
@@ -122,7 +122,7 @@ void shading_an_intersection(void)
     t_c_world         c;
     t_comps         comps;
 
-    w = default_world();
+    w = word();
     r = ray(point(0, 0, -5), vector(0, 0, 1));
     i = intersection_world(4, w.s1);
     comps = prepare_computations(i, r);
@@ -141,7 +141,7 @@ void shading_an_intersection_from_inside(void)
     t_c_world         c;
     t_comps         comps;
 
-    w = default_world();
+    w = word();
     w.ligth = point_light(point(0, 0.25, 0), get_color(1, 1, 1));
 
     r = ray(point(0, 0, 0), vector(0, 0, 1));
@@ -160,7 +160,7 @@ void the_color_when_a_ray_misses(void)
     t_rays  r;
     t_c_world c;
 
-    w = default_world();
+    w = word();
     r = ray(point(0, 0, -5), vector(0, 1, 0));
     c.color = color_at(w, r);
      if (equal(c.color.r, 0) && equal(c.color.g, 0) && equal(c.color.b, 0))
@@ -175,7 +175,7 @@ void the_color_when_a_ray_hits(void)
     t_rays  r;
     t_c_world c;
 
-    w = default_world();
+    w = word();
     r = ray(point(0, 0, -5), vector(0, 0, 1));
     c.color = color_at(w, r);
     if (equal(c.color.r, 0.38066) && equal(c.color.g, 0.47583) && equal(c.color.b, 0.2855))
@@ -192,7 +192,7 @@ void    the_color_with_an_intersection_behind_the_ray(void)
     t_rays      r;
     t_c_world     c;
 
-    w = default_world();
+    w = word();
     w.s1.material.ambient = 1;
     w.s2.material.ambient = 1;
     outer = w.s1;
@@ -373,7 +373,7 @@ void    rendering_a_world_with_a_camera(void)
     t_tuple     up;
     t_canvas    image;
 
-    w = default_world();
+    w = word();
     c = camera(11, 11, PI/2);
     from = point(0, 0, -5);
     to = point(0, 0, 0);
@@ -385,7 +385,7 @@ void    rendering_a_world_with_a_camera(void)
 int main()
 {
     // creating_a_world();
-    // the_default_world();
+    // the_word();
     // Intersect_a_world_with_a_ray();
     // precomputing_intersection_test();
     // hit_outside();

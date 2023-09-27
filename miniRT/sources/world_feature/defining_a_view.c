@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:58:46 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 15:31:36 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:27:13 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,33 +62,6 @@ t_matrices	view_transform(t_tuple from, t_tuple to, t_tuple up)
 	orientation = orientation_matrices(left, forward, true_up);
 	orientation = mult_matrices(orientation, translation(-from.x, -from.y, -from.z));
 	return (orientation);
-}
-
-t_c_world	camera(double hsize, double vsize, double field_of_view)
-{
-	t_c_world	c;
-	double		half_view;
-	double		aspect;
-
-	c.field_of_view = field_of_view;
-	c.vsize = vsize;
-	c.hsize = hsize;
-	
-	half_view = tan(c.field_of_view / 2);
-	aspect = c.hsize / c.vsize;
-	if (aspect >= 1)
-	{
-		c.half_width = half_view;
-		c.half_height = half_view / aspect;
-	}
-	else
-	{
-		c.half_width = half_view * aspect;
-		c.half_height = half_view;
-	}
-	c.pixel_size = (c.half_width * 2.0) / c.hsize;
-	c.transform = id_matrix(create_matrices(4, 4), 1);
-	return (c);
 }
 
 t_rays	ray_for_pixel(t_c_world camera, double px, double py)

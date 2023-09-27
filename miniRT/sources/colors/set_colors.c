@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 21:37:34 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/08/30 21:39:18 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:34:33 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,12 @@ int	set_color(t_color color)
 	return (0xFF << 24 | r << 16 | g << 8 | b);
 }
 
-t_color rgb_to_double(t_color color) 
+t_color	rgb_to_double(t_color color)
 {
-	t_color color_d;
+	t_color	color_d;
 
-    color_d.r = color.r / 255.0;
-    color_d.g = color.g / 255.0;
-    color_d.b = color.b / 255.0;
-
-    // Retorna os valores de ponto flutuante
-    return (color_d);
+	color_d.r = color.r / 255.0;
+	color_d.g = color.g / 255.0;
+	color_d.b = color.b / 255.0;
+	return (color_d);
 }

@@ -217,7 +217,7 @@ void    lighting_with_the_surface_in_shadow(void)
 
 void an_object_is_behind_the_light_1(void)
 {
-    t_world w = default_world();
+    t_world w = word();
     t_tuple p = point(-20, 20, -20);
     if (!is_shadowed_teste(w, p))
         printf("1 - OK\n");
@@ -227,7 +227,7 @@ void an_object_is_behind_the_light_1(void)
 
 void an_object_is_behind_the_light_2(void)
 {
-    t_world w = default_world();
+    t_world w = word();
     t_tuple p = point(-2, 2, -2);
     if (!is_shadowed_teste(w, p))
         printf("2 = OK\n");
@@ -243,7 +243,7 @@ void is_given_an_intersection_in_shadow()
     t_comps comps;
     t_color c;
 
-    w = default_world();
+    w = word();
     w.ligth = point_light(point(0, 0, -10), get_color(1, 1, 1));
     r = ray(point(0, 0, 5), vector(0, 0, 1));
     i = intersection_test(4, w.s2);

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:16:23 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/09 21:06:47 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:54:12 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@ int	bytes_file(char *file)
 	return (byte);
 }
 
-char	**read_file(char *file)
+char	*file_content(char *file)
 {
+	char	*join;
 	int		fd;
 	char	*buffer;
-	char	*join;
-	char	**split_line;
 
 	join = NULL;
 	fd = open(file, O_RDONLY);
@@ -53,6 +52,15 @@ char	**read_file(char *file)
 		free(buffer);
 	}
 	close(fd);
+	return (join);
+}
+
+char	**read_file(char *file)
+{
+	char	*join;
+	char	**split_line;
+
+	join = file_content(file);
 	split_line = ft_split(join, '\n');
 	free(join);
 	if (ft_tab_len(split_line) < 3)
