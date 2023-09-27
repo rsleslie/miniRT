@@ -83,6 +83,10 @@ typedef struct s_cy
 	double	diameter;
 	double	heigth;
 	t_color	color;
+	t_matrices	inverse;
+	t_matrices	transpose;
+	t_matrices	m;
+	t_m			material;
 }	t_cy;
 
 typedef struct s_pl

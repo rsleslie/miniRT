@@ -659,6 +659,31 @@
 //     return (0);
 // }
 
+int	close_esc(int keysym, t_data *data)
+{
+	if (keysym == XK_Escape)
+	{
+		mlx_destroy_image(data->mlx, data->img);
+		mlx_destroy_window(data->mlx, data->win);
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+
+		exit(0);
+	}
+	return (0);
+}
+
+int	close_x(t_data *data)
+{
+	mlx_destroy_image(data->mlx, data->img);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	exit(0);
+	return (0);
+}
+
+
 void    world_free(t_world *w)
 {
     if (w->rt->sp != NULL)
@@ -698,8 +723,8 @@ void	test_print_sphere(void)
 	t_color		color;
 	t_data		data = (t_data){0};
     
-    data.canvas.height = 100;
-    data.canvas.width = 100;
+    data.canvas.height = 800;
+    data.canvas.width = 800;
 
 	color = get_color(1, 0.0, 0.0);
 	data.canvas = create_canvas(data.canvas, data.canvas.height, data.canvas.width, color);
@@ -713,6 +738,8 @@ void	test_print_sphere(void)
 	data.addr = mlx_get_data_addr(data.img, &data.bpp, &data.line_len, &data.endian);
     mlx_loop_hook(data.mlx, &putting_it, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, &handle_keypress, &data);
+    mlx_hook(data.win, KeyPress, KeyPressMask, close_esc, &data);
+	mlx_hook(data.win, DestroyNotify, NoEventMask, close_x, &data);
     mlx_loop(data.mlx);
 	mlx_destroy_image(data.mlx, data.img);
 	mlx_destroy_display(data.mlx);
