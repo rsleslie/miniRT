@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:58:46 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/26 11:36:58 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:31:36 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ t_rays	ray_for_pixel(t_c_world camera, double px, double py)
 	return (r);
 }
 
-void	render_img(t_c_world c, t_world w)
+void	render_img(t_c_world c, t_world *w)
 {
 	t_color		color;
 	t_color		c_d;
@@ -133,8 +133,7 @@ void	render_img(t_c_world c, t_world w)
 			r = ray_for_pixel(c, x, y);
 			color = color_at(w, r);
 			c_d = rgb_to_double(color);
-			// printf("%lf, %lf, %lf\n", color.r, color.g, color.b);
-			img_pix_put(w.data, (int)x, (int)y, set_color(c_d));
+			img_pix_put(w->data, (int)x, (int)y, set_color(c_d));
 		}
 	}
 }

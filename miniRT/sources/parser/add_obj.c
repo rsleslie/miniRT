@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:47:57 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/26 18:31:51 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:59:30 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ t_pl	add_pl(char **str)
 	pl.coordinates = get_coordenates(str[1]);
 	pl.vector = get_vector(str[2]);
 	pl.color = color_obj(str[3]);
-	
+
 	//ordem da multiplação
 	// S R T
-	// translation * rotation * scaling
+	//cy.m = translation * rotation * scaling
 	//pl.m = translation * rotate
-	
+
+	// pl.m = mult_matrices(translation(pl.coordinates.x, pl.coordinates.y,pl.coordinates.z),
+	// 	calculate_rotation_matrices(pl.coordinates));
 	pl.m = id_matrix(create_matrices(4, 4), 1);
 	pl.inverse = inverse(pl.m);
 	pl.transpose = transpose(pl.inverse);

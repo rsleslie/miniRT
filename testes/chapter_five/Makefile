@@ -8,6 +8,7 @@ SRCS += ../../miniRT/sources/tuple_feature/tuples.c
 SRCS += ../../miniRT/sources/tuple_feature/putting_it_together.c
 SRCS += ../../miniRT/sources/matrices_feature/create_matrices.c
 SRCS += ../../miniRT/sources/matrices_feature/determinants.c
+SRCS += ../../miniRT/sources/matrices_feature/calculate_rotate.c
 SRCS += ../../miniRT/sources/matrices_feature/matrix_operation.c
 SRCS += ../../miniRT/sources/rays_feature/create_rays.c
 SRCS += ../../miniRT/sources/rays_feature/intersections_transforming.c

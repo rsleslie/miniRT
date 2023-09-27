@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:01:47 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/26 21:16:39 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:37:31 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_world	world(void)
 	w.s1.material.diffuse = (double)0.7;
 	w.s1.material.specular = (double)0.2;
 	w.s2 = sphere(0.5);
+	w.s2.transform = translation(0, 0, 10);
 	return (w);
 }
 
@@ -171,86 +172,103 @@ t_tuple	normal_at_pl(t_pl pl, t_tuple p)
 	world_normal.w = 0;
 	return (normalize(world_normal));
 }
-t_xs	teste_local_intersect(t_pl pl, t_rays r, t_xs xs)
-{
-	t_tuple	sphere_to_ray;
 
-	if (fabs(r.direction.y) < EPSILON)
-		return (xs);
-	else
-	{
-		xs.count += 1;
-		xs.data[xs.count - 1].t = (-r.origin.y) / r.direction.y;
-		xs.data[xs.count -1].pl = pl;
-		xs.data[xs.count -1].type = 3;
-	}
-	return (xs);
+t_xs    *test_order_xs(t_xs *xs)
+{
+    t_xs    *order = malloc(sizeof(t_xs));
+    int        counter;
+    int        i;
+    int        j;
+
+    order->count = xs->count;
+    i = -1;
+    counter = 0;
+    while (++i < xs->count)
+    {
+        j = 0;
+        counter = 0;
+        while(j < xs->count)
+        {
+            if (xs->data[i].t > xs->data[j].t)
+                counter++;
+            j++;
+        }    
+        order->data[counter] = xs->data[i];
+    }
+    free(xs);
+    return (order);
 }
 
-t_xs	teste_intersect(t_sp sp, t_rays r, t_xs xs)
+t_xs    *teste_local_intersect(t_pl pl, t_rays r, t_xs *xs)
 {
-	t_tuple	sphere_to_ray;
-	float	a;
-	float	b;
-	float	c;
+    t_tuple    sphere_to_ray;
 
-	r = transform(r, sp.inverse);
-	sphere_to_ray = subtracting_tuple(r.origin, point(0, 0, 0));
-	a = dot(r.direction, r.direction);
-	b = 2 * dot(r.direction, sphere_to_ray);
-	c = dot(sphere_to_ray, sphere_to_ray) - 1;
-	if (discriminant(a, b, c) < 0)
-		return (xs);
-	else
-	{
-		xs.count += 2;
-		xs.data[xs.count - 1].t = ((-b - sqrt(discriminant(a, b, c))) / (2 * a));
-		xs.data[xs.count - 2].t = ((-b + sqrt(discriminant(a, b, c))) / (2 * a));
-		xs.data[xs.count -1].type = 1;
-		xs.data[xs.count  - 2].type = 1;
-		xs.data[xs.count -1].sp = sp;
-		xs.data[xs.count  - 2].sp = sp;
-	}
-	return (xs);
+    if (fabs(r.direction.y) < EPSILON)
+        return (xs);
+    else
+    {
+        xs->count += 1;
+        xs->data[xs->count - 1].t = (-r.origin.y) / r.direction.y;
+        xs->data[xs->count -1].pl = pl;
+        xs->data[xs->count -1].type = 3;
+    }
+    return (xs);
 }
 
-t_xs teste_intersections(t_objects *rt, t_rays r)
+t_xs    *teste_intersect(t_sp sp, t_rays r, t_xs *xs)
 {
-	t_xs	order;
-	t_xs	xs;
-	int		i;
+    t_tuple    sphere_to_ray;
+    float    a;
+    float    b;
+    float    c;
 
-	i = -1;
-	xs.count = 0;
-	while (++i < rt->n_sp)
-		xs = teste_intersect(rt->sp[i], r, xs);
-	i = -1;
-	while (++i < rt->n_pl)
-		xs = teste_local_intersect(rt->pl[i], r, xs);
-	xs = order_xs(xs);
-	return (xs);
+    r = transform(r, sp.inverse);
+    sphere_to_ray = subtracting_tuple(r.origin, point(0, 0, 0));
+    a = dot(r.direction, r.direction);
+    b = 2 * dot(r.direction, sphere_to_ray);
+    c = dot(sphere_to_ray, sphere_to_ray) - 1;
+    if (discriminant(a, b, c) < 0)
+        return (xs);
+    else
+    {
+        xs->count += 2;
+        xs->data[xs->count - 1].t = ((-b - sqrt(discriminant(a, b, c))) / (2 * a));
+        xs->data[xs->count - 2].t = ((-b + sqrt(discriminant(a, b, c))) / (2 * a));
+        xs->data[xs->count -1].type = 1;
+        xs->data[xs->count  - 2].type = 1;
+        xs->data[xs->count -1].sp = sp;
+        xs->data[xs->count  - 2].sp = sp;
+    }
+    return (xs);
 }
-int is_shadowed(t_world w, t_tuple p)
-{
-    t_tuple v;
-    t_tuple direction;
-    double distance;
-    t_rays  r;
-    t_xs 	xs;
-    t_intersection i;
 
-    v = subtracting_tuple(w.ligth.position, p);
-    distance = magnitude(v);
-    direction = normalize(v);
-    r = ray(p, direction);
-	write(1, "foda--se\n", 9);
+t_xs *test_intersections(t_objects *rt, t_rays r, t_xs *xs)
+{
+    t_xs    *order;
+    int        i;
+
+    i = -1;
+    xs->count = 0;
+    while (++i < rt->n_sp)
+        xs = teste_intersect(rt->sp[i], r, xs);
+    i = -1;
+    while (++i < rt->n_pl)
+        xs = teste_local_intersect(rt->pl[i], r, xs);
+    order = test_order_xs(xs);
+    return (order);
+}
+
+t_intersection	teste_inter(t_world *w, t_rays r)
+{
+	t_intersection 	i;
+	t_xs			xs;
+	int				j;
 	
-   	xs = intersections(w.rt, r);
-	
-    if (xs.count != 0)
-        return (TRUE);
-	// i = hit(xs);
-	int j = -1;
+	i.t = -1;
+	xs = intersections(w->rt, r);
+	if (equal(xs.count, 0))
+		return (i);
+	j = -1;
 	while (++j < xs.count)
 	{
 		if (xs.data[j].t > 0)
@@ -261,9 +279,27 @@ int is_shadowed(t_world w, t_tuple p)
 		else
 			i.t = -1;
 	}
-    if (xs.count != 0 && i.t < distance)
+	return (i);
+}
+
+int is_shadowed(t_world *w, t_tuple p)
+{
+    t_tuple v;
+    t_tuple direction;
+    double distance;
+    t_rays  r;
+    t_intersection i;
+
+    v = subtracting_tuple(w->ligth.position, p);
+    distance = magnitude(v);
+    direction = normalize(v);
+    r = ray(p, direction);
+    i = teste_inter(w, r);
+	if (i.t == -1)
+        return (FALSE);  
+    if (i.t < distance)
         return (TRUE);
-    else
+    else     
         return (FALSE);
 }
 
@@ -295,67 +331,33 @@ t_comps	prepare_computations(t_intersection i, t_rays r)
 	return (comps);
 }
 
-t_color	shade_hit(t_world w, t_comps comps)
+t_color	shade_hit(t_world *w, t_comps comps)
 {
 	t_color color;
 	int		s;
 	
-	// s = is_shadowed(w, comps.over_point);
+	s = is_shadowed(w, comps.over_point);
 	if (comps.type == 1)
 	{
-		color = lighting(comps.sp.material, w.ligth, comps.point,
-			comps.eyev, comps.normalv, FALSE);
-		
+		color = lighting(comps.sp.material, w->ligth, comps.point,
+			comps.eyev, comps.normalv, s);
 	}
 	else if (comps.type == 3)
 	{
-		color = lighting(comps.pl.material, w.ligth, comps.point,
-			comps.eyev, comps.normalv, FALSE);
+		color = lighting(comps.pl.material, w->ligth, comps.point,
+			comps.eyev, comps.normalv, s);
 	}
 	return (color);	
 }
 
-t_intersection	hit_two(t_xs xs)
+t_color	color_at(t_world *w, t_rays r)
 {
-	t_intersection	i;
-	int j;
-	
-	j= -1;
-	while (++j < xs.count)
-	{
-		if (xs.data[j].t > 0)
-		{
-			i = xs.data[j];
-			break ;
-		}
-		else
-			i.t = -1;
-	}
-	return (i);
-}
-
-t_color	color_at(t_world w, t_rays r)
-{
-	t_xs			xs;
 	t_comps			comps;
 	t_color			result_color;
 	t_intersection	i;
 	int j;
 	
-	xs = intersections(w.rt, r);
-	if (equal(xs.count, 0))
-		return (get_color(0, 0, 0));
-	j = -1;
-	while (++j < xs.count)
-	{
-		if (xs.data[j].t > 0)
-		{
-			i = xs.data[j];
-			break ;
-		}
-		else
-			i.t = -1;
-	}
+	i = teste_inter(w, r);
 	if (equal(i.t, -1))
 		return (get_color(0, 0, 0));
 	comps = prepare_computations(i, r);

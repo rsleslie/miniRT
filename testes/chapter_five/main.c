@@ -661,22 +661,22 @@
 
 int putting_it(t_data *data)
 { 
-    t_world     w;
+    t_world     *w;
     t_c_world   c;
 
-    w = (t_world){0};
-    w.rt = (t_objects *)malloc(sizeof(t_objects));
-    w.rt->sp = NULL;
-    w.rt->cy = NULL;
-    w.rt->pl = NULL;
-    if (!parser(&w.rt, "arquivo3/arq1.rt"))
+    w = (t_world *)malloc(sizeof(t_world));
+    w->rt = (t_objects *)malloc(sizeof(t_objects));
+    w->rt->sp = NULL;
+    w->rt->cy = NULL;
+    w->rt->pl = NULL;
+    if (!parser(&w->rt, "arquivo3/arq1.rt"))
         printf("deu ruim!");
-    w.data = data;
-    w.ligth = point_light(w.rt->l.coordinates, color_scale(w.rt->l.brightness, w.rt->l.color));
-    c = camera(w.data->canvas.height, w.data->canvas.width, w.rt->c.fov);
-    c.transform = view_transform(w.rt->c.coordinates, w.rt->c.vector, vector(0, 1, 0));
+    w->data = data;
+    w->ligth = point_light(w->rt->l.coordinates, color_scale(w->rt->l.brightness, w->rt->l.color));
+    c = camera(w->data->canvas.height, w->data->canvas.width, w->rt->c.fov);
+    c.transform = view_transform(w->rt->c.coordinates, w->rt->c.vector, vector(0, 1, 0));
     render_img(c, w);
-    mlx_put_image_to_window(w.data->mlx, w.data->win, w.data->img, 0, 0);
+    mlx_put_image_to_window(w->data->mlx, w->data->win, w->data->img, 0, 0);
     return (0);
 }
 
