@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:59:53 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/22 17:17:59 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:48:08 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int	equal(double a, double b)
 	return (FALSE);
 }
 
-int equal_tuple(t_tuple t1, t_tuple t2)
+int	equal_tuple(t_tuple t1, t_tuple t2)
 {
-    if (equal(t1.x, t2.x) && equal(t1.y, t2.y)
-        && equal(t1.z, t2.z) && equal(t1.w, t2.w))
-        return (TRUE);
-    return (FALSE);
+	if (equal(t1.x, t2.x) && equal(t1.y, t2.y)
+		&& equal(t1.z, t2.z) && equal(t1.w, t2.w))
+		return (TRUE);
+	return (FALSE);
 }

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:20:10 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 17:06:14 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:50:13 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_tuple	normal_at_world(t_sp sp, t_tuple p)
 	return (normalize(world_normal));
 }
 
-t_tuple local_normal_at(t_pl pl, t_tuple local_point)
+t_tuple	local_normal_at(t_pl pl, t_tuple local_point)
 {
 	(void)pl;
 	(void)local_point;

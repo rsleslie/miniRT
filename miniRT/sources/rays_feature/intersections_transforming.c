@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 21:09:52 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 17:05:36 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:51:54 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,171 @@ t_intersection	intersection(double n, t_sp s)
 	return (t);
 }
 
+
+
+//------------------------------------------------------------------------------
+
+
+t_xs    *test_order_xs(t_xs *xs)
+{
+    t_xs    *order = malloc(sizeof(t_xs));
+    int        counter;
+    int        i;
+    int        j;
+
+    order->count = xs->count;
+    i = -1;
+    counter = 0;
+    while (++i < xs->count)
+    {
+        j = 0;
+        counter = 0;
+        while(j < xs->count)
+        {
+            if (xs->data[i].t > xs->data[j].t)
+                counter++;
+            j++;
+        }    
+        order->data[counter] = xs->data[i];
+    }
+    free(xs);
+    return (order);
+}
+
+t_xs    *teste_local_intersect(t_pl pl, t_rays r, t_xs *xs)
+{
+    t_tuple    sphere_to_ray;
+
+    if (fabs(r.direction.y) < EPSILON)
+        return (xs);
+    else
+    {
+        xs->count += 1;
+        xs->data[xs->count - 1].t = (-r.origin.y) / r.direction.y;
+        xs->data[xs->count -1].pl = pl;
+        xs->data[xs->count -1].type = 3;
+    }
+    return (xs);
+}
+
+
+t_xs    *teste_intersect(t_sp sp, t_rays r, t_xs *xs)
+{
+    t_tuple    sphere_to_ray;
+    float    a;
+    float    b;
+    float    c;
+
+    r = transform(r, sp.inverse);
+    sphere_to_ray = subtracting_tuple(r.origin, point(0, 0, 0));
+    a = dot(r.direction, r.direction);
+    b = 2 * dot(r.direction, sphere_to_ray);
+    c = dot(sphere_to_ray, sphere_to_ray) - 1;
+    if (discriminant(a, b, c) < 0)
+        return (xs);
+    else
+    {
+        xs->count += 2;
+        xs->data[xs->count - 1].t = ((-b - sqrt(discriminant(a, b, c))) / (2 * a));
+        xs->data[xs->count - 2].t = ((-b + sqrt(discriminant(a, b, c))) / (2 * a));
+        xs->data[xs->count -1].type = 1;
+        xs->data[xs->count  - 2].type = 1;
+        xs->data[xs->count -1].sp = sp;
+        xs->data[xs->count  - 2].sp = sp;
+    }
+    return (xs);
+}
+
+t_xs *test_intersections(t_objects *rt, t_rays r, t_xs *xs)
+{
+    t_xs    *order;
+    int        i;
+
+    i = -1;
+    xs->count = 0;
+    while (++i < rt->n_sp)
+        xs = teste_intersect(rt->sp[i], r, xs);
+    i = -1;
+    while (++i < rt->n_pl)
+        xs = teste_local_intersect(rt->pl[i], r, xs);
+    order = test_order_xs(xs);
+    return (order);
+}
+
+// int is_shadowed(t_world w, t_tuple p)
+// {
+//     t_tuple v;
+//     t_tuple direction;
+//     double distance;
+//     t_rays  r;
+//     t_xs     *xs = malloc(sizeof(t_xs));
+//     t_intersection i;
+
+//     v = subtracting_tuple(w.ligth.position, p);
+//     distance = magnitude(v);
+//     direction = normalize(v);
+//     r = ray(p, direction);
+//     write(1, "foda--se\n", 9);
+    
+//        xs = test_intersections(w.rt, r, xs);
+    
+//     if (xs->count != 0)
+//         return (TRUE);
+//     i = hit(*xs);
+//     int j = -1;
+//     while (++j < xs->count)
+//     {
+//         if (xs->data[j].t > 0)
+//         {
+//             i = xs->data[j];
+//             break ;
+//         }
+//         else
+//             i.t = -1;
+//     }
+//     free(xs);    
+//     if (i.t < distance)
+//         return (TRUE);
+//     else     
+//         return (FALSE);
+// }
+
+
+
+//------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 t_intersection	hit(t_world *w, t_rays r)
 {
 	t_intersection	i;
-	t_xs			xs;
+	// t_xs			xs;
 	int				j;
+	t_xs     *xs = malloc(sizeof(t_xs));
 
 	i.t = -1;
-	xs = intersections(w->rt, r);
-	if (equal(xs.count, 0))
+	// xs = intersections(w->rt, r);
+	xs = test_intersections(w->rt, r, xs);
+	if (xs->count == 0)
 		return (i);
 	j = -1;
-	while (++j < xs.count)
+	while (++j < xs->count)
 	{
-		if (xs.data[j].t > 0)
+		if (xs->data && xs->data[j].t > 0)
 		{
-			i = xs.data[j];
+			i = xs->data[j];
 			break ;
 		}
 		else
 			i.t = -1;
 	}
+    free(xs);
 	return (i);
 }
 

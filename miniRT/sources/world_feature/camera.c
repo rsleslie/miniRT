@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:27:21 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 16:27:33 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:56:10 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_c_world	camera(double hsize, double vsize, double field_of_view)
 	c.field_of_view = field_of_view;
 	c.vsize = vsize;
 	c.hsize = hsize;
-	
 	half_view = tan(c.field_of_view / 2);
 	aspect = c.hsize / c.vsize;
 	if (aspect >= 1)

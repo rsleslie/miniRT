@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:57:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/25 21:03:57 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:47:24 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ t_tuple		div_tuple(t_tuple t1, double n);
 t_tuple		mult_tuple(t_tuple t1, double n);
 t_tuple		normalize(t_tuple tuple);
 t_tuple		cross(t_tuple a, t_tuple b);
-t_env		environment(t_tuple v1, t_tuple v2);
-t_project	projectile(t_tuple p, t_tuple v);
-t_project	tick(t_env env, t_project proj);
 int 		equal_tuple(t_tuple t1, t_tuple t2);
 
 #endif

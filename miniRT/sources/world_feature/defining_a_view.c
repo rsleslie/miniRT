@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:58:46 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 16:27:13 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:53:27 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_matrices	orientation_matrices(t_tuple left, t_tuple forward, t_tuple true_up)
 {
-	t_matrices m;
+	t_matrices	m;
 
 	m = create_matrices(4, 4);
 	m.matrices[0][0] = left.x;
@@ -32,7 +32,7 @@ t_matrices	orientation_matrices(t_tuple left, t_tuple forward, t_tuple true_up)
 
 t_matrices	view_transform_two(t_tuple from, t_tuple to, t_tuple up)
 {
-	t_tuple 	forward;
+	t_tuple		forward;
 	t_tuple		left;
 	t_tuple		true_up;
 	t_matrices	orientation;
@@ -43,13 +43,14 @@ t_matrices	view_transform_two(t_tuple from, t_tuple to, t_tuple up)
 	left = cross(forward, upn);
 	true_up = cross(left, forward);
 	orientation = orientation_matrices(left, forward, true_up);
-	orientation = mult_matrices(orientation, translation(-from.x, -from.y, -from.z));
+	orientation = mult_matrices(orientation,
+			translation(-from.x, -from.y, -from.z));
 	return (orientation);
 }
 
 t_matrices	view_transform(t_tuple from, t_tuple to, t_tuple up)
 {
-	t_tuple 	forward;
+	t_tuple		forward;
 	t_tuple		left;
 	t_tuple		true_up;
 	t_matrices	orientation;
@@ -60,31 +61,23 @@ t_matrices	view_transform(t_tuple from, t_tuple to, t_tuple up)
 	left = cross(forward, upn);
 	true_up = cross(left, forward);
 	orientation = orientation_matrices(left, forward, true_up);
-	orientation = mult_matrices(orientation, translation(-from.x, -from.y, -from.z));
+	orientation = mult_matrices(orientation,
+			translation(-from.x, -from.y, -from.z));
 	return (orientation);
 }
 
 t_rays	ray_for_pixel(t_c_world camera, double px, double py)
 {
-	double	xoffset;
-	double	yoffset;
 	double	world_x;
 	double	world_y;
-	
 	t_rays	r;
 	t_tuple	pixel;
-	
-	xoffset = (px + 0.5) * camera.pixel_size;
-	yoffset = (py + 0.5) * camera.pixel_size;
 
-	world_x = camera.half_width - xoffset;
-	world_y = camera.half_height - yoffset;
-
+	world_x = camera.half_width - ((px + 0.5) * camera.pixel_size);
+	world_y = camera.half_height - ((py + 0.5) * camera.pixel_size);
 	pixel = mult_matrix_tuple(inverse(camera.transform),
 			point(world_x, world_y, -1));
-
 	r.origin = mult_matrix_tuple(inverse(camera.transform), point(0, 0, 0));
-
 	r.direction = normalize(subtracting_point(pixel, r.origin));
 	return (r);
 }

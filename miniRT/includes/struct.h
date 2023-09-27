@@ -9,12 +9,6 @@ typedef struct s_tuple
 	double	w;
 }	t_tuple;
 
-typedef struct t_project
-{
-	t_tuple position;
-	t_tuple velocity;
-}	t_project;
-
 typedef struct s_env
 {
 	t_tuple gravity;
@@ -194,6 +188,19 @@ typedef struct  s_comps
     int             inside;
 	t_tuple			over_point;
 }   t_comps;
+
+typedef struct s_var_lighting
+{
+	t_color	effective_color;
+	t_tuple	lightv;
+	t_color	ambient;
+	t_color	diffuse;
+	t_color	specular;
+	t_tuple	reflectv;
+	double	light_dot_normal;
+	double	reflect_dot_eye;
+	double	factor;
+}	t_var_lighting;
 
 typedef struct s_c_world
 {
