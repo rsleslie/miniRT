@@ -685,8 +685,8 @@ void	test_print_sphere(void)
 	t_color		color;
 	t_data		data = (t_data){0};
     
-    data.canvas.height = 800;
-    data.canvas.width = 800;
+    data.canvas.height = 400;
+    data.canvas.width = 400;
 
 	color = get_color(1, 0.0, 0.0);
 	data.canvas = create_canvas(data.canvas, data.canvas.height, data.canvas.width, color);

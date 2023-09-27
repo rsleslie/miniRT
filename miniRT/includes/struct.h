@@ -192,6 +192,7 @@ typedef struct  s_comps
     t_tuple         eyev;
     t_tuple         normalv;
     int             inside;
+	t_tuple			over_point;
 }   t_comps;
 
 typedef struct s_c_world

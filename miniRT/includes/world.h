@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:08:28 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/26 15:57:34 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:47:57 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 t_world	        world(void);
 t_world	        default_world(void);
-// t_xs	        intersect_world(t_sphere sp, t_rays r, t_xs xs);
+// t_xs	        (t_sphere sp, t_rays r, t_xs xs);
 // t_xs	        intersections_world(t_world w, t_rays r);
 t_xs	        order_xs(t_xs xs);
 t_intersection	intersection_world(double n, t_sphere s);

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:54:30 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 15:46:24 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/26 19:57:20 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_m	material(void)
 	return (m);
 }
 
-t_color	lighting(t_m m, t_l light, t_tuple position, t_tuple eyev, t_tuple normalv)
+t_color	lighting(t_m m, t_l light, t_tuple position, t_tuple eyev, t_tuple normalv, int in_shadow)
 {
 	t_color	effective_color;
 	t_tuple	lightv;
@@ -80,7 +80,8 @@ t_color	lighting(t_m m, t_l light, t_tuple position, t_tuple eyev, t_tuple norma
 	}
 	else
 	{
-		diffuse = color_scale((m.diffuse * light_dot_normal), effective_color);
+		if (!in_shadow)
+			diffuse = color_scale((m.diffuse * light_dot_normal), effective_color);
 		reflectv = reflect(negate(lightv), normalv);
 		reflect_dot_eye = dot(reflectv, eyev);
 		if (reflect_dot_eye <= 0)
@@ -88,7 +89,8 @@ t_color	lighting(t_m m, t_l light, t_tuple position, t_tuple eyev, t_tuple norma
 		else
 		{
 			factor = pow(reflect_dot_eye, m.shininess);
-			specular = color_scale((m.specular * factor), light.intensity);
+			if (!in_shadow)
+				specular = color_scale((m.specular * factor), light.intensity);
 		}
 	}
 	return (add_colors(add_colors(ambient, diffuse), specular));

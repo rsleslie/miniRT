@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:01:47 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/26 17:46:25 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/26 21:16:39 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,101 @@ t_tuple	normal_at_pl(t_pl pl, t_tuple p)
 	world_normal.w = 0;
 	return (normalize(world_normal));
 }
+t_xs	teste_local_intersect(t_pl pl, t_rays r, t_xs xs)
+{
+	t_tuple	sphere_to_ray;
+
+	if (fabs(r.direction.y) < EPSILON)
+		return (xs);
+	else
+	{
+		xs.count += 1;
+		xs.data[xs.count - 1].t = (-r.origin.y) / r.direction.y;
+		xs.data[xs.count -1].pl = pl;
+		xs.data[xs.count -1].type = 3;
+	}
+	return (xs);
+}
+
+t_xs	teste_intersect(t_sp sp, t_rays r, t_xs xs)
+{
+	t_tuple	sphere_to_ray;
+	float	a;
+	float	b;
+	float	c;
+
+	r = transform(r, sp.inverse);
+	sphere_to_ray = subtracting_tuple(r.origin, point(0, 0, 0));
+	a = dot(r.direction, r.direction);
+	b = 2 * dot(r.direction, sphere_to_ray);
+	c = dot(sphere_to_ray, sphere_to_ray) - 1;
+	if (discriminant(a, b, c) < 0)
+		return (xs);
+	else
+	{
+		xs.count += 2;
+		xs.data[xs.count - 1].t = ((-b - sqrt(discriminant(a, b, c))) / (2 * a));
+		xs.data[xs.count - 2].t = ((-b + sqrt(discriminant(a, b, c))) / (2 * a));
+		xs.data[xs.count -1].type = 1;
+		xs.data[xs.count  - 2].type = 1;
+		xs.data[xs.count -1].sp = sp;
+		xs.data[xs.count  - 2].sp = sp;
+	}
+	return (xs);
+}
+
+t_xs teste_intersections(t_objects *rt, t_rays r)
+{
+	t_xs	order;
+	t_xs	xs;
+	int		i;
+
+	i = -1;
+	xs.count = 0;
+	while (++i < rt->n_sp)
+		xs = teste_intersect(rt->sp[i], r, xs);
+	i = -1;
+	while (++i < rt->n_pl)
+		xs = teste_local_intersect(rt->pl[i], r, xs);
+	xs = order_xs(xs);
+	return (xs);
+}
+int is_shadowed(t_world w, t_tuple p)
+{
+    t_tuple v;
+    t_tuple direction;
+    double distance;
+    t_rays  r;
+    t_xs 	xs;
+    t_intersection i;
+
+    v = subtracting_tuple(w.ligth.position, p);
+    distance = magnitude(v);
+    direction = normalize(v);
+    r = ray(p, direction);
+	write(1, "foda--se\n", 9);
+	
+   	xs = intersections(w.rt, r);
+	
+    if (xs.count != 0)
+        return (TRUE);
+	// i = hit(xs);
+	int j = -1;
+	while (++j < xs.count)
+	{
+		if (xs.data[j].t > 0)
+		{
+			i = xs.data[j];
+			break ;
+		}
+		else
+			i.t = -1;
+	}
+    if (xs.count != 0 && i.t < distance)
+        return (TRUE);
+    else
+        return (FALSE);
+}
 
 t_comps	prepare_computations(t_intersection i, t_rays r)
 {
@@ -195,17 +290,28 @@ t_comps	prepare_computations(t_intersection i, t_rays r)
 	}
 	else
 		comps.inside = FALSE;
+	comps.over_point = mult_tuple(comps.normalv, EPSILON);
+	comps.over_point = adding_tuple(comps.point, comps.over_point);
 	return (comps);
 }
 
 t_color	shade_hit(t_world w, t_comps comps)
 {
 	t_color color;
+	int		s;
 	
+	// s = is_shadowed(w, comps.over_point);
 	if (comps.type == 1)
-		color = lighting(comps.sp.material, w.ligth, comps.point, comps.eyev, comps.normalv);
+	{
+		color = lighting(comps.sp.material, w.ligth, comps.point,
+			comps.eyev, comps.normalv, FALSE);
+		
+	}
 	else if (comps.type == 3)
-		color = lighting(comps.pl.material, w.ligth, comps.point, comps.eyev, comps.normalv);
+	{
+		color = lighting(comps.pl.material, w.ligth, comps.point,
+			comps.eyev, comps.normalv, FALSE);
+	}
 	return (color);	
 }
 
@@ -254,6 +360,5 @@ t_color	color_at(t_world w, t_rays r)
 		return (get_color(0, 0, 0));
 	comps = prepare_computations(i, r);
 	result_color = shade_hit(w, comps);
-	// printf("%lf, %lf, %lf\n", result_color.r, result_color.g, result_color.b);
 	return (result_color);
 }

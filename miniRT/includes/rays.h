@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:26:40 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/26 15:47:56 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/26 19:57:38 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_tuple			normal_at(t_sp s, t_tuple p);
 t_tuple			reflect(t_tuple in, t_tuple normal);
 t_l				point_light(t_tuple	position, t_color intensity);
 t_m				material(void);
-t_color			lighting(t_m m, t_l light, t_tuple position, t_tuple eyev, t_tuple normalv);
+// t_color			lighting(t_m m, t_l light, t_tuple position, t_tuple eyev, t_tuple normalv);
+t_color	lighting(t_m m, t_l light, t_tuple position, t_tuple eyev, t_tuple normalv, int in_shadow);
 
 #endif
