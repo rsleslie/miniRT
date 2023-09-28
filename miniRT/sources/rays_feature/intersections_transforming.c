@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 21:09:52 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 18:51:54 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 22:01:28 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ t_intersection	intersection(double n, t_sp s)
 	t.sp = s;
 	return (t);
 }
-
-
-
-//------------------------------------------------------------------------------
 
 
 t_xs    *test_order_xs(t_xs *xs)
@@ -108,69 +104,20 @@ t_xs *test_intersections(t_objects *rt, t_rays r, t_xs *xs)
     i = -1;
     while (++i < rt->n_pl)
         xs = teste_local_intersect(rt->pl[i], r, xs);
+     i = -1;
+    while (++i < rt->n_cy)
+        xs = local_intersect_cyl(rt->cy[i], r, xs);
     order = test_order_xs(xs);
     return (order);
 }
 
-// int is_shadowed(t_world w, t_tuple p)
-// {
-//     t_tuple v;
-//     t_tuple direction;
-//     double distance;
-//     t_rays  r;
-//     t_xs     *xs = malloc(sizeof(t_xs));
-//     t_intersection i;
-
-//     v = subtracting_tuple(w.ligth.position, p);
-//     distance = magnitude(v);
-//     direction = normalize(v);
-//     r = ray(p, direction);
-//     write(1, "foda--se\n", 9);
-    
-//        xs = test_intersections(w.rt, r, xs);
-    
-//     if (xs->count != 0)
-//         return (TRUE);
-//     i = hit(*xs);
-//     int j = -1;
-//     while (++j < xs->count)
-//     {
-//         if (xs->data[j].t > 0)
-//         {
-//             i = xs->data[j];
-//             break ;
-//         }
-//         else
-//             i.t = -1;
-//     }
-//     free(xs);    
-//     if (i.t < distance)
-//         return (TRUE);
-//     else     
-//         return (FALSE);
-// }
-
-
-
-//------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
 t_intersection	hit(t_world *w, t_rays r)
 {
 	t_intersection	i;
-	// t_xs			xs;
 	int				j;
 	t_xs     *xs = malloc(sizeof(t_xs));
 
 	i.t = -1;
-	// xs = intersections(w->rt, r);
 	xs = test_intersections(w->rt, r, xs);
 	if (xs->count == 0)
 		return (i);

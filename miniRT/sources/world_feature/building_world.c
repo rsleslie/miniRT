@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:01:47 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 17:55:47 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 20:19:35 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,16 @@ t_comps	prepare_computations(t_intersection i, t_rays r)
 		comps.sp = i.sp;
 	else if (i.type == 3)
 		comps.pl = i.pl;
+	else if (i.type == 2)
+		comps.cy = i.cy;
 	comps.point = position(r, comps.t.t);
 	comps.eyev = negate(r.direction);
 	if (i.type == 1)
 		comps.normalv = normal_at_world(comps.sp, comps.point);
 	else if (i.type == 3)
 		comps.normalv = normal_at_pl(comps.pl, comps.point);
+	else if (i.type == 2)
+		comps.normalv = normal_at_cyl(comps.point);
 	if (dot(comps.normalv, comps.eyev) < 0)
 	{
 		comps.inside = TRUE;
@@ -92,6 +96,10 @@ t_color	shade_hit(t_world *w, t_comps comps)
 	else if (comps.type == 3)
 	{
 		color = lighting(comps.pl.material, w->ligth, comps, s);
+	}
+	else if (comps.type == 2)
+	{
+		color = lighting(comps.cy.material, w->ligth, comps, s);
 	}
 	return (color);
 }

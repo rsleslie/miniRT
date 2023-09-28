@@ -81,12 +81,14 @@ typedef struct s_cy
 	t_tuple	coordinates;
 	t_tuple	vector;
 	double	diameter;
-	double	heigth;
+	double	height;
 	t_color	color;
 	t_matrices	inverse;
 	t_matrices	transpose;
 	t_matrices	m;
 	t_m			material;
+	double		min;
+	double		max;
 }	t_cy;
 
 typedef struct s_pl
@@ -169,6 +171,7 @@ typedef struct s_intersection
 	int			type;
 	t_sp		sp;
 	t_pl		pl;
+	t_cy		cy;
 }	t_intersection;
 
 typedef struct s_xs
@@ -185,6 +188,7 @@ typedef struct  s_comps
 	int				type;
 	t_sp			sp;
 	t_pl			pl;
+	t_cy			cy;
     t_sphere        object;
     t_tuple         point;
     t_tuple         eyev;

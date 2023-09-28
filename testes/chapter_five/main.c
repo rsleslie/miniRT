@@ -707,7 +707,11 @@ int putting_it(t_data *data)
     w->rt->cy = NULL;
     w->rt->pl = NULL;
     if (!parser(&w->rt, "arquivo3/arq1.rt"))
-        printf("deu ruim!");
+    {
+
+        world_free(w);
+        exit(0);
+    }
     w->data = data;
     w->ligth = point_light(w->rt->l.coordinates, color_scale(w->rt->l.brightness, w->rt->l.color));
     c = camera(w->data->canvas.height, w->data->canvas.width, w->rt->c.fov);
@@ -723,8 +727,8 @@ void	test_print_sphere(void)
 	t_color		color;
 	t_data		data = (t_data){0};
     
-    data.canvas.height = 800;
-    data.canvas.width = 800;
+    data.canvas.height = 400;
+    data.canvas.width = 400;
 
 	color = get_color(1, 0.0, 0.0);
 	data.canvas = create_canvas(data.canvas, data.canvas.height, data.canvas.width, color);

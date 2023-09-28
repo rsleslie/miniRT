@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:08:28 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 17:04:23 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 20:18:47 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ t_intersection	hit(t_world *w, t_rays r);
 t_tuple	normal_at_world(t_sp sp, t_tuple p);
 t_tuple local_normal_at(t_pl pl, t_tuple local_point);
 t_tuple	normal_at_pl(t_pl pl, t_tuple p);
+t_xs    *local_intersect_cyl(t_cy cylinder, t_rays ray, t_xs    *xs);
+t_tuple    normal_at_cyl(t_tuple point);
 
 #endif

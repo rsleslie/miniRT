@@ -266,7 +266,7 @@ void tes_parser()
         printf("sp1: coordenates %f,%f,%f, diame %f color %f,%f,%f\n\n",rt->sp[1].coordinates.x, rt->sp[1].coordinates.y,rt->sp[1].coordinates.z, rt->sp[1].diameter, rt->sp[1].color.r,rt->sp[1].color.g,rt->sp[1].color.b);
         
         printf("pl: coordenates %f,%f,%f, vec: %f,%f,%f  color %f,%f,%f\n\n",rt->pl[0].coordinates.x, rt->pl[0].coordinates.y,rt->pl[0].coordinates.z, rt->pl[0].vector.x, rt->pl[0].vector.y,rt->pl[0].vector.z, rt->pl[0].color.r,rt->pl[0].color.g,rt->pl[0].color.b);
-        printf("cy: coordenates %f,%f,%f, vec: %f,%f,%f diame: %f heigth: %f color %f,%f,%f\n\n",rt->cy[0].coordinates.x, rt->cy[0].coordinates.y,rt->cy[0].coordinates.z, rt->cy[0].vector.x, rt->cy[0].vector.y,rt->cy[0].vector.z, rt->cy->diameter, rt->cy->heigth, rt->cy[0].color.r,rt->cy[0].color.g,rt->cy[0].color.b);
+        printf("cy: coordenates %f,%f,%f, vec: %f,%f,%f diame: %f height: %f color %f,%f,%f\n\n",rt->cy[0].coordinates.x, rt->cy[0].coordinates.y,rt->cy[0].coordinates.z, rt->cy[0].vector.x, rt->cy[0].vector.y,rt->cy[0].vector.z, rt->cy->diameter, rt->cy->height, rt->cy[0].color.r,rt->cy[0].color.g,rt->cy[0].color.b);
     }
     free_t_object(rt);
 }

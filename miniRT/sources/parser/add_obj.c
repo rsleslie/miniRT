@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:47:57 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 19:55:16 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/27 22:10:10 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,13 @@ t_cy	add_cy(char **str)
 	cy.coordinates = get_coordenates(str[1]);
 	cy.vector = get_vector(str[2]);
 	cy.diameter = ft_atof(str[3]);
-	cy.heigth = ft_atof(str[4]);
+	cy.height = ft_atof(str[4]);
 	cy.color = color_obj(str[5]);
+	cy.min = -1 * (cy.height / 2);
+	cy.max = cy.height / 2;
 	rotate = mult_matrices(translation(cy.coordinates.x, cy.coordinates.y,cy.coordinates.z),
 		calculate_rotation_matrices(cy.vector));
-	cy.m = mult_matrices(rotate, scaling(cy.diameter, 1, cy.diameter));
+	cy.m = mult_matrices(rotate, scaling(cy.diameter/2, 1, cy.diameter/2));
 	cy.inverse = inverse(cy.m);
 	cy.transpose = transpose(cy.inverse);
 	cy.material = material();

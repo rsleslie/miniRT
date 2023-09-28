@@ -41,6 +41,7 @@ SRCS += ../../miniRT/sources/world_feature/defining_a_view.c
 SRCS += ../../miniRT/sources/world_feature/shadowed.c
 SRCS += ../../miniRT/sources/world_feature/normal_at.c
 SRCS += ../../miniRT/sources/world_feature/camera.c
+SRCS += ../../miniRT/sources/world_feature/normal_at_cy.c
 CC = cc
 FLAGS = -Wall -Wextra -Werror -lm -g ../../miniRT/libft/libft.a ../../minilibx-linux/libmlx.a -lmlx -lX11 -lXext 
 OBJS = $(patsubst %.c, %.o, $(wildcard $(SRCS)))
