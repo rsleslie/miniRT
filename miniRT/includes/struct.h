@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/28 14:17:16 by rleslie-          #+#    #+#             */
+/*   Updated: 2023/09/28 14:23:17 by rleslie-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCT_H
-#define STRUCT_H
+# define STRUCT_H
 
 typedef struct s_tuple
 {
@@ -8,12 +20,6 @@ typedef struct s_tuple
 	double	z;
 	double	w;
 }	t_tuple;
-
-typedef struct s_env
-{
-	t_tuple gravity;
-	t_tuple wind;
-}	t_env;
 
 typedef struct s_color
 {	
@@ -24,11 +30,10 @@ typedef struct s_color
 
 typedef struct s_canvas
 {
-	int	width;
-	int	height;
+	int		width;
+	int		height;
 	t_color	color;
 }	t_canvas;
-
 
 typedef struct s_matrices
 {
@@ -37,7 +42,7 @@ typedef struct s_matrices
 	double	matrices[4][4];
 }	t_matrices;
 
-typedef struct	s_shear
+typedef struct s_shear
 {
 	double	xy;
 	double	xz;
@@ -49,13 +54,13 @@ typedef struct	s_shear
 
 typedef struct s_data
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*addr;
-	int	bpp;
-	int	line_len;
-	int	endian;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
 	t_canvas	canvas;
 }	t_data;
 
@@ -78,11 +83,11 @@ typedef struct s_sphere
 }	t_sphere;
 typedef struct s_cy
 {
-	t_tuple	coordinates;
-	t_tuple	vector;
-	double	diameter;
-	double	height;
-	t_color	color;
+	t_tuple		coordinates;
+	t_tuple		vector;
+	double		diameter;
+	double		height;
+	t_color		color;
 	t_matrices	inverse;
 	t_matrices	transpose;
 	t_matrices	m;
@@ -93,9 +98,9 @@ typedef struct s_cy
 
 typedef struct s_pl
 {
-	t_tuple	coordinates;
-	t_tuple	vector;
-	t_color	color;
+	t_tuple		coordinates;
+	t_tuple		vector;
+	t_color		color;
 	t_matrices	inverse;
 	t_matrices	transpose;
 	t_matrices	m;
@@ -135,7 +140,6 @@ typedef struct s_a
 	double	ratio;
 }	t_a;
 
-
 typedef struct s_objects
 {
 	t_a		a;
@@ -151,9 +155,9 @@ typedef struct s_objects
 
 typedef struct s_world
 {
-    t_sphere	s1;
-    t_sphere	s2;
-    t_l			ligth;
+	t_sphere	s1;
+	t_sphere	s2;
+	t_l			ligth;
 	t_data		*data;
 	t_objects	*rt;
 }	t_world;
@@ -163,7 +167,6 @@ typedef struct s_rays
 	t_tuple	origin;
 	t_tuple	direction;
 }	t_rays;
-
 
 typedef struct s_intersection
 {
@@ -180,22 +183,20 @@ typedef struct s_xs
 	t_intersection	data[1024];
 }	t_xs;
 
-
-
-typedef struct  s_comps
+typedef struct s_comps
 {
-    t_intersection  t;
+	t_intersection	t;
 	int				type;
 	t_sp			sp;
 	t_pl			pl;
 	t_cy			cy;
-    t_sphere        object;
-    t_tuple         point;
-    t_tuple         eyev;
-    t_tuple         normalv;
-    int             inside;
+	t_sphere		object;
+	t_tuple			point;
+	t_tuple			eyev;
+	t_tuple			normalv;
+	int				inside;
 	t_tuple			over_point;
-}   t_comps;
+}	t_comps;
 
 typedef struct s_var_lighting
 {
@@ -212,14 +213,14 @@ typedef struct s_var_lighting
 
 typedef struct s_c_world
 {
-    t_color     color;
-    double      hsize;
-    double      vsize;
-    double      field_of_view;
-    double      pixel_size;
-    double      half_width;
-    double      half_height;
-    t_matrices  transform;
-}   t_c_world;
+	t_color		color;
+	double		hsize;
+	double		vsize;
+	double		field_of_view;
+	double		pixel_size;
+	double		half_width;
+	double		half_height;
+	t_matrices	transform;
+}	t_c_world;
 
 #endif

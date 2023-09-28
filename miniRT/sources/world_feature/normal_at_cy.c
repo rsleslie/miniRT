@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 20:07:15 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 22:33:28 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:44:18 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,10 @@
 
 t_xs	*truncate_cylinder(t_cy cylinder, t_rays ray, t_xs *xs, double t[2])
 {
-	double	temp;
 	double	y0;
 	double	y1;
 
-	if (t[0] > t[1])
-	{
-		temp = t[0];
-		t[0] = t[1];
-		t[1] = temp;
-	}
+	t = swap(t);
 	y0 = ray.origin.y + t[0] * ray.direction.y;
 	if (cylinder.min < y0 && y0 < cylinder.max)
 	{
@@ -31,7 +25,6 @@ t_xs	*truncate_cylinder(t_cy cylinder, t_rays ray, t_xs *xs, double t[2])
 		xs->data[xs->count - 1].t = t[0];
 		xs->data[xs->count - 1].type = 2;
 		xs->data[xs->count - 1].cy = cylinder;
-
 	}
 	y1 = ray.origin.y + t[1] * ray.direction.y;
 	if (cylinder.min < y1 && y1 < cylinder.max)
@@ -44,7 +37,7 @@ t_xs	*truncate_cylinder(t_cy cylinder, t_rays ray, t_xs *xs, double t[2])
 	return (xs);
 }
 
-t_xs	*local_intersect_cyl(t_cy cylinder, t_rays ray, t_xs    *xs)
+t_xs	*local_intersect_cyl(t_cy cylinder, t_rays ray, t_xs *xs)
 {
 	double	a;
 	double	b;
@@ -73,9 +66,9 @@ t_tuple	normal_at_cyl(t_cy cylinder, t_tuple point)
 
 	dist = pow(point.x, 2) + pow(point.z, 2);
 	if (dist < 1 && point.y >= cylinder.max - EPSILON)
-		return(vector(0, 1, 0));
+		return (vector(0, 1, 0));
 	else if (dist < 1 && point.y <= cylinder.min + EPSILON)
-		return(vector(0, -1, 0));
+		return (vector(0, -1, 0));
 	return (vector(point.x, 0, point.z));
 }
 

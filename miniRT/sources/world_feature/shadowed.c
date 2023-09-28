@@ -6,11 +6,24 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:16:23 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 17:49:51 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:44:23 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
+
+double	*swap(double *t)
+{
+	double	temp;
+
+	if (t[0] > t[1])
+	{
+		temp = t[0];
+		t[0] = t[1];
+		t[1] = temp;
+	}
+	return (t);
+}
 
 int	is_shadowed(t_world *w, t_tuple p)
 {

@@ -6,14 +6,14 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:03:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 16:46:41 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:30:19 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-#include "miniRT.h"
+# include "miniRT.h"
 
 int			check_file(char **argv);
 int			check_arg(int argc);

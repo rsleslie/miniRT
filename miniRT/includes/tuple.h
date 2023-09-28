@@ -6,14 +6,12 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:57:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 17:47:24 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:30:58 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TUPLE_H
 # define TUPLE_H
-
-
 
 int			compare_tuple(t_tuple t1, t_tuple t2);
 int			equal(double a, double b);
@@ -32,6 +30,6 @@ t_tuple		div_tuple(t_tuple t1, double n);
 t_tuple		mult_tuple(t_tuple t1, double n);
 t_tuple		normalize(t_tuple tuple);
 t_tuple		cross(t_tuple a, t_tuple b);
-int 		equal_tuple(t_tuple t1, t_tuple t2);
+int			equal_tuple(t_tuple t1, t_tuple t2);
 
 #endif

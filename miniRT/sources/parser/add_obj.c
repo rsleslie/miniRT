@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:47:57 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 22:10:10 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:26:19 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ t_pl	add_pl(char **str)
 	pl.coordinates = get_coordenates(str[1]);
 	pl.vector = get_vector(str[2]);
 	pl.color = color_obj(str[3]);
-	pl.m = mult_matrices(translation(pl.coordinates.x, pl.coordinates.y,pl.coordinates.z),
-		calculate_rotation_matrices(pl.vector));
+	pl.m = mult_matrices(translation(pl.coordinates.x,
+				pl.coordinates.y, pl.coordinates.z),
+			calculate_rotation_matrices(pl.vector));
 	pl.inverse = inverse(pl.m);
 	pl.transpose = transpose(pl.inverse);
 	pl.material = material();
@@ -69,7 +70,7 @@ t_pl	add_pl(char **str)
 
 t_cy	add_cy(char **str)
 {
-	t_cy	cy;
+	t_cy		cy;
 	t_matrices	rotate;
 
 	cy.coordinates = get_coordenates(str[1]);
@@ -79,9 +80,10 @@ t_cy	add_cy(char **str)
 	cy.color = color_obj(str[5]);
 	cy.min = -1 * (cy.height / 2);
 	cy.max = cy.height / 2;
-	rotate = mult_matrices(translation(cy.coordinates.x, cy.coordinates.y,cy.coordinates.z),
-		calculate_rotation_matrices(cy.vector));
-	cy.m = mult_matrices(rotate, scaling(cy.diameter/2, 1, cy.diameter/2));
+	rotate = mult_matrices(translation(cy.coordinates.x,
+				cy.coordinates.y, cy.coordinates.z),
+			calculate_rotation_matrices(cy.vector));
+	cy.m = mult_matrices(rotate, scaling(cy.diameter / 2, 1, cy.diameter / 2));
 	cy.inverse = inverse(cy.m);
 	cy.transpose = transpose(cy.inverse);
 	cy.material = material();
