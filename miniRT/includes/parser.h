@@ -15,28 +15,28 @@
 
 #include "miniRT.h"
 
-int		    check_file(char **argv);
-int		    check_arg(int argc);
-char	    **read_file(char *file);
-int		    validation_ambient(char **str);
-int		    validation_args(char **str);
-int		    validation_acl(char **str);
-int		    validation_obj(char **str);
-int		    validation_of_file_arguments(char **str);
-int		    validation_range_double(double n, double st, double end);
-int		    validation_range_double(double num, double start, double end);
-int		    validation_range_int(int num, int start, int end);
-int		    validation_double(char *str);
-int		    validation_int(char *str);
-int		    validation_color(char *str);
-int		    validation_camera(char **str);
-int		    validation_normalize_vector(char *str);
-int		    validation_coordinates(char *str);
-int		    validation_multiples_sphere(char **str);
-int		    validation_multiples_plane(char **str);
-int		    validation_multiples_cylinder(char **str);
-int		    validation_ligth(char **str);
-int      	*parser(t_objects **rt, char *file);
+int			check_file(char **argv);
+int			check_arg(int argc);
+char		**read_file(char *file);
+int			validation_ambient(char **str);
+int			validation_args(char **str);
+int			validation_acl(char **str);
+int			validation_obj(char **str);
+int			validation_of_file_arguments(char **str);
+int			validation_range_double(double n, double st, double end);
+int			validation_range_double(double num, double start, double end);
+int			validation_range_int(int num, int start, int end);
+int			validation_double(char *str);
+int			validation_int(char *str);
+int			validation_color(char *str);
+int			validation_camera(char **str);
+int			validation_normalize_vector(char *str);
+int			validation_coordinates(char *str);
+int			validation_multiples_sphere(char **str);
+int			validation_multiples_plane(char **str);
+int			validation_multiples_cylinder(char **str);
+int			validation_ligth(char **str);
+int			*parser(t_objects **rt, char *file);
 void		create_object(t_objects **rt, char **args);
 t_c			create_camera(char **args);
 t_l			create_ligth(char **args);
@@ -52,7 +52,7 @@ t_tuple		get_vector(char *args);
 t_sp		add_sp(char **str);
 t_pl		add_pl(char **str);
 t_cy		add_cy(char **str);
-int	        loop_validation_coordinates(char **aux, int i);
-int	        aux_normalize_vector(char **aux);
+int			loop_validation_coordinates(char **aux, int i);
+int			aux_normalize_vector(char **aux);
 
 #endif

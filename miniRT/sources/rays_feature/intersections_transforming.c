@@ -24,102 +24,104 @@ t_intersection	intersection(double n, t_sp s)
 
 t_xs    *test_order_xs(t_xs *xs)
 {
-    t_xs    *order = malloc(sizeof(t_xs));
-    int        counter;
-    int        i;
-    int        j;
+	t_xs	*order;
+	int		counter;
+	int		i;
+	int		j;
 
-    order->count = xs->count;
-    i = -1;
-    counter = 0;
-    while (++i < xs->count)
-    {
-        j = 0;
-        counter = 0;
-        while(j < xs->count)
-        {
-            if (xs->data[i].t > xs->data[j].t)
-                counter++;
-            j++;
-        }    
-        order->data[counter] = xs->data[i];
-    }
-    free(xs);
-    return (order);
+	order = (t_xs *)malloc(sizeof(t_xs));
+	order->count = xs->count;
+	i = -1;
+	counter = 0;
+	while (++i < xs->count)
+	{
+		j = 0;
+		counter = 0;
+		while(j < xs->count)
+		{
+			if (xs->data[i].t > xs->data[j].t)
+				counter++;
+			j++;
+		}    
+		order->data[counter] = xs->data[i];
+	}
+	free(xs);
+	return (order);
 }
 
-t_xs    *teste_local_intersect(t_pl pl, t_rays r, t_xs *xs)
+t_xs	*teste_local_intersect(t_pl pl, t_rays r, t_xs *xs)
 {
-    t_tuple    sphere_to_ray;
+	t_tuple	sphere_to_ray;
 
-    if (fabs(r.direction.y) < EPSILON)
-        return (xs);
-    else
-    {
-        xs->count += 1;
-        xs->data[xs->count - 1].t = (-r.origin.y) / r.direction.y;
-        xs->data[xs->count -1].pl = pl;
-        xs->data[xs->count -1].type = 3;
-    }
-    return (xs);
+	if (fabs(r.direction.y) < EPSILON)
+		return (xs);
+	else
+	{
+		xs->count += 1;
+		xs->data[xs->count - 1].t = (-r.origin.y) / r.direction.y;
+		xs->data[xs->count -1].pl = pl;
+		xs->data[xs->count -1].type = 3;
+	}
+	return (xs);
 }
 
 
-t_xs    *teste_intersect(t_sp sp, t_rays r, t_xs *xs)
+t_xs	*teste_intersect(t_sp sp, t_rays r, t_xs *xs)
 {
-    t_tuple    sphere_to_ray;
-    float    a;
-    float    b;
-    float    c;
+	t_tuple	sphere_to_ray;
+	float	a;
+	float	b;
+	float	c;
 
-    r = transform(r, sp.inverse);
-    sphere_to_ray = subtracting_tuple(r.origin, point(0, 0, 0));
-    a = dot(r.direction, r.direction);
-    b = 2 * dot(r.direction, sphere_to_ray);
-    c = dot(sphere_to_ray, sphere_to_ray) - 1;
-    if (discriminant(a, b, c) < 0)
-        return (xs);
-    else
-    {
-        xs->count += 2;
-        xs->data[xs->count - 1].t = ((-b - sqrt(discriminant(a, b, c))) / (2 * a));
-        xs->data[xs->count - 2].t = ((-b + sqrt(discriminant(a, b, c))) / (2 * a));
-        xs->data[xs->count -1].type = 1;
-        xs->data[xs->count  - 2].type = 1;
-        xs->data[xs->count -1].sp = sp;
-        xs->data[xs->count  - 2].sp = sp;
-    }
-    return (xs);
+	r = transform(r, sp.inverse);
+	sphere_to_ray = subtracting_tuple(r.origin, point(0, 0, 0));
+	a = dot(r.direction, r.direction);
+	b = 2 * dot(r.direction, sphere_to_ray);
+	c = dot(sphere_to_ray, sphere_to_ray) - 1;
+	if (discriminant(a, b, c) < 0)
+		return (xs);
+	else
+	{
+		xs->count += 2;
+		xs->data[xs->count - 1].t = ((-b - sqrt(discriminant(a, b, c))) / (2 * a));
+		xs->data[xs->count - 2].t = ((-b + sqrt(discriminant(a, b, c))) / (2 * a));
+		xs->data[xs->count -1].type = 1;
+		xs->data[xs->count  - 2].type = 1;
+		xs->data[xs->count -1].sp = sp;
+		xs->data[xs->count  - 2].sp = sp;
+	}
+	return (xs);
 }
 
-t_xs *test_intersections(t_objects *rt, t_rays r, t_xs *xs)
+t_xs	*test_intersections(t_objects *rt, t_rays r, t_xs *xs)
 {
-    t_xs    *order;
-    int        i;
+	t_xs	*order;
+	int		i;
 
-    i = -1;
-    xs->count = 0;
-    while (++i < rt->n_sp)
-        xs = teste_intersect(rt->sp[i], r, xs);
-    i = -1;
-    while (++i < rt->n_pl)
-        xs = teste_local_intersect(rt->pl[i], r, xs);
-     i = -1;
-    while (++i < rt->n_cy)
-        xs = local_intersect_cyl(rt->cy[i], r, xs);
-    i = -1;
-    while (++i < rt->n_cy)
-        xs = intersect_caps(rt->cy[i], r, xs);
-    order = test_order_xs(xs);
-    return (order);
+	i = -1;
+	xs->count = 0;
+	while (++i < rt->n_sp)
+		xs = teste_intersect(rt->sp[i], r, xs);
+	i = -1;
+	while (++i < rt->n_pl)
+		xs = teste_local_intersect(rt->pl[i], r, xs);
+	 i = -1;
+	while (++i < rt->n_cy)
+		xs = local_intersect_cyl(rt->cy[i], r, xs);
+	i = -1;
+	while (++i < rt->n_cy)
+		xs = intersect_caps(rt->cy[i], r, xs);
+	order = test_order_xs(xs);
+	return (order);
 }
 
 t_intersection	hit(t_world *w, t_rays r)
 {
 	t_intersection	i;
 	int				j;
-	t_xs     *xs = malloc(sizeof(t_xs));
-
+	t_xs			*xs;
+	
+	xs = (t_xs *)malloc(sizeof(t_xs));
 	i.t = -1;
 	xs = test_intersections(w->rt, r, xs);
 	if (xs->count == 0)
@@ -135,7 +137,7 @@ t_intersection	hit(t_world *w, t_rays r)
 		else
 			i.t = -1;
 	}
-    free(xs);
+	free(xs);
 	return (i);
 }
 
