@@ -70,7 +70,7 @@ t_comps	prepare_computations(t_intersection i, t_rays r)
 	else if (i.type == 3)
 		comps.normalv = normal_at_pl(comps.pl, comps.point);
 	else if (i.type == 2)
-		comps.normalv = normal_at_cyl(comps.point);
+		comps.normalv = normal_at_cyl(comps.cy, comps.point);
 	if (dot(comps.normalv, comps.eyev) < 0)
 	{
 		comps.inside = TRUE;

@@ -23,7 +23,6 @@ t_xs    *truncate_cylinder(t_cy cylinder, t_rays ray, t_xs *xs, double t[2])
         temp = t[0];
         t[0] = t[1];
         t[1] = temp;
-        // return (xs);
     }
     y0 = ray.origin.y + t[0] * ray.direction.y;
     if (cylinder.min < y0 && y0 < cylinder.max)
@@ -68,7 +67,51 @@ t_xs    *local_intersect_cyl(t_cy cylinder, t_rays ray, t_xs    *xs)
     return (xs);
 }
 
-t_tuple    normal_at_cyl(t_tuple point)
+t_tuple    normal_at_cyl(t_cy cylinder, t_tuple point)
 {
+    double  dist;
+
+    dist = pow(point.x, 2) + pow(point.z, 2);
+    if (dist < 1 && point.y >= cylinder.max - EPSILON)
+        return(vector(0, 1, 0));
+    else if (dist < 1 && point.y <= cylinder.min + EPSILON)
+        return(vector(0, -1, 0));
     return (vector(point.x, 0, point.z));
+}
+
+int  check_cap(t_rays ray, double t, t_cy cy)
+{
+    double  x;
+    double  z;
+
+    x = ray.origin.x + t * ray.direction.x;
+    z = ray.origin.z + t * ray.direction.z;
+    if (pow(x, 2) + pow(z, 2) <= 1)
+        return (TRUE);
+    return (FALSE);
+}
+
+t_xs    *intersect_caps(t_cy cyl, t_rays ray, t_xs *xs)
+{
+    double  t;
+
+    if (equal(ray.direction.y, 0))
+        return (xs);
+    t = (cyl.min - ray.origin.y) / ray.direction.y;
+    if (check_cap(ray, t, cyl))
+    {
+        xs->count += 1;
+        xs->data[xs->count - 1].t = t;
+        xs->data[xs->count - 1].type = 2;
+        xs->data[xs->count - 1].cy = cyl;
+    }
+    t = (cyl.max - ray.origin.y) / ray.direction.y;
+    if (check_cap(ray, t, cyl))
+    {
+        xs->count += 1;
+        xs->data[xs->count - 1].t = t;
+        xs->data[xs->count - 1].type = 2;
+        xs->data[xs->count - 1].cy = cyl;
+    }
+    return (xs);
 }

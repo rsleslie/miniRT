@@ -31,6 +31,8 @@ t_tuple	normal_at_world(t_sp sp, t_tuple p);
 t_tuple local_normal_at(t_pl pl, t_tuple local_point);
 t_tuple	normal_at_pl(t_pl pl, t_tuple p);
 t_xs    *local_intersect_cyl(t_cy cylinder, t_rays ray, t_xs    *xs);
-t_tuple    normal_at_cyl(t_tuple point);
+t_tuple    normal_at_cyl(t_cy cylinder, t_tuple point);
+int  check_cap(t_rays ray, double t, t_cy cy);
+t_xs    *intersect_caps(t_cy cyl, t_rays ray, t_xs *xs);
 
 #endif

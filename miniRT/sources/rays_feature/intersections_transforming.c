@@ -107,6 +107,9 @@ t_xs *test_intersections(t_objects *rt, t_rays r, t_xs *xs)
      i = -1;
     while (++i < rt->n_cy)
         xs = local_intersect_cyl(rt->cy[i], r, xs);
+    i = -1;
+    while (++i < rt->n_cy)
+        xs = intersect_caps(rt->cy[i], r, xs);
     order = test_order_xs(xs);
     return (order);
 }
@@ -124,7 +127,7 @@ t_intersection	hit(t_world *w, t_rays r)
 	j = -1;
 	while (++j < xs->count)
 	{
-		if (xs->data && xs->data[j].t > 0)
+		if (xs->data[j].t > 0)
 		{
 			i = xs->data[j];
 			break ;
