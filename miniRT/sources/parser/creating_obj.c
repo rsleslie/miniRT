@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:03:53 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 11:55:27 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 11:58:15 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	create_cy(t_objects **rt, char **args)
 		aux = ft_split(args[i], 32);
 		if (ft_strncmp(aux[0], "cy", 3) == 0)
 		{
-			(*rt)->cy[j] = add_cy(aux);
+			(*rt)->cy[j] = add_cy(rt, aux);
 			j++;
 		}
 	}
@@ -49,7 +49,7 @@ void	create_sp(t_objects **rt, char **args)
 		aux = ft_split(args[i], 32);
 		if (ft_strncmp(aux[0], "sp", 3) == 0)
 		{
-			(*rt)->sp[j] = add_sp(aux);
+			(*rt)->sp[j] = add_sp(rt, aux);
 			j++;
 		}
 	}
@@ -71,7 +71,7 @@ void	create_plane(t_objects **rt, char **args)
 		aux = ft_split(args[i], 32);
 		if (ft_strncmp(aux[0], "pl", 3) == 0)
 		{
-			(*rt)->pl[j] = add_pl(aux);
+			(*rt)->pl[j] = add_pl(rt, aux);
 			j++;
 		}
 	}

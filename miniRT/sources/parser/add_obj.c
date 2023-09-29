@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:47:57 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/28 14:26:19 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 11:59:10 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	counter_obj(char *obj, char **args)
 	return (counter);
 }
 
-t_sp	add_sp(char **str)
+t_sp	add_sp(t_objects **rt, char **str)
 {
 	t_sp		sp;
 	t_matrices	scal;
@@ -47,11 +47,12 @@ t_sp	add_sp(char **str)
 	sp.inverse = inverse(sp.m);
 	sp.transpose = transpose(sp.inverse);
 	sp.material = material();
+	sp.material.ambient = (*rt)->a.ratio;
 	sp.material.color = rgb_to_double(sp.color);
 	return (sp);
 }
 
-t_pl	add_pl(char **str)
+t_pl	add_pl(t_objects **rt, char **str)
 {
 	t_pl	pl;
 
@@ -64,11 +65,12 @@ t_pl	add_pl(char **str)
 	pl.inverse = inverse(pl.m);
 	pl.transpose = transpose(pl.inverse);
 	pl.material = material();
+	pl.material.ambient = (*rt)->a.ratio;
 	pl.material.color = rgb_to_double(pl.color);
 	return (pl);
 }
 
-t_cy	add_cy(char **str)
+t_cy	add_cy(t_objects **rt, char **str)
 {
 	t_cy		cy;
 	t_matrices	rotate;
@@ -87,6 +89,7 @@ t_cy	add_cy(char **str)
 	cy.inverse = inverse(cy.m);
 	cy.transpose = transpose(cy.inverse);
 	cy.material = material();
+	cy.material.ambient = (*rt)->a.ratio;
 	cy.material.color = rgb_to_double(cy.color);
 	return (cy);
 }

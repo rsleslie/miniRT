@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:03:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/28 14:30:19 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 11:56:45 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void		calloc_obj(char **args, t_objects **rt);
 t_color		color_obj(char *str);
 t_tuple		get_coordenates(char *args);
 t_tuple		get_vector(char *args);
-t_sp		add_sp(char **str);
-t_pl		add_pl(char **str);
-t_cy		add_cy(char **str);
+t_sp		add_sp(t_objects **rt, char **str);
+t_pl		add_pl(t_objects **rt, char **str);
+t_cy		add_cy(t_objects **rt, char **str);
 int			loop_validation_coordinates(char **aux, int i);
 int			aux_normalize_vector(char **aux);
 
