@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:16:23 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 16:54:12 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 11:43:58 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ char	**read_file(char *file)
 	char	**split_line;
 
 	join = file_content(file);
+	if (!join)
+		return (NULL);
 	split_line = ft_split(join, '\n');
 	free(join);
 	if (ft_tab_len(split_line) < 3)

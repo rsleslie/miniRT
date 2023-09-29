@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:08:28 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/28 14:56:51 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 10:38:11 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_color			color_at(t_world *w, t_rays r);
 t_matrices		view_transform(t_tuple from, t_tuple to, t_tuple up);
 t_c_world		camera(double hsize, double vsize, double field_of_view);
 t_rays			ray_for_pixel(t_c_world camera, double px, double py);
-void			render_img(t_c_world c, t_world *w);
+void			render_img(t_c_world c, t_data *data);
 t_matrices		view_transform_two(t_tuple from, t_tuple to, t_tuple up);
 int				is_shadowed(t_world *w, t_tuple p);
 t_intersection	hit(t_world *w, t_rays r);

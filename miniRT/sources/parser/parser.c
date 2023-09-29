@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:04:40 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 11:55:19 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 11:44:34 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,14 @@ int	*parser(t_objects **rt, char *file)
 
 	split_file = read_file(file);
 	if (!split_file)
+	{
+		ft_putendl_fd("Error\nInvalid file.", 2);
 		return (FALSE);
+	}
 	if (!validation_of_file_arguments(split_file))
 	{
 		ft_free_tab(split_file);
-		ft_putendl_fd("error declaring file arguments", 2);
+		ft_putendl_fd("Error\nWrong file arguments", 2);
 		return (FALSE);
 	}
 	create_object(rt, split_file);

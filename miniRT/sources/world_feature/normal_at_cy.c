@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 20:07:15 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/28 14:44:18 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 10:17:54 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_xs	*local_intersect_cyl(t_cy cylinder, t_rays ray, t_xs *xs)
 	double	disc;
 	double	t[2];
 
+	ray = transform(ray, cylinder.inverse);
 	a = pow(ray.direction.x, 2) + pow(ray.direction.z, 2);
 	if (equal(a, 0))
 		return (xs);
@@ -57,6 +58,7 @@ t_xs	*local_intersect_cyl(t_cy cylinder, t_rays ray, t_xs *xs)
 	t[0] = (-b - sqrt(disc)) / (2 * a);
 	t[1] = (-b + sqrt(disc)) / (2 * a);
 	xs = truncate_cylinder(cylinder, ray, xs, t);
+	// xs = intersect_caps(cylinder, ray, xs);
 	return (xs);
 }
 

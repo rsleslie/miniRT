@@ -6,12 +6,14 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 14:17:16 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/28 14:23:17 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 11:17:50 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+typedef struct s_world t_world;
 
 typedef struct s_tuple
 {
@@ -58,10 +60,12 @@ typedef struct s_data
 	void		*win;
 	void		*img;
 	char		*addr;
+	int			has_rendered;
 	int			bpp;
 	int			line_len;
 	int			endian;
 	t_canvas	canvas;
+	t_world 	*w;
 }	t_data;
 
 typedef struct s_m
@@ -158,7 +162,6 @@ typedef struct s_world
 	t_sphere	s1;
 	t_sphere	s2;
 	t_l			ligth;
-	t_data		*data;
 	t_objects	*rt;
 }	t_world;
 
