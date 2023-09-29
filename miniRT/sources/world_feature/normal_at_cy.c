@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal_at_cy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rverona- <rverona-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 20:07:15 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/29 15:52:08 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:12:58 by rverona-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,28 @@ t_xs	*local_intersect_cyl(t_cy cylinder, t_rays ray, t_xs *xs)
 	t[0] = (-b - sqrt(disc)) / (2 * a);
 	t[1] = (-b + sqrt(disc)) / (2 * a);
 	xs = truncate_cylinder(cylinder, ray, xs, t);
+	xs = intersect_caps(cylinder, ray, xs);
 	return (xs);
 }
 
 t_tuple	normal_at_cyl(t_cy cylinder, t_tuple point)
 {
 	double	dist;
+	t_tuple	object_point;
+	t_tuple	object_normal;
+	t_tuple	world_normal;
 
-	dist = pow(point.x, 2) + pow(point.z, 2);
-	if (dist < 1 && point.y >= cylinder.max - EPSILON)
-		return (vector(0, 1, 0));
-	else if (dist < 1 && point.y <= cylinder.min + EPSILON)
-		return (vector(0, -1, 0));
-	return (vector(point.x, 0, point.z));
+	object_point = mult_matrix_tuple(cylinder.inverse, point);
+	dist = pow(object_point.x, 2) + pow(object_point.z, 2);
+	if (dist < 1 && object_point.y >= cylinder.max - EPSILON)
+		object_normal = vector(0, 1, 0);
+	else if (dist < 1 && object_point.y <= cylinder.min + EPSILON)
+		object_normal = vector(0, -1, 0);
+	else
+		object_normal = vector(object_point.x, 0, object_point.z);
+	world_normal = mult_matrix_tuple(cylinder.transpose, object_normal);
+	world_normal.w = 0;
+	return (normalize(world_normal));
 }
 
 int	check_cap(t_rays ray, double t, t_cy cy)
