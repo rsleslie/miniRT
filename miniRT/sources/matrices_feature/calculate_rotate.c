@@ -6,23 +6,11 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:30:04 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/29 12:11:58 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:46:00 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
-
-t_matrices	calculate_z_x_rotation_matrix(t_tuple v)
-{
-	t_matrices	rotation_x;
-	t_matrices	rotation_z;
-	t_matrices	rotation;
-
-	rotation_x = rotate_x(atan(-v.z / v.y));
-	rotation_z = rotate_z(atan(-v.x / v.y));
-	rotation = mult_matrices(rotation_z, rotation_x);
-	return (rotation);
-}
 
 t_matrices	calculate_z_y_rotation_matrix(t_tuple v)
 {
@@ -33,6 +21,18 @@ t_matrices	calculate_z_y_rotation_matrix(t_tuple v)
 	rotation_z = rotate_z(-PI / 2);
 	rotation_y = rotate_y(atan(-v.x / v.z));
 	rotation = mult_matrices(rotation_y, rotation_z);
+	return (rotation);
+}
+
+t_matrices	calculate_z_x_rotation_matrix(t_tuple v)
+{
+	t_matrices	rotation_x;
+	t_matrices	rotation_z;
+	t_matrices	rotation;
+
+	rotation_x = rotate_x(atan(-v.z / v.y));
+	rotation_z = rotate_z(atan(-v.x / v.y));
+	rotation = mult_matrices(rotation_z, rotation_x);
 	return (rotation);
 }
 
