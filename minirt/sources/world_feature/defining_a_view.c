@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:58:46 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/29 17:08:11 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:04:25 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ t_matrices	view_transform_two(t_tuple from, t_tuple to, t_tuple up)
 
 	forward = to;
 	upn = normalize(up);
-	left = cross(forward, upn);
-	true_up = cross(left, forward);
-	orientation = orientation_matrices(left, forward, true_up);
+	left = cross(to, upn);
+	true_up = cross(left, to);
+	orientation = orientation_matrices(left, to, true_up);
 	orientation = mult_matrices(orientation,
 			translation(-from.x, -from.y, -from.z));
 	return (orientation);
