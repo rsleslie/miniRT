@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:48:18 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/29 18:01:46 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:21:03 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	validation_normalize_vector(char *str)
 		return (FALSE);
 	if (!validation_range_double(ft_atof(aux[2]), -1, 1))
 		return (FALSE);
-	if (!equal(magnitude(vector(ft_atof(aux[0]), ft_atof(aux[1]), ft_atof(aux[2]))), 1))
+	if (!equal(magnitude(vector(ft_atof(aux[0]),
+					ft_atof(aux[1]), ft_atof(aux[2]))), 1))
 		return (FALSE);
 	ft_free_tab(aux);
 	return (TRUE);
