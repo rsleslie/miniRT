@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:47:57 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/29 16:49:16 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:04:00 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ t_cy	add_cy(t_objects **rt, char **str)
 	rotate = mult_matrices(translation(cy.coordinates.x,
 				cy.coordinates.y, cy.coordinates.z),
 			calculate_rotation_matrices(cy.vector));
-	cy.m = mult_matrices(rotate, scaling(cy.diameter / 2, cy.diameter / 2, cy.diameter / 2));
+	cy.m = mult_matrices(rotate, scaling(cy.diameter / 2,
+				cy.diameter / 2, cy.diameter / 2));
 	cy.inverse = inverse(cy.m);
 	cy.transpose = transpose(cy.inverse);
 	cy.material = material();
