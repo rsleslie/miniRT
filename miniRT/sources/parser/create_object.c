@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 17:04:38 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 11:56:02 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:48:12 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ t_tuple	get_vector(char *args)
 
 void	create_object(t_objects **rt, char **args)
 {
-	t_a	ambient_str;
-
 	calloc_obj(args, rt);
 	(*rt)->a = create_ambient(args);
 	(*rt)->c = create_camera(args);

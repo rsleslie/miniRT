@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:53:09 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/21 13:47:39 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:09:36 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	validation_range_int(int num, int start, int end)
 
 int	validation_double(char *str)
 {
-	int	pointer;
-	int	i;
+	int		pointer;
+	size_t	i;
 
 	pointer = 0;
 	i = -1;
@@ -55,7 +55,7 @@ int	validation_double(char *str)
 
 int	validation_int(char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = -1;
 	if (ft_strlen(str) > 10)

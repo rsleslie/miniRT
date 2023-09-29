@@ -6,7 +6,7 @@
 #    By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/02 15:32:00 by rleslie-          #+#    #+#              #
-#    Updated: 2023/09/29 14:58:34 by rleslie-         ###   ########.fr        #
+#    Updated: 2023/09/29 16:04:48 by rleslie-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,18 +59,33 @@ SRCS += ./sources/render/events.c
 SRCS += ./sources/render/init_mlx.c
 SRCS += ./sources/render/init_render.c
 
+INC = $(addprefix ./includes/, 	canvas.h \
+								colors.h \
+								matrices.h \
+								miniRT.h \
+								object.h \
+								parser.h \
+								rays.h \
+								render.h \
+								struct.h \
+								tuple.h \
+								world.h)
 
 CC = cc
 FLAGS = -Wall -Wextra -Werror -g3
 LINKERS = -lm -lmlx -lX11 -lXext
 LIB = libft/libft.a
 RM = rm -rf
-
+INCLUDES = ./includes
 OBJS = $(patsubst %.c, %.o, $(wildcard $(SRCS)))
+
+%.o:%.c $(INC)
+	$(CC) $(FLAGS) -I./minilibx-linux/ -I./libft -c $< -o $@
+	printf "$(GREEN).$(RC)"
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(INC) $(OBJS)
 	@make -C libft
 	@$(CC) $(FLAGS) $(OBJS) $(LIB) ../minilibx-linux/libmlx.a $(LINKERS) -o $(NAME)
 

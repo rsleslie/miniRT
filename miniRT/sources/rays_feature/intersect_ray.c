@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:59:56 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:42:49 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:48:56 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ t_xs	*order_xs(t_xs *xs)
 
 t_xs	*local_intersect_pl(t_pl pl, t_rays r, t_xs *xs)
 {
-	t_tuple	sphere_to_ray;
-
 	r = transform(r, pl.inverse);
 	if (fabs(r.direction.y) < EPSILON)
 		return (xs);

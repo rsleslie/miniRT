@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:05:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/25 22:19:53 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:48:18 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ t_a	create_ambient(char **a)
 	t_a		ambient;
 	int		i;
 	char	**aux;
-	char	**color;
 
 	i = -1;
 	aux = NULL;

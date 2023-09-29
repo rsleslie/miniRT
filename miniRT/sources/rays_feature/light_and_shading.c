@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:54:30 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 17:44:46 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:09:06 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ t_m	material(void)
 t_var_lighting	init_values_lighting(t_m m,
 	t_l light, t_comps comps, t_var_lighting	l)
 {
-	l.effective_color = hadamard_product(m.color, light.intensity);
+	l.ef_color = hadamard_product(m.color, light.intensity);
 	l.lightv = normalize(subtracting_point(light.position, comps.point));
-	l.ambient = color_scale(m.ambient, l.effective_color);
+	l.ambient = color_scale(m.ambient, l.ef_color);
 	l.light_dot_normal = dot(l.lightv, comps.normalv);
 	return (l);
 }
@@ -57,6 +57,7 @@ t_color	lighting(t_m m, t_l light, t_comps comps, int in_shadow)
 {
 	t_var_lighting	l;
 
+	l = (t_var_lighting){0};
 	l = init_values_lighting(m, light, comps, l);
 	if (l.light_dot_normal < 0)
 	{
@@ -65,8 +66,7 @@ t_color	lighting(t_m m, t_l light, t_comps comps, int in_shadow)
 	}
 	else
 	{
-		l.diffuse = color_scale((m.diffuse * l.light_dot_normal),
-				l.effective_color);
+		l.diffuse = color_scale((m.diffuse * l.light_dot_normal), l.ef_color);
 		l.reflectv = reflect(negate(l.lightv), comps.normalv);
 		l.reflect_dot_eye = dot(l.reflectv, comps.eyev);
 		if (l.reflect_dot_eye <= 0)

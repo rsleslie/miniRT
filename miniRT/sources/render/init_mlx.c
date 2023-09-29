@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 14:32:57 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:38:50 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:53:21 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	init_render_mlx(t_data *data)
 {
 	t_color		color;
 
-	data->canvas.height = 50;
-	data->canvas.width = 50;
+	data->canvas.height = 500;
+	data->canvas.width = 500;
 	color = get_color(1, 0.0, 0.0);
 	data->canvas = create_canvas(data->canvas, data->canvas.height,
 			data->canvas.width, color);

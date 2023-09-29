@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:20:10 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 17:50:13 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:52:23 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 t_tuple	normal_at(t_sp s, t_tuple p)
 {
-	t_tuple	v;
 	t_tuple	object_point;
 	t_tuple	object_normal;
 	t_tuple	world_normal;
@@ -28,7 +27,6 @@ t_tuple	normal_at(t_sp s, t_tuple p)
 
 t_tuple	normal_at_world(t_sp sp, t_tuple p)
 {
-	t_tuple	v;
 	t_tuple	object_point;
 	t_tuple	object_normal;
 	t_tuple	world_normal;
@@ -49,7 +47,6 @@ t_tuple	local_normal_at(t_pl pl, t_tuple local_point)
 
 t_tuple	normal_at_pl(t_pl pl, t_tuple p)
 {
-	t_tuple	v;
 	t_tuple	local_point;
 	t_tuple	local_normal;
 	t_tuple	world_normal;

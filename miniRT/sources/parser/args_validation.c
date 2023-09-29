@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:48:18 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 16:46:04 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:47:45 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	validation_coordinates(char *str)
 {
 	char	**aux;
 	int		i;
-	int		j;
 
 	i = -1;
 	aux = ft_split(str, ',');

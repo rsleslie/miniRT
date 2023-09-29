@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 14:17:16 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:43:59 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:09:06 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,7 +202,7 @@ typedef struct s_comps
 
 typedef struct s_var_lighting
 {
-	t_color	effective_color;
+	t_color	ef_color;
 	t_tuple	lightv;
 	t_color	ambient;
 	t_color	diffuse;

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:14:28 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/22 17:08:33 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:09:45 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ t_matrices	id_matrix(t_matrices a, double ray)
 	int			line;
 	int			col;
 	t_matrices	id_matrix;
-	t_matrices	result;
 
 	line = -1;
 	col = -1;

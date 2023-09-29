@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:25:50 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 17:00:11 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:48:48 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ double	discriminant(double a, double b, double c)
 
 t_xs	local_intersect(t_pl pl, t_rays r, t_xs xs)
 {
-	t_tuple	sphere_to_ray;
-
 	if (fabs(r.direction.y) < EPSILON)
 		return (xs);
 	else

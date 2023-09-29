@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 20:07:15 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/29 12:11:22 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:52:08 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	check_cap(t_rays ray, double t, t_cy cy)
 	if (pow(x, 2) + pow(z, 2) <= 1)
 		return (TRUE);
 	return (FALSE);
+	(void)cy;
 }
 
 t_xs	*intersect_caps(t_cy cyl, t_rays ray, t_xs *xs)

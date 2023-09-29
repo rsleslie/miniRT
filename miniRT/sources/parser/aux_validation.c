@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:45:29 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 16:46:10 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:48:03 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	loop_validation_coordinates(char **aux, int i)
 	int	j;
 
 	j = -1;
-	while (++j < ft_strlen(aux[i]))
+	while ((size_t)++j < ft_strlen(aux[i]))
 	{
 		if (aux[i][j] == '-' || aux[i][j] == '+'
 		|| aux[i][j] == '.')

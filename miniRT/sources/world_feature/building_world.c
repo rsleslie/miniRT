@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:01:47 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/28 14:47:56 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:51:55 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_comps	prepare_computations(t_intersection i, t_rays r)
 {
 	t_comps	comps;
 
+	comps = (t_comps){0};
 	comps = init_values_comps(comps, i, r);
 	if (dot(comps.normalv, comps.eyev) < 0)
 	{
@@ -56,6 +57,7 @@ t_color	shade_hit(t_world *w, t_comps comps)
 	int		s;
 
 	s = is_shadowed(w, comps.over_point);
+	color = (t_color){0};
 	if (comps.type == 1)
 	{
 		color = lighting(comps.sp.material, w->ligth, comps, s);
@@ -76,7 +78,6 @@ t_color	color_at(t_world *w, t_rays r)
 	t_comps			comps;
 	t_color			result_color;
 	t_intersection	i;
-	int				j;
 
 	i = hit(w, r);
 	if (equal(i.t, -1))
