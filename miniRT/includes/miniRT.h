@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:33:32 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/28 14:30:27 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:39:59 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@
 # include "object.h"
 # include "parser.h"
 # include "world.h"
+# include "render.h"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:59:56 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/29 10:14:38 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:42:49 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,6 @@ t_xs	*intersections(t_objects *rt, t_rays r, t_xs *xs)
 	i = -1;
 	while (++i < rt->n_cy)
 		xs = local_intersect_cyl(rt->cy[i], r, xs);
-	// i = -1;
-	// while (++i < rt->n_cy)
-	// 	xs = intersect_caps(rt->cy[i], r, xs);
 	order = order_xs(xs);
 	return (order);
 }

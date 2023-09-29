@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:30:04 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/27 16:35:01 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 12:11:58 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_matrices	calculate_z_x_rotation_matrix(t_tuple v)
 	t_matrices	rotation;
 
 	rotation_x = rotate_x(atan(-v.z / v.y));
-	rotation_z = rotate_x(atan(-v.x / v.y));
+	rotation_z = rotate_z(atan(-v.x / v.y));
 	rotation = mult_matrices(rotation_z, rotation_x);
 	return (rotation);
 }

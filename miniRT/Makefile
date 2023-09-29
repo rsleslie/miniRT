@@ -6,7 +6,7 @@
 #    By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/02 15:32:00 by rleslie-          #+#    #+#              #
-#    Updated: 2023/09/29 11:39:24 by rleslie-         ###   ########.fr        #
+#    Updated: 2023/09/29 14:58:34 by rleslie-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,14 +49,20 @@ SRCS += ./sources/rays_feature/intersect_ray.c
 SRCS += ./sources/rays_feature/intersections_transforming.c 
 SRCS += ./sources/rays_feature/light_and_shading.c 
 SRCS += ./sources/world_feature/building_world.c 
-SRCS += ./sources/world_feature/camera.c 
+SRCS += ./sources/world_feature/camera.c
+SRCS += ./sources/world_feature/world_free.c
 SRCS += ./sources/world_feature/defining_a_view.c 
 SRCS += ./sources/world_feature/normal_at_cy.c 
 SRCS += ./sources/world_feature/normal_at.c 
-SRCS += ./sources/world_feature/shadowed.c 
+SRCS += ./sources/world_feature/shadowed.c
+SRCS += ./sources/render/events.c
+SRCS += ./sources/render/init_mlx.c
+SRCS += ./sources/render/init_render.c
+
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror -lm -g libft/libft.a ../minilibx-linux/libmlx.a -lmlx -lX11 -lXext
+FLAGS = -Wall -Wextra -Werror -g3
+LINKERS = -lm -lmlx -lX11 -lXext
 LIB = libft/libft.a
 RM = rm -rf
 
@@ -66,7 +72,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@make -C libft
-	@$(CC) $(OBJS) $(LIBFT) $(FLAGS) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJS) $(LIB) ../minilibx-linux/libmlx.a $(LINKERS) -o $(NAME)
 
 run: all
 	valgrind --leak-check=full --tool=memcheck --show-leak-kinds=all --track-origins=yes ./$(NAME) 

@@ -6,7 +6,7 @@
 /*   By: rleslie- <rleslie-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:08:28 by rleslie-          #+#    #+#             */
-/*   Updated: 2023/09/29 10:38:11 by rleslie-         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:36:06 by rleslie-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ t_tuple			normal_at_cyl(t_cy cylinder, t_tuple point);
 int				check_cap(t_rays ray, double t, t_cy cy);
 t_xs			*intersect_caps(t_cy cyl, t_rays ray, t_xs *xs);
 double			*swap(double *t);
+void			world_free(t_world *w);
 
 #endif
