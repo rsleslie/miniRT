@@ -23,17 +23,18 @@ Interface gráfica para visualização das imagens renderizadas.
 1. Clone este repositório:
 
    ```bash
-   ~ git clone https://github.com/rsleslie/miniRT.git
-   ~ cd miniRT
+   git clone https://github.com/rsleslie/miniRT.git
+   cd miniRT
 
 2. Compile o projeto:
 
    ```bash
-    ~ make
+   cd minirta
+    make
 
 3. Execute o miniRT, fornecendo um arquivo de cena no formato .rt:
 
    ```bash
-    ~ ./miniRT ../aquivo3/{cena}.rt
+    ./miniRT ../aquivo3/{cena}.rt
 
 Aproveite a renderização das cenas e explore o mundo do Ray Tracing!
