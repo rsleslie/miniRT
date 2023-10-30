@@ -21,18 +21,29 @@ miniLibX (biblioteca gráfica)
 Como Usar
 
 Clone este repositório:
+
 ~ bash
+
 Copy code:
+
 ~ git clone https://github.com/rsleslie/miniRT.git
+
 ~cd miniRT
+
 Compile o projeto:
+
 ~bash
+
 Copy code
+
 ~ make
+
 Execute o miniRT, fornecendo um arquivo de cena no formato .rt:
 
 bash
+
 Copy code
+
 ./miniRT ../aquivo3/{cena}.rt
 
 As cenas estão no arquivo3
