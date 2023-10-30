@@ -1,13 +1,11 @@
 #miniRT - Meu Primeiro RayTracer com miniLibX
 
-#miniRT
+miniRT é um programa de renderização que permite criar imagens computadorizadas a partir de cenas definidas em um arquivo no formato .rt, ele renderiza cenas de objetos geometricos como esferas, cilindros e planos. 
 
-O miniRT é o meu primeiro Ray Tracer desenvolvido como parte de um projeto. Ele é um programa de renderização que permite criar imagens computadorizadas a partir de cenas definidas em um arquivo no formato .rt.
-
-Introdução
-O miniRT é uma introdução ao mundo do Ray Tracing, uma técnica de renderização que produz imagens de alta qualidade e realistas. O projeto foi desenvolvido para ajudar a compreender os conceitos por trás do Ray Tracing e implementar fórmulas matemáticas em programação.
+A tecnica ultilizada é chamada de "Ray Tracer" que simula o comportamento da luz através de calculos matematicos em programação. O objetivo é tornar os reflexos, refrações e iluminações de gráficos 3D mais realistas
 
 Funcionalidades
+
 Renderização de cenas com objetos geométricos como esferas, cilindros e planos.
 Implementação de iluminação ambiente e difusa.
 Suporte para redirecionamento de saída.
@@ -23,21 +21,19 @@ miniLibX (biblioteca gráfica)
 Como Usar
 
 Clone este repositório:
-
-bash
-Copy code
-git clone https://github.com/rsleslie/miniRT.git
-cd miniRT
+~ bash
+Copy code:
+~ git clone https://github.com/rsleslie/miniRT.git
+~cd miniRT
 Compile o projeto:
-
-bash
+~bash
 Copy code
-make
+~ make
 Execute o miniRT, fornecendo um arquivo de cena no formato .rt:
 
 bash
 Copy code
-./miniRT cena.rt
+./miniRT ../aquivo3/{cena}.rt
 
 As cenas estão no arquivo3
 Aproveite a renderização das cenas e explore o mundo do Ray Tracing!
