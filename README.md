@@ -47,4 +47,5 @@ Copy code
 ./miniRT ../aquivo3/{cena}.rt
 
 As cenas estão no arquivo3
+
 Aproveite a renderização das cenas e explore o mundo do Ray Tracing!
